@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="message"></constant><!-- 国际化 -->
+	<constant name="simple" value="struts.ui.theme"></constant><!-- 不自动排版 -->
+	<constant name="template" value="struts.ui.templateDir"></constant>
+	<constant name="ftl" value="struts.ui.templateSuffix"></constant>
+    <package name="default" extends="struts-default">
+    	<interceptors>
+    		<interceptor name="AuditorLoginInterceptor" class="com.UTPTd.interceptor.AuditorLoginInterceptor"></interceptor>
+    		<interceptor name="HighTeacherLoginInterceptor" class="com.UTPTd.interceptor.HighTeacherLoginInterceptor"></interceptor>
+    		<interceptor name="TechnicalLoginInterceptor" class="com.UTPTd.interceptor.TechnicalLoginInterceptor"></interceptor>
+    		<interceptor name="LoginOrNotInterceptor" class="com.UTPTd.interceptor.LoginOrNotInterceptor"></interceptor>
+    	</interceptors>
+    	<global-results>
+    		<result name="login">/MiddlePage/ToLogin.jsp</result>
+    	</global-results>
+        <action name="AALogin" class="com.UTPTd.action.AALoginAction">
+        	<result name="success">/Page/index.jsp</result>
+        	<result name="error">/Error.jsp</result>
+        	<result name="teacherlog" type="redirect">/Page/index.jsp</result>
+        	<result name="technicallog" type="redirect">/Page/index.jsp</result>
+        </action>
+        <action name="Scope" class="com.UTPTd.MidAction.SessionScope">
+        	<result name="success">/Page/Teacher/TeacherIndex.jsp</result>
+        	<result name="error">/Error.jsp</result>
+        	<result name="technicalsuccess" type="redirect">/Page/Technical/TechnicalIndex.jsp</result>
+        	<result name="auditorsuccess" type="redirect">/Page/Auditor/AuditorIndex.jsp</result>
+        	<result name="unlogin" type="redirect">/Page/AALogin.jsp</result>
+        </action>
+        <action name="personRegiest" class="com.UTPTd.action.RegiestAction">
+        	<result name="success">/GToLogin.jsp</result>
+        	<result name="error">/Error.jsp</result>
+        	<result name="input">/session.jsp</result>
+        </action>
+        <action name="teacherSubmit" class="com.UTPTd.action.TeacherSubmit">
+        	<result name="success">/session.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="HighTeacherLoginInterceptor"></interceptor-ref>
+        </action>
+        <action name="Technicalsubmit" class="com.UTPTd.action.TechnicalSubmit">
+        	<result name="success">/MiddlePage/SubmitSuccess.jsp</result>
+        </action>
+        <action name="Quit" class="com.UTPTd.MidAction.QuitAction">
+        	<result name="success">/Page/AALogin.jsp</result>
+        </action>
+        <action name="UpFileLoad" class="com.UTPTd.action.UpLoadAction">
+        	<interceptor-ref name="fileUploadStack"></interceptor-ref>
+        	<result name="success">/MiddlePage/FileUploadSuccess.jsp</result>
+        	<result name="error">/Page/AALogin.jsp</result>
+        	<result name="isnull">/Page/Teacher/TeacherImgUpload.jsp</result>
+        </action>
+        <action name="ImgScope" class="com.UTPTd.MidAction.ImgScope">
+        	<result name="teachersuccess">/Page/Teacher/TeacherImgUpload.jsp</result>
+        	<result name="technicalsuccess">/Page/Technical/TechnicalImgUpload.jsp</result>
+        	<result name="auditorsuccess">/Page/Auditor/AuditorSelect.jsp</result>
+        	<result name="error">/Error.jsp</result>
+        </action>
+        <action name="teacherInfo" class="com.UTPTd.MidAction.TeacherShowInfo">
+        	<result name="success">/Page/Teacher/TeacherShow.jsp</result>
+        	<result name="error">/Error.jsp</result>
+        	<result name="unLogin">/Page/AALogin.jsp</result>
+        </action>
+        <action name="otherUpload" class="com.UTPTd.action.UploadOther">
+        	<result name="success">/MiddlePage/OtherFileUploadSuccess.jsp</result>
+        	<result name="error">/Error.jsp</result>
+        	<result name="fileIsnull">/Page/Teacher/TeacherOthers.jsp</result>
+        </action>
+    </package>
+	
+</struts>
