@@ -100,8 +100,8 @@ public class UploadOther extends ActionSupport {
 					stringBuilder.append(path);
 					File newFile = new File(stringBuilder.toString());
 					StringBuilder stringBuilder2 = new StringBuilder();
-					//stringBuilder2.append("D:/java/workspace/UTPTd2/WebContent/upload/teacher/");
-					stringBuilder2.append("D:/dx/workspeace/UTPTd/WebContent/upload/teacher/");
+					stringBuilder2.append("D:/java/workspace/UTPTd/WebContent/upload/teacher/");
+					//stringBuilder2.append("D:/dx/workspeace/UTPTd/WebContent/upload/teacher/");
 					stringBuilder2.append(path);
 					String againPath = stringBuilder2.toString();
 					ULD.upLoadFile(newFile, myFile.get(i), againPath);

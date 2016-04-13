@@ -84,8 +84,8 @@ public class UpLoadAction extends ActionSupport {
 			String againPath = "";
 			if (teacher != null) {
 				imageFile = new File(ServletActionContext.getServletContext().getRealPath(UP)+ "/teacher/" + imageFileName);
-				againPath = "D:/dx/workspeace/UTPTd/WebContent/upload/teacher/" + imageFileName;
-				//againPath = "D:/java/workspace/UTPTd2/WebContent/upload/teacher/" + imageFileName;
+				//againPath = "D:/dx/workspeace/UTPTd/WebContent/upload/teacher/" + imageFileName;
+				againPath = "D:/java/workspace/UTPTd/WebContent/upload/teacher/" + imageFileName;
 				ULD.upLoadFile(imageFile, upFile.get(0), againPath);
 				imageNewPath = "upload/teacher/" + imageFileName;
 				UHTD.PersonImgUpload(teacher.getUtpHighTeacherIdCard(), imageNewPath);
@@ -94,7 +94,7 @@ public class UpLoadAction extends ActionSupport {
 			} else if (technical != null) {
 				imageFile = new File(ServletActionContext.getServletContext().getRealPath(UP) + "/technical/" + imageFileName);
 				//againPath = "D:/dx/workspeace/UTPTd/WebContent/upload/technical/" + imageFileName;
-				againPath = "D:/java/workspace/UTPTd2/WebContent/upload/technical/" + imageFileName;
+				againPath = "D:/java/workspace/UTPTd/WebContent/upload/technical/" + imageFileName;
 				ULD.upLoadFile(imageFile, upFile.get(0), againPath);
 				imageNewPath = "upload/technical/" + imageFileName;
 				UTD.PersonImgUpload(technical.getUtpTechnicalIdCard(), imageFile.toString());

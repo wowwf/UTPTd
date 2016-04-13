@@ -9,11 +9,11 @@
 		<property name="format_sql">true</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:TestOrcl</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:hsorcl</property>
 		<property name="connection.useUnicode">true</property>
 		<property name="connection.characterEncoding">UTF-8</property>
 		<property name="hibernate.connection.username">system</property>
-		<property name="hibernate.connection.password">Xyz7902335</property>
+		<property name="hibernate.connection.password">Wwf931114</property>
 		<property name="current_session_context_class">thread</property>
 		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
 		<property name="hbm2ddl.auto">update</property>

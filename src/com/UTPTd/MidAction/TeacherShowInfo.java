@@ -1,5 +1,6 @@
 package com.UTPTd.MidAction;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.UTPTd.bean.UtpHighTeacher;
@@ -8,7 +9,6 @@ import com.UTPTd.dao.UtpHighTeacherDao;
 import com.UTPTd.dao.UtpTechnicalDao;
 import com.UTPTd.daoImpl.UtpHighTeacherDaoImpl;
 import com.UTPTd.daoImpl.UtpTechnicalDaoImpl;
-import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -33,6 +33,23 @@ public class TeacherShowInfo extends ActionSupport {
 		this.no = no;
 	}
 	
+	public class NamePath{
+		private String name;
+		private String path;
+		public String getName() {
+			return name;
+		}
+		public String getPath() {
+			return path;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public void setPath(String path) {
+			this.path = path;
+		}
+		
+	}
 	@Override
 	public String execute() throws Exception {
 		String flag = "";
@@ -52,7 +69,19 @@ public class TeacherShowInfo extends ActionSupport {
 				context.put("highTeacher", uTeacher);
 				//取出其他佐证的字符串，分解成佐证名称，并构造文件路径
 				String[] nameList = UHTD.FindOtherFileName(uTeacher.getUtpHighTeacherIdCard()).split(",");
-				
+				ArrayList<NamePath> urlList = new ArrayList<NamePath>();
+				//NamePath namePath = new NamePath();
+				for (int i = 0; i < nameList.length; i++) {
+					System.out.println(nameList[i]);
+					NamePath namePath = new NamePath();
+					String[] stringList = nameList[i].split("@");
+					System.out.println(stringList[0] + "," + stringList[1]);
+					namePath.setName(stringList[0]);
+					namePath.setPath(nameList[i]);
+					urlList.add(namePath);
+				}
+				context.put("otherUrlList", urlList);
+				System.out.println(urlList.get(0).getName() + "," + urlList.get(1).getName() + "," + urlList.size());
 				flag = "success";
 			} else {
 				flag = "unLogin";
