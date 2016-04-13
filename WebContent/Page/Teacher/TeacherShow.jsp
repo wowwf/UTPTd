@@ -114,23 +114,32 @@
 	<tr>
 		<td colspan="5" height="20px" style="background-color: #CFCFCF;"><center><span><b>其他佐证</b></span></center></td>
 	</tr>
-	<tr>
-		<td id="mc" colspan="2">佐证名称，</td>
-		<td id="msg" colspan="3">文件下载</td>
-	</tr>
+		<!-- <td id="mc" colspan="2"></td>
+		<td id="msg" colspan="3">文件下载</td> -->
+		<s:iterator value="otherUrlList" var="list">
+		<tr>
+			<td id="mc" colspan="2"><s:property value="#list.name"/></td>
+			<td id="msg" colspan="3"><s:property value="#list.path"/></td>
+		</tr>
+		</s:iterator>
 	<tr>
 		<td colspan="5" height="20px" style="background-color: #CFCFCF;"><center><span><b>审核情况</b></span></center></td>
 	</tr>
 	<tr>
 		<td id="mc"><span>是否通过审核：</span></td>
-		<% UtpHighTeacher utTeacher = (UtpHighTeacher)request.getAttribute("highTeacher"); 
+		<%-- <% UtpHighTeacher utTeacher = (UtpHighTeacher)request.getAttribute("highTeacher"); 
 			if (utTeacher.getUtpHighTeacherIsSubmit() == 0) {
 				out.print("<td id='msg'><span>未通过审核</span></td>");
 			} else {
-				out.print("<td id='msg'><span>未通过审核</span></td>");
+				out.print("<td id='msg'><span>通过审核</span></td>");
 			}
-		%>
-		<%-- <td id="msg"><span>${highTeacher.utpHighTeacherIsSubmit }</span></td> --%>
+		%> --%>
+		<s:if test="#highTeacher.utpHighTeacherIsSubmit==0">
+			<td id="msg"><span>未通过审核</span></td>
+		</s:if>
+		<s:else>
+			<td id='msg'><span>通过审核</span></td>
+		</s:else>
 		<td id="mc"><span>第几次审核：</span></td>
 		<td id="msg"  colspan="2"><span>第${highTeacher.utpHighTeacherWhichSubmit }次审核</span></td>
 	</tr>
