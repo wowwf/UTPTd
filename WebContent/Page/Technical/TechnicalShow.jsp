@@ -121,11 +121,19 @@
 		<s:if test="#TechnicalInfo.utpTechnicalIsSubmit==0">
 			<td id="msg"><span>未通过审核</span></td>
 		</s:if>
+		<s:elseif test="#TechnicalInfo.utpTechnicalIsSubmit==null">
+			<td id="msg"><span>未提交</span></td>
+		</s:elseif>
 		<s:else>
-			<td id='msg'><span>通过审核</span></td>
+			<td id="msg"><span>通过审核</span></td>
 		</s:else>
 		<td id="mc"><span>第几次审核：</span></td>
+		<s:if test="#TechnicalInfo.utpTechnicalCountSubmit==null">
+			<td id="msg" colspan="2"><span>未提交</span></td>
+		</s:if>
+		<s:else>
 		<td id="msg"  colspan="2"><span>第${TechnicalInfo.utpTechnicalCountSubmit }次审核</span></td>
+		</s:else>
 	</tr>
 </table>
 <br/><br/><br/><br/><br/>

@@ -91,7 +91,7 @@ public class UploadOther extends ActionSupport {
 			UtpHighTeacher teacher = (UtpHighTeacher) session.get("HighTeacher");
 			UtpTechnical technical = (UtpTechnical) session.get("Technical");
 			if (teacher != null) {
-				if (!"".equals(UHTD.FindOtherFileName(teacher.getUtpHighTeacherIdCard()))) {
+				if (UHTD.FindOtherFileName(teacher.getUtpHighTeacherIdCard()) != null) {
 					String localPath = UHTD.FindOtherFileName(teacher.getUtpHighTeacherIdCard());
 					ULD.deleteFileByName(0, localPath, pathString);
 				}
@@ -113,7 +113,7 @@ public class UploadOther extends ActionSupport {
 				UHTD.OthersUpload(teacher.getUtpHighTeacherIdCard(), fileNameBuffer);
 				flag = "success";
 			} else if (technical != null) {
-				if (!"".equals(UTD.FindOtherFile(technical.getUtpTechnicalIdCard()))) {
+				if (UTD.FindOtherFile(technical.getUtpTechnicalIdCard()) != null) {
 					String localPath = UTD.FindOtherFile(technical.getUtpTechnicalIdCard());
 					ULD.deleteFileByName(1, localPath, pathString);
 				};

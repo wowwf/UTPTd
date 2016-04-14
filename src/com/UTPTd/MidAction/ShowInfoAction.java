@@ -64,7 +64,7 @@ public class ShowInfoAction extends ActionSupport {
 				if ("1".equals(uTeacher.getUtpHighTeacherGender())) {
 					context.put("Gender", "男");
 				} else {
-					context.put("Gender", "nv");
+					context.put("Gender", "女");
 				}
 				context.put("highTeacher", uTeacher);
 				//取出其他佐证的字符串，分解成佐证名称，并构造文件路径
@@ -91,7 +91,7 @@ public class ShowInfoAction extends ActionSupport {
 				if ("1".equals(utpTechnical.getUtpTechnicalGender())) {
 					context.put("Gender", "男");
 				} else {
-					context.put("Gender", "nv");
+					context.put("Gender", "女");
 				}
 				context.put("TechnicalInfo", utpTechnical);
 				//查询出的论文情况的字符串，按逗号分别隔开

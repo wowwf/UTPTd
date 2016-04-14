@@ -85,7 +85,7 @@ public class UpLoadAction extends ActionSupport {
 			String againPath = "";
 			if (teacher != null) {
 				String localString = UHTD.FindPersonImageUrl(teacher.getUtpHighTeacherIdCard());
-				if (!"".equals(localString)) {
+				if (localString != null) {
 					String[] localPath = localString.split("/");
 					ULD.deleteFileByName(0, localPath[2].toString(), serverPath);
 				}
@@ -99,7 +99,7 @@ public class UpLoadAction extends ActionSupport {
 				flag = "success";
 			} else if (technical != null) {
 				String pathString = UTD.FindPersonImgUrl(technical.getUtpTechnicalIdCard());
-				if (!"".equals(pathString)) {
+				if (pathString != null) {
 					String[] localPath = pathString.split("/");
 					ULD.deleteFileByName(1, localPath[2].toString(), serverPath);
 				}

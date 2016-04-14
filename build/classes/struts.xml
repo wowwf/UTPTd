@@ -74,6 +74,7 @@
         	<result name="unLogin">/Page/AALogin.jsp</result>
         </action>
         <action name="otherUpload" class="com.UTPTd.action.UploadOther">
+        	<interceptor-ref name="fileUploadStack"></interceptor-ref>
         	<result name="success">/MiddlePage/OtherFileUploadSuccess.jsp</result>
         	<result name="error">/Error.jsp</result>
         	<result name="fileIsnull">/Page/Teacher/TeacherOthers.jsp</result>
