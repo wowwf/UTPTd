@@ -1354,8 +1354,9 @@ seajs._config = {
 
     debugSync()
 
-    return this
+    return this;
   }
+
 
 
   function debugSync() {
@@ -1424,7 +1425,7 @@ seajs._config = {
     if (name === 'debug') {
       seajs._use = seajs.use
       seajs._useArgs = []
-      seajs.use = function() { seajs._useArgs.push(arguments); return seajs }
+      seajs.use = function() { seajs._useArgs.push(arguments); return seajs; }
     }
   })
 
