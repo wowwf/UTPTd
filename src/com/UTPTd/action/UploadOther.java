@@ -91,8 +91,10 @@ public class UploadOther extends ActionSupport {
 			UtpHighTeacher teacher = (UtpHighTeacher) session.get("HighTeacher");
 			UtpTechnical technical = (UtpTechnical) session.get("Technical");
 			if (teacher != null) {
-				String localPath = UHTD.FindOtherFileName(teacher.getUtpHighTeacherIdCard());
-				ULD.deleteFileByName(0, localPath, pathString);
+				if (!"".equals(UHTD.FindOtherFileName(teacher.getUtpHighTeacherIdCard()))) {
+					String localPath = UHTD.FindOtherFileName(teacher.getUtpHighTeacherIdCard());
+					ULD.deleteFileByName(0, localPath, pathString);
+				}
 				for (int i = 0; i < myFile.size(); i++) {
 					String path = nameList[i] + "@" + new Date().getTime() + getExtention(this.myFileFileName.get(i));
 					StringBuilder stringBuilder = new StringBuilder();
@@ -111,8 +113,10 @@ public class UploadOther extends ActionSupport {
 				UHTD.OthersUpload(teacher.getUtpHighTeacherIdCard(), fileNameBuffer);
 				flag = "success";
 			} else if (technical != null) {
-				String localPath = UTD.FindOtherFile(technical.getUtpTechnicalIdCard());
-				ULD.deleteFileByName(1, localPath, pathString);
+				if (!"".equals(UTD.FindOtherFile(technical.getUtpTechnicalIdCard()))) {
+					String localPath = UTD.FindOtherFile(technical.getUtpTechnicalIdCard());
+					ULD.deleteFileByName(1, localPath, pathString);
+				};
 				for (int i = 0; i < myFile.size(); i++) {
 					String path = nameList[i] + "@" + new Date().getTime() + getExtention(this.myFileFileName.get(i));
 					StringBuilder builder = new StringBuilder();

@@ -84,9 +84,11 @@ public class UpLoadAction extends ActionSupport {
 			String imageNewPath = "";
 			String againPath = "";
 			if (teacher != null) {
-				String[] localPath = (UHTD.FindPersonImageUrl(teacher.getUtpHighTeacherIdCard())).split("/");
-				System.out.println(localPath[2].toString());
-				ULD.deleteFileByName(0, localPath[2].toString(), serverPath);
+				String localString = UHTD.FindPersonImageUrl(teacher.getUtpHighTeacherIdCard());
+				if (!"".equals(localString)) {
+					String[] localPath = localString.split("/");
+					ULD.deleteFileByName(0, localPath[2].toString(), serverPath);
+				}
 				imageFile = new File(serverPath + "/teacher/" + imageFileName);
 				//againPath = "D:/dx/workspeace/UTPTd/WebContent/upload/teacher/" + imageFileName;
 				againPath = "D:/java/workspace/UTPTd/WebContent/upload/teacher/" + imageFileName;
@@ -96,9 +98,11 @@ public class UpLoadAction extends ActionSupport {
 				context.put("Imgpath", imageNewPath);
 				flag = "success";
 			} else if (technical != null) {
-				String[] localPath = (UTD.FindPersonImgUrl(technical.getUtpTechnicalIdCard())).split("/");
-				System.out.println(localPath[2].toString());
-				ULD.deleteFileByName(1, localPath[2].toString(), serverPath);
+				String pathString = UTD.FindPersonImgUrl(technical.getUtpTechnicalIdCard());
+				if (!"".equals(pathString)) {
+					String[] localPath = pathString.split("/");
+					ULD.deleteFileByName(1, localPath[2].toString(), serverPath);
+				}
 				imageFile = new File(serverPath + "/technical/" + imageFileName);
 				//againPath = "D:/dx/workspeace/UTPTd/WebContent/upload/technical/" + imageFileName;
 				againPath = "D:/java/workspace/UTPTd/WebContent/upload/technical/" + imageFileName;
