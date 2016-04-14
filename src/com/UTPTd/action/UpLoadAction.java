@@ -97,7 +97,7 @@ public class UpLoadAction extends ActionSupport {
 				againPath = "D:/java/workspace/UTPTd/WebContent/upload/technical/" + imageFileName;
 				ULD.upLoadFile(imageFile, upFile.get(0), againPath);
 				imageNewPath = "upload/technical/" + imageFileName;
-				UTD.PersonImgUpload(technical.getUtpTechnicalIdCard(), imageFile.toString());
+				UTD.PersonImgUpload(technical.getUtpTechnicalIdCard(), imageNewPath);
 				context.put("Imgpath", imageNewPath);
 				flag = "success";
 			} else {

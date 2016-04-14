@@ -147,11 +147,6 @@
             <td id="beizhu"></td>
         </tr>
         <tr>
-            <td id="mingcheng">一寸照片:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalPhotoUrl" value=""><input type="button" value="浏览照片..."></td>
-            <td id="beizhu"></td>
-        </tr>
-        <tr>
         	<th colspan="3" style="text-align: center;">年资情况</th>
         </tr>
         <tr>
