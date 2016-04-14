@@ -160,7 +160,7 @@ $(function(){
 <DIV class="initial_right_hand" id="right_hand"></DIV></DIV>
 <P style="padding: 30px 0px 10px; position: relative;">
 	<SPAN class="u_logo"></SPAN>         
-	<INPUT class="ipt" id="IdCard" name="IdCard" type="text" placeholder="请输入身份证号码" value="" onblur="idVal()" onfocus="idFocus()"> 
+	<INPUT class="ipt" id="IdCard" name="UserName" type="text" placeholder="请输入身份证号码" value="" onblur="idVal()" onfocus="idFocus()"> 
 </P>
 <P style="position: relative;">
 	<SPAN class="p_logo"></SPAN>         

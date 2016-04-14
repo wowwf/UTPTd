@@ -29,4 +29,8 @@ public interface UtpTechnicalDao {
 	void PersonImgUpload(Integer IdCard, String savePath);
 	//查找一寸照片的路径
 	String FindPersonImgUrl(Integer IdCard);
+	//论文著作相关路径存储
+	void OtherUpload(Integer IdCard, StringBuffer savePath);
+	//查找论文相关路径
+	String FindOtherFile(Integer IdCard);
 }

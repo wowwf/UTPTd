@@ -19,7 +19,7 @@ public class UtpAdminServicesImpl implements UtpAdminServices {
 
 	@Override
 	public boolean Login(String UtpName, String UtpPassword) {
-		if (UtpPassword == UAD.FindPsdByName(UtpName)) {
+		if (UtpPassword.equals(UAD.FindPsdByName(UtpName))) {
 			return true;
 		}else {
 			return false;

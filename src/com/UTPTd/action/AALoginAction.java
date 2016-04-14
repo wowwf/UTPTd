@@ -12,8 +12,10 @@ import com.UTPTd.daoImpl.UtpAuditorDaoImpl;
 import com.UTPTd.daoImpl.UtpHighTeacherDaoImpl;
 import com.UTPTd.daoImpl.UtpTechnicalDaoImpl;
 import com.UTPTd.services.UTPAuditorServices;
+import com.UTPTd.services.UtpAdminServices;
 import com.UTPTd.services.UtpHighTeacherServices;
 import com.UTPTd.services.UtpTechnicalServices;
+import com.UTPTd.servicesImpl.UtpAdminServicesImpl;
 import com.UTPTd.servicesImpl.UtpAuditorServicesImpl;
 import com.UTPTd.servicesImpl.UtpHighTeacherServicesImpl;
 import com.UTPTd.servicesImpl.UtpTechnicalServicesImpl;
@@ -39,17 +41,20 @@ public class AALoginAction extends ActionSupport {
 	
 	private static UtpTechnicalServices UTS = new UtpTechnicalServicesImpl();
 	
-	private Integer IdCard;
+	private static UtpAdminServices UA = new UtpAdminServicesImpl();
+	
+	private String UserName;
 	private String password;
 	private Integer Role;
-	public Integer getIdCard() {
-		return IdCard;
+	
+	public String getUserName() {
+		return UserName;
+	}
+	public void setUserName(String userName) {
+		UserName = userName;
 	}
 	public String getPassword() {
 		return password;
-	}
-	public void setIdCard(Integer idCard) {
-		IdCard = idCard;
 	}
 	public void setPassword(String password) {
 		this.password = password;
@@ -58,9 +63,11 @@ public class AALoginAction extends ActionSupport {
 	public Integer getRole() {
 		return Role;
 	}
+	
 	public void setRole(Integer role) {
 		Role = role;
 	}
+	
 	@Override
 	public String execute() throws Exception {
 		String flag = " ";
@@ -69,6 +76,7 @@ public class AALoginAction extends ActionSupport {
 		session.remove("HighTeacher");
 		session.remove("Technical");
 		if (Role == 0 || Role == 1) {
+			Integer IdCard = Integer.valueOf(UserName);
 			UtpAuditor utpAuditor = new UtpAuditor();
 			utpAuditor = UAD.FindById(IdCard);
 			if (UAS.FindByIdAndRole(IdCard)) {
@@ -84,6 +92,7 @@ public class AALoginAction extends ActionSupport {
 				flag = "error";
 			}
 		} else if (Role == 2) {
+			Integer IdCard = Integer.valueOf(UserName);
 			UtpHighTeacher utpHighTeacher = new UtpHighTeacher();
 			utpHighTeacher = UHTD.FindByHighTeacherIdCard(IdCard);
 			if (UHTS.IsRegister(IdCard)) {
@@ -99,6 +108,7 @@ public class AALoginAction extends ActionSupport {
 				flag = "error";
 			}
 		} else if (Role == 3) {
+			Integer IdCard = Integer.valueOf(UserName);
 			UtpTechnical utpTechnical = new UtpTechnical();
 			utpTechnical = UTD.FindByTechnicalIdCard(IdCard);
 			if (UTS.IsRegister(IdCard)) {
@@ -113,6 +123,8 @@ public class AALoginAction extends ActionSupport {
 				addFieldError("LoginError", "用户不存在！");
 				flag = "error";
 			}
+		} else if (UA.Login(UserName, password)) {
+			flag = "adminLog";
 		} else {
 			addFieldError("LoginError", "你没有选择登陆角色！");
 			flag = "error";

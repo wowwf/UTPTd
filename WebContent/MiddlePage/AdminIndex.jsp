@@ -1,19 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
- String path = request.getContextPath();
- String basePath = request.getScheme() + "://"
-   + request.getServerName() + ":" + request.getServerPort()
-   + path + "/";
-%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	alert("请登录后在进行操作！");
-	window.top.location.href="<%=basePath %>/Page/AALogin.jsp";
-</script>
 </head>
+<body>
+	<a href="#">清理服务器及项目文件中冗余的文件</a>
+	<s:actionmessage/>
+	<a href="#">清理服务器及项目文件中冗余的图片</a>
+</body>
 </html>

@@ -78,12 +78,16 @@ public class UpLoadAction extends ActionSupport {
 			UtpHighTeacher teacher = (UtpHighTeacher) session.get("HighTeacher");
 			UtpTechnical technical = (UtpTechnical) session.get("Technical");
 			ActionContext context = ActionContext.getContext();
+			String serverPath = ServletActionContext.getServletContext().getRealPath(UP);
 			String imageFileName = new Date().getTime() + getExtention(this.upFileFileName.get(0));
 			File imageFile = null;
 			String imageNewPath = "";
 			String againPath = "";
 			if (teacher != null) {
-				imageFile = new File(ServletActionContext.getServletContext().getRealPath(UP)+ "/teacher/" + imageFileName);
+				String[] localPath = (UHTD.FindPersonImageUrl(teacher.getUtpHighTeacherIdCard())).split("/");
+				System.out.println(localPath[2].toString());
+				ULD.deleteFileByName(0, localPath[2].toString(), serverPath);
+				imageFile = new File(serverPath + "/teacher/" + imageFileName);
 				//againPath = "D:/dx/workspeace/UTPTd/WebContent/upload/teacher/" + imageFileName;
 				againPath = "D:/java/workspace/UTPTd/WebContent/upload/teacher/" + imageFileName;
 				ULD.upLoadFile(imageFile, upFile.get(0), againPath);
@@ -92,7 +96,10 @@ public class UpLoadAction extends ActionSupport {
 				context.put("Imgpath", imageNewPath);
 				flag = "success";
 			} else if (technical != null) {
-				imageFile = new File(ServletActionContext.getServletContext().getRealPath(UP) + "/technical/" + imageFileName);
+				String[] localPath = (UTD.FindPersonImgUrl(technical.getUtpTechnicalIdCard())).split("/");
+				System.out.println(localPath[2].toString());
+				ULD.deleteFileByName(1, localPath[2].toString(), serverPath);
+				imageFile = new File(serverPath + "/technical/" + imageFileName);
 				//againPath = "D:/dx/workspeace/UTPTd/WebContent/upload/technical/" + imageFileName;
 				againPath = "D:/java/workspace/UTPTd/WebContent/upload/technical/" + imageFileName;
 				ULD.upLoadFile(imageFile, upFile.get(0), againPath);

@@ -12,7 +12,7 @@ import com.UTPTd.daoImpl.UtpTechnicalDaoImpl;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class TeacherShowInfo extends ActionSupport {
+public class ShowInfoAction extends ActionSupport {
 
 	/**
 	 * 
@@ -75,14 +75,12 @@ public class TeacherShowInfo extends ActionSupport {
 					System.out.println(nameList[i]);
 					NamePath namePath = new NamePath();
 					String[] stringList = nameList[i].split("@");
-					System.out.println(stringList[0] + "," + stringList[1]);
 					namePath.setName(stringList[0]);
 					namePath.setPath(nameList[i]);
 					urlList.add(namePath);
 				}
 				context.put("otherUrlList", urlList);
-				System.out.println(urlList.get(0).getName() + "," + urlList.get(1).getName() + "," + urlList.size());
-				flag = "success";
+				flag = "teachersuccess";
 			} else {
 				flag = "unLogin";
 			}
@@ -90,11 +88,24 @@ public class TeacherShowInfo extends ActionSupport {
 			utpTechnical = (UtpTechnical) session.get("Technical");
 			if (utpTechnical != null) {
 				utpTechnical = UTD.FindByTechnicalIdCard(utpTechnical.getUtpTechnicalIdCard());
-				context.put("TeachnicalInfo", utpTechnical);
-				//查询出的年资情况的字符串，按逗号分别隔开
-				
-				
-				flag = "success";
+				if ("1".equals(utpTechnical.getUtpTechnicalGender())) {
+					context.put("Gender", "男");
+				} else {
+					context.put("Gender", "nv");
+				}
+				context.put("TechnicalInfo", utpTechnical);
+				//查询出的论文情况的字符串，按逗号分别隔开
+				String[] nameList = UTD.FindOtherFile(utpTechnical.getUtpTechnicalIdCard()).split(",");
+				ArrayList<NamePath> urlList = new ArrayList<NamePath>();
+				for (int i = 0; i < nameList.length; i++) {
+					NamePath namePath = new NamePath();
+					String[] stringList = nameList[i].split("@");
+					namePath.setName(stringList[0]);
+					namePath.setPath(nameList[i]);
+					urlList.add(namePath);
+				}
+				context.put("otherUrlList", urlList);
+				flag = "technicalsuccess";
 			} else {
 				flag = "unLogin";
 			}

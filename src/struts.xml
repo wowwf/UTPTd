@@ -19,18 +19,23 @@
     	<global-results>
     		<result name="login">/MiddlePage/ToLogin.jsp</result>
     	</global-results>
+    	<!-- <action name="AdminLogin" class="com.UTPTd.action.UtpAdminLoginAction">
+    		<result name="success">/MiddlePage/AdminIndex.jsp</result>
+    	</action> -->
         <action name="AALogin" class="com.UTPTd.action.AALoginAction">
         	<result name="success">/Page/index.jsp</result>
         	<result name="error">/Error.jsp</result>
-        	<result name="teacherlog" type="redirect">/Page/index.jsp</result>
-        	<result name="technicallog" type="redirect">/Page/index.jsp</result>
+        	<result name="teacherlog">/Page/index.jsp</result>
+        	<result name="technicallog">/Page/index.jsp</result>
+        	<!-- <result name="adminLog" type="chain">AdminLogin</result> -->
+        	<result name="adminLog">/MiddlePage/AdminIndex.jsp</result>
         </action>
         <action name="Scope" class="com.UTPTd.MidAction.SessionScope">
         	<result name="success">/Page/Teacher/TeacherIndex.jsp</result>
         	<result name="error">/Error.jsp</result>
-        	<result name="technicalsuccess" type="redirect">/Page/Technical/TechnicalIndex.jsp</result>
-        	<result name="auditorsuccess" type="redirect">/Page/Auditor/AuditorIndex.jsp</result>
-        	<result name="unlogin" type="redirect">/Page/AALogin.jsp</result>
+        	<result name="technicalsuccess">/Page/Technical/TechnicalIndex.jsp</result>
+        	<result name="auditorsuccess">/Page/Auditor/AuditorIndex.jsp</result>
+        	<result name="unlogin">/Page/AALogin.jsp</result>
         </action>
         <action name="personRegiest" class="com.UTPTd.action.RegiestAction">
         	<result name="success">/GToLogin.jsp</result>
@@ -43,7 +48,9 @@
         	<interceptor-ref name="HighTeacherLoginInterceptor"></interceptor-ref>
         </action>
         <action name="Technicalsubmit" class="com.UTPTd.action.TechnicalSubmit">
-        	<result name="success">/MiddlePage/SubmitSuccess.jsp</result>
+        	<result name="success">/session.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="TechnicalLoginInterceptor"></interceptor-ref>
         </action>
         <action name="Quit" class="com.UTPTd.MidAction.QuitAction">
         	<result name="success">/Page/AALogin.jsp</result>
@@ -60,8 +67,9 @@
         	<result name="auditorsuccess">/Page/Auditor/AuditorSelect.jsp</result>
         	<result name="error">/Error.jsp</result>
         </action>
-        <action name="teacherInfo" class="com.UTPTd.MidAction.TeacherShowInfo">
-        	<result name="success">/Page/Teacher/TeacherShow.jsp</result>
+        <action name="ShowInfo" class="com.UTPTd.MidAction.ShowInfoAction">
+        	<result name="teachersuccess">/Page/Teacher/TeacherShow.jsp</result>
+        	<result name="technicalsuccess">/Page/Technical/TechnicalShow.jsp</result>
         	<result name="error">/Error.jsp</result>
         	<result name="unLogin">/Page/AALogin.jsp</result>
         </action>
@@ -69,6 +77,8 @@
         	<result name="success">/MiddlePage/OtherFileUploadSuccess.jsp</result>
         	<result name="error">/Error.jsp</result>
         	<result name="fileIsnull">/Page/Teacher/TeacherOthers.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="LoginOrNotInterceptor"></interceptor-ref>
         </action>
     </package>
 	

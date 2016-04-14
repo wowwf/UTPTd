@@ -88,62 +88,62 @@
         </tr>
         <tr>
             <td id="mingcheng">年龄:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalAge" value=""></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalAge" value="${readTechnical.utpTechnicalAge }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
             <td id="mingcheng">出生日期:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalBirthday" value=""></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalBirthday" value="${readTechnical.utpTechnicalBirthday }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
             <td id="mingcheng">参加工作时间:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalCareerBegin" value=""></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalCareerBegin" value="${readTechnical.utpTechnicalCareerBegin }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
             <td id="mingcheng">毕业时间:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalGraduateTime" value=""></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalGraduateTime" value="${readTechnical.utpTechnicalGraduateTime }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
             <td id="mingcheng">学历:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalEducation" value=""></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalEducation" value="${readTechnical.utpTechnicalEducation }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
             <td id="mingcheng">毕业学校:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalCollege" value=""></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalCollege" value="${readTechnical.utpTechnicalCollege }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
             <td id="mingcheng">所学专业:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalMajor" value=""></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalMajor" value="${readTechnical.utpTechnicalMajor }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
             <td id="mingcheng">目前所任职务:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalPostNow" value=""></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalPostNow" value="${readTechnical.utpTechnicalPostNow }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
             <td id="mingcheng">申报专业技术职务任职资格:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalDeclarePost" value=""></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalDeclarePost" value="${readTechnical.utpTechnicalDeclarePost }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
             <td id="mingcheng">外语考试情况:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalCET" value=""></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalCET" value="${readTechnical.utpTechnicalCET }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
             <td id="mingcheng">计算机应用能力考试情况:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalComputer" value=""></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalComputer" value="${readTechnical.utpTechnicalComputer }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
             <td id="mingcheng">近五年年度考核结果:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalAssessment" value=""></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalAssessment" value="${readTechnical.utpTechnicalAssessment }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
@@ -151,7 +151,7 @@
         </tr>
         <tr>
             <td id="mingcheng">年资情况:<span>*</span></td>
-            <td><textarea name="utpTechnical.utpTechnicalSeniority" rows="5" cols="50"></textarea></td>
+            <td><textarea name="utpTechnical.utpTechnicalSeniority" rows="5" cols="50">${readTechnical.utpTechnicalSeniority }</textarea></td>
             <td id="beizhu"></td>
         </tr>
         <tr>
@@ -159,7 +159,7 @@
         </tr>
         <tr>
             <td id="mingcheng">工作业绩登记:<span>*</span></td>
-            <td><textarea name="utpTechnical.utpTechnicalAchievement" rows="5" cols="50"></textarea></td>
+            <td><textarea name="utpTechnical.utpTechnicalAchievement" rows="5" cols="50">${readTechnical.utpTechnicalAchievement }</textarea></td>
             <td id="beizhu"></td>
         </tr>
         <tr>

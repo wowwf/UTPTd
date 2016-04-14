@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
+import org.apache.struts2.ServletActionContext;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -21,8 +22,10 @@ import com.UTPTd.daoImpl.UtpAuditorDaoImpl;
 import com.UTPTd.daoImpl.UtpHighTeacherDaoImpl;
 import com.UTPTd.daoImpl.UtpTechnicalDaoImpl;
 import com.UTPTd.services.UTPAuditorServices;
+import com.UTPTd.services.UtpAdminServices;
 import com.UTPTd.services.UtpHighTeacherServices;
 import com.UTPTd.services.UtpTechnicalServices;
+import com.UTPTd.servicesImpl.UtpAdminServicesImpl;
 import com.UTPTd.servicesImpl.UtpAuditorServicesImpl;
 import com.UTPTd.servicesImpl.UtpHighTeacherServicesImpl;
 import com.UTPTd.servicesImpl.UtpTechnicalServicesImpl;
@@ -42,6 +45,8 @@ public class Factory {
 	private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();
 	
 	private static UtpTechnicalServices UTS = new UtpTechnicalServicesImpl();
+	
+	private static UtpAdminServices UA = new UtpAdminServicesImpl();
 	/**
 	 * @param args
 	 * @throws IOException
@@ -126,11 +131,13 @@ public class Factory {
 //		}
 //		System.out.println(bb);
 		//System.out.println(new Date().getHours() + "" + new Date().getMinutes());
-		StringBuffer stringBuffer = new StringBuffer();
-		stringBuffer.append("2");
-		stringBuffer.append("bb");
-		stringBuffer.append("3");
-		System.out.println(stringBuffer);
+//		StringBuffer stringBuffer = new StringBuffer();
+//		stringBuffer.append("2");
+//		stringBuffer.append("bb");
+//		stringBuffer.append("3");
+//		System.out.println(stringBuffer);
+//		uDao.deleteFileByName(0, "在线@2221.txt");
+		System.out.println(UA.Login("admin", "admin"));
 	}
 	
 }

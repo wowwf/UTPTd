@@ -77,7 +77,6 @@ public class UploadOther extends ActionSupport {
 		return fileName.substring(pos);
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public String execute() throws Exception {
 		String flag = "";
@@ -92,8 +91,10 @@ public class UploadOther extends ActionSupport {
 			UtpHighTeacher teacher = (UtpHighTeacher) session.get("HighTeacher");
 			UtpTechnical technical = (UtpTechnical) session.get("Technical");
 			if (teacher != null) {
+				String localPath = UHTD.FindOtherFileName(teacher.getUtpHighTeacherIdCard());
+				ULD.deleteFileByName(0, localPath, pathString);
 				for (int i = 0; i < myFile.size(); i++) {
-					String path = nameList[i] + "@" + new Date().getHours() + "" + new Date().getMinutes() + getExtention(this.myFileFileName.get(i));
+					String path = nameList[i] + "@" + new Date().getTime() + getExtention(this.myFileFileName.get(i));
 					StringBuilder stringBuilder = new StringBuilder();
 					stringBuilder.append(pathString);
 					stringBuilder.append("/teacher/");
@@ -110,6 +111,23 @@ public class UploadOther extends ActionSupport {
 				UHTD.OthersUpload(teacher.getUtpHighTeacherIdCard(), fileNameBuffer);
 				flag = "success";
 			} else if (technical != null) {
+				String localPath = UTD.FindOtherFile(technical.getUtpTechnicalIdCard());
+				ULD.deleteFileByName(1, localPath, pathString);
+				for (int i = 0; i < myFile.size(); i++) {
+					String path = nameList[i] + "@" + new Date().getTime() + getExtention(this.myFileFileName.get(i));
+					StringBuilder builder = new StringBuilder();
+					builder.append(pathString);
+					builder.append("/technical/");
+					builder.append(path);
+					File newFile = new File(builder.toString());
+					StringBuilder builder2 = new StringBuilder();
+					builder2.append("D:/java/workspace/UTPTd/WebContent/upload/technical/");
+					builder2.append(path);
+					String againPath = builder2.toString();
+					ULD.upLoadFile(newFile, myFile.get(i), againPath);
+					fileNameBuffer.append(path + ",");
+				}
+				UTD.OtherUpload(technical.getUtpTechnicalIdCard(), fileNameBuffer);
 				flag = "success";
 			} else {
 				addActionError("没有登录！");

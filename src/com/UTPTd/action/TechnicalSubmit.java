@@ -14,16 +14,17 @@ public class TechnicalSubmit extends ActionSupport {
 
 	private static UtpTechnicalDao utpTechnicalDao = new UtpTechnicalDaoImpl();
 	
-	private static UtpTechnical utpTechnical = new UtpTechnical();
-
-	public static UtpTechnical getUtpTechnical() {
+	private UtpTechnical utpTechnical = new UtpTechnical();
+	
+	public UtpTechnical getUtpTechnical() {
 		return utpTechnical;
 	}
 
-	public static void setUtpTechnical(UtpTechnical utpTechnical) {
-		TechnicalSubmit.utpTechnical = utpTechnical;
+	public void setUtpTechnical(UtpTechnical utpTechnical) {
+		this.utpTechnical = utpTechnical;
 	}
-	
+
+
 	@Override
 	public String execute() throws Exception {
 		utpTechnicalDao.UpdateTechnical(utpTechnical);

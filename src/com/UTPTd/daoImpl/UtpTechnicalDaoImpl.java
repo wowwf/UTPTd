@@ -20,7 +20,6 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	private static ServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 	private static SessionFactory sf = (SessionFactory) configuration.buildSessionFactory(serviceRegistry);
 	
-	// TODO Auto-generated method stub
 	@Override
 	public void InsertTechnical(Integer IdCard, String TechnicalName) {
 		UtpTechnical utpTechnical = new UtpTechnical();
@@ -33,17 +32,60 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 		session.close();
 	}
 
-	// TODO Auto-generated method stub
 	@Override
 	public void UpdateTechnical(UtpTechnical utpTechnical) {
+		UtpTechnical uTechnical = new UtpTechnical();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.update(utpTechnical);
+		uTechnical = (UtpTechnical) session.get(UtpTechnical.class, utpTechnical.getUtpTechnicalIdCard());
+		if (utpTechnical.getUtpTechnicalAge() != null) {
+			uTechnical.setUtpTechnicalAge(utpTechnical.getUtpTechnicalAge());
+		}
+		uTechnical.setUtpTechnicalGender(utpTechnical.getUtpTechnicalGender());
+		if (!"".equals(utpTechnical.getUtpTechnicalBirthday())) {
+			uTechnical.setUtpTechnicalBirthday(utpTechnical.getUtpTechnicalBirthday());
+		}
+		if (!"".equals(utpTechnical.getUtpTechnicalCareerBegin())) {
+			uTechnical.setUtpTechnicalCareerBegin(utpTechnical.getUtpTechnicalCareerBegin());
+		}
+		if (!"".equals(utpTechnical.getUtpTechnicalGraduateTime())) {
+			uTechnical.setUtpTechnicalGraduateTime(utpTechnical.getUtpTechnicalGraduateTime());
+		}
+		if (!"".equals(utpTechnical.getUtpTechnicalEducation())) {
+			uTechnical.setUtpTechnicalEducation(utpTechnical.getUtpTechnicalEducation());
+		}
+		if (!"".equals(utpTechnical.getUtpTechnicalPostNow())) {
+			uTechnical.setUtpTechnicalPostNow(utpTechnical.getUtpTechnicalPostNow());
+		}
+		if (!"".equals(utpTechnical.getUtpTechnicalCollege())) {
+			uTechnical.setUtpTechnicalCollege(utpTechnical.getUtpTechnicalCollege());
+		}
+		if (!"".equals(utpTechnical.getUtpTechnicalMajor())) {
+			uTechnical.setUtpTechnicalMajor(utpTechnical.getUtpTechnicalMajor());
+		}
+		if (!"".equals(utpTechnical.getUtpTechnicalDeclarePost())) {
+			uTechnical.setUtpTechnicalDeclarePost(utpTechnical.getUtpTechnicalDeclarePost());
+		}
+		if (!"".equals(utpTechnical.getUtpTechnicalCET())) {
+			uTechnical.setUtpTechnicalCET(utpTechnical.getUtpTechnicalCET());
+		}
+		if (!"".equals(utpTechnical.getUtpTechnicalAchievement())) {
+			uTechnical.setUtpTechnicalAchievement(utpTechnical.getUtpTechnicalAchievement());
+		}
+		if (!"".equals(utpTechnical.getUtpTechnicalAssessment())) {
+			uTechnical.setUtpTechnicalAssessment(utpTechnical.getUtpTechnicalAssessment());
+		}
+		if (!"".equals(utpTechnical.getUtpTechnicalSeniority())) {
+			uTechnical.setUtpTechnicalSeniority(utpTechnical.getUtpTechnicalSeniority());
+		}
+		uTechnical.setUtpTechnicalIsSubmit(0);
+		uTechnical.setUtpTechnicalSubmit(0);
+		uTechnical.setUtpTechnicalCountSubmit(0);
+		session.update(uTechnical);
 		session.getTransaction().commit();
 		session.close();
 	}
 
-	// TODO Auto-generated method stub
 	@Override
 	public UtpTechnical FindByTechnicalIdCard(Integer IdCard) {
 		Session session = sf.openSession();
@@ -54,7 +96,6 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 		return utpTechnical;
 	}
 
-	// TODO Auto-generated method stub
 	@Override
 	public Integer FindIsPassByTechnicalIdCard(Integer IdCard) {
 		UtpTechnical utpTechnical = new UtpTechnical();
@@ -63,7 +104,6 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 		return utpTechnical.getUtpTechnicalIsSubmit();
 	}
 
-	// TODO Auto-generated method stub
 	@Override
 	public Integer FindSubmitByTechnicalIdCard(Integer IdCard) {
 		UtpTechnical utpTechnical = new UtpTechnical();
@@ -72,7 +112,6 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 		return utpTechnical.getUtpTechnicalSubmit();
 	}
 
-	// TODO Auto-generated method stub
 	@Override
 	public Integer FindWhichSubmitByTechnicalIdCard(Integer IdCard) {
 		UtpTechnical utpTechnical = new UtpTechnical();
@@ -81,7 +120,6 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 		return utpTechnical.getUtpTechnicalCountSubmit();
 	}
 
-	// TODO Auto-generated method stub
 	@Override
 	public void UpdateTechnicalSubmitIsNotPass(Integer IdCard) {
 		UtpTechnical utpTechnical = new UtpTechnical();
@@ -95,7 +133,6 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 		session.close();
 	}
 
-	// TODO Auto-generated method stub
 	@Override
 	public void UpdateTechnicalSubmitIsPass(Integer IdCard) {
 		UtpTechnical utpTechnical = new UtpTechnical();
@@ -109,7 +146,6 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 		session.close();
 	}
 
-	// TODO Auto-generated method stub
 	@Override
 	public List<UtpTechnical> FindAllByUtpTechnicalIsPass(Integer IsPass) {
 		List<UtpTechnical> utpTechnical = new ArrayList<UtpTechnical>();
@@ -162,6 +198,27 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 		session.getTransaction().commit();
 		session.close();
 		return utpTechnical.getUtpTechnicalPhotoUrl();
+	}
+
+	@Override
+	public void OtherUpload(Integer IdCard, StringBuffer savePath) {
+		UtpTechnical utpTechnical = new UtpTechnical();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		utpTechnical = (UtpTechnical) session.get(UtpTechnical.class, IdCard);
+		utpTechnical.setUtpTechnicalPublication(savePath.toString());
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	@Override
+	public String FindOtherFile(Integer IdCard) {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		UtpTechnical utpTechnical = (UtpTechnical) session.get(UtpTechnical.class, IdCard);
+		session.getTransaction().commit();
+		session.close();
+		return utpTechnical.getUtpTechnicalPublication();
 	}
 
 }
