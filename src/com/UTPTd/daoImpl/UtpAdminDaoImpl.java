@@ -1,5 +1,8 @@
 package com.UTPTd.daoImpl;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -30,6 +33,96 @@ public class UtpAdminDaoImpl implements UtpAdminDao {
 		UtpAdminDao utpAdminDao = new UtpAdminDaoImpl();
 		utpAdmin = utpAdminDao.FindByUtpName(UtpName);
 		return utpAdmin.getPassword();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public String FindUseFromTeacher() {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		String hql = "select a.utpHighTeacherPhotoUrl from UtpHighTeacher a";
+		Query query = session.createQuery(hql);
+		List<String> list = query.list();
+		session.getTransaction().commit();
+		session.close();
+		if (list.size() == 0) {
+			return null;
+		} else {
+			String pathString = "";
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i) != null) {
+					pathString = pathString + list.get(i) + ",";
+				}
+			}
+			return pathString;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public String FindUseFromTechnical() {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		String hql = "select b.utpTechnicalPhotoUrl from UtpTechnical b";
+		Query query = session.createQuery(hql);
+		List<String> list = query.list();
+		session.getTransaction().commit();
+		session.close();
+		if (list.size() == 0) {
+			return null;
+		} else {
+			String pathString = "";
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i) != null) {
+					pathString = pathString + list.get(i) + ",";
+				}
+			}
+			return pathString;
+		}
+	}
+
+	@Override
+	public String FindUseOtherFileTeacher() {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		String hql = "select a.utpHighTeacherOther from UtpHighTeacher a";
+		Query query = session.createQuery(hql);
+		List<String> list = query.list();
+		session.getTransaction().commit();
+		session.close();
+		if (list.size() == 0) {
+			return null;
+		} else {
+			String pathString = "";
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i) != null) {
+					pathString = pathString + list.get(i);
+				}
+			}
+			return pathString;
+		}
+	}
+
+	@Override
+	public String FindUseOtherFileTechnical() {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		String hql = "select b.utpTechnicalPublication from UtpTechnical b";
+		Query query = session.createQuery(hql);
+		List<String> list = query.list();
+		session.getTransaction().commit();
+		session.close();
+		if (list.size() == 0) {
+			return null;
+		} else {
+			String pathString = "";
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i) != null) {
+					pathString = pathString + list.get(i);
+				}
+			}
+			return pathString;
+		}
 	}
 
 }

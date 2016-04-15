@@ -2,7 +2,10 @@ package com.UTPTd.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+
 
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.Session;
@@ -15,9 +18,11 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 import com.UTPTd.action.UpLoadAction;
 import com.UTPTd.bean.UtpHighTeacher;
 import com.UTPTd.bean.UtpTechnical;
+import com.UTPTd.dao.UtpAdminDao;
 import com.UTPTd.dao.UtpAuditorDao;
 import com.UTPTd.dao.UtpHighTeacherDao;
 import com.UTPTd.dao.UtpTechnicalDao;
+import com.UTPTd.daoImpl.UtpAdminDaoImpl;
 import com.UTPTd.daoImpl.UtpAuditorDaoImpl;
 import com.UTPTd.daoImpl.UtpHighTeacherDaoImpl;
 import com.UTPTd.daoImpl.UtpTechnicalDaoImpl;
@@ -34,6 +39,7 @@ public class Factory {
 	private static Configuration configuration = new Configuration().configure();
 	private static ServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 	private static SessionFactory sf = (SessionFactory) configuration.buildSessionFactory(serviceRegistry);
+	
 	private static UTPAuditorServices UAS = new UtpAuditorServicesImpl();
 	
 	private static UtpAuditorDao UAD = new UtpAuditorDaoImpl();
@@ -47,6 +53,8 @@ public class Factory {
 	private static UtpTechnicalServices UTS = new UtpTechnicalServicesImpl();
 	
 	private static UtpAdminServices UA = new UtpAdminServicesImpl();
+	
+	private static UtpAdminDao UD = new UtpAdminDaoImpl();
 	/**
 	 * @param args
 	 * @throws IOException
@@ -137,7 +145,35 @@ public class Factory {
 //		stringBuffer.append("3");
 //		System.out.println(stringBuffer);
 //		uDao.deleteFileByName(0, "在线@2221.txt");
-		System.out.println(UA.Login("admin", "admin"));
+//		System.out.println(UA.Login("admin", "admin"));
+//		File file = new File("D:/java/workspace/UTPTd/WebContent/upload/teacher/");
+//		String[] filenameString = file.list();
+//		for (int i = 0; i < filenameString.length; i++) {
+//			if (!"小娃@2221.txt".equals(filenameString[i])) {
+//				System.out.println("行");
+//			} else {
+//				System.out.println("no");
+//			}
+//		}
+//		System.out.println(UD.FindUseOtherFileTechnical());
+		String[] arr = {"1", "2", "3", "4"};
+		String[] ar = {"2", "3"};
+		ArrayList<String> list = new ArrayList<String>();
+		for (int i = 0; i < ar.length; i++) {
+			for (int j = 0; j < arr.length; j++) {
+				if (ar[i].equals(arr[j])) {
+					arr[j] = null;
+				}
+			}
+		}
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] != null) {
+				list.add(arr[i]);
+			}
+		}
+		for (String string : list) {
+			System.out.println(string);
+		}
 	}
 	
 }

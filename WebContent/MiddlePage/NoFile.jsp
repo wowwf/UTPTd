@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>没有选取文件</title>
+<title>删除页面</title>
 </head>
 <body>
-<s:text name="NoFileError"></s:text>
-<s:fielderror value="Nofile"></s:fielderror>
+<s:property value="teacherDelete"/>
+<s:property value="technicalDelete"/>
+<s:property value="deleteError"/>
 </body>
 </html>

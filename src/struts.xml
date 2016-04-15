@@ -81,6 +81,10 @@
         	<interceptor-ref name="defaultStack"></interceptor-ref>
         	<interceptor-ref name="LoginOrNotInterceptor"></interceptor-ref>
         </action>
+        <action name="AdminClear" class="com.UTPTd.action.Admincontroller">
+        	<result name="success">/MiddlePage/NoFile.jsp</result>
+        	<result name="error">/MiddlePage/NoFile.jsp</result>
+        </action>
     </package>
 	
 </struts>

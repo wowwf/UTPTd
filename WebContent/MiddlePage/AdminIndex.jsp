@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="#">清理服务器及项目文件中冗余的文件</a>
+	<a href="AdminClear.action?who=<%="teacher" %>">清理服务器及项目文件中教师相关的冗余文件</a>
 	<s:actionmessage/>
-	<a href="#">清理服务器及项目文件中冗余的图片</a>
+	<a href="AdminClear.action?who=<%="technical" %>">清理服务器及项目文件中技术人员相关的文件</a>
 </body>
 </html>

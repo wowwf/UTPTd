@@ -79,7 +79,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 			uTechnical.setUtpTechnicalSeniority(utpTechnical.getUtpTechnicalSeniority());
 		}
 		uTechnical.setUtpTechnicalIsSubmit(0);
-		uTechnical.setUtpTechnicalSubmit(0);
+		uTechnical.setUtpTechnicalSubmit(1);
 		uTechnical.setUtpTechnicalCountSubmit(0);
 		session.update(uTechnical);
 		session.getTransaction().commit();

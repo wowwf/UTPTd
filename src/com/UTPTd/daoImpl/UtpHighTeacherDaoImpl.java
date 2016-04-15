@@ -87,7 +87,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 		if (!"".equals(utpHighTeacher.getUtpHighTeacherAcademic())) {
 			uTeacher.setUtpHighTeacherAcademic(utpHighTeacher.getUtpHighTeacherAcademic());
 		}
-		uTeacher.setUtpHighTeacherSubmit(0);
+		uTeacher.setUtpHighTeacherSubmit(1);
 		uTeacher.setUtpHighTeacherIsSubmit(0);
 		uTeacher.setUtpHighTeacherWhichSubmit(0);
 		session.update(uTeacher);

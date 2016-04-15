@@ -53,7 +53,7 @@
          	var config = [{id:'1',menu:[{text:'评审表填写',items:[{id:'12',text:'技术人员职称申请',href:'Scope.action?no=2'},{id:'3',text:'一寸照片上传',href:'ImgScope?no=2'},{id:'4',text:'学术论文上传',href:'Technical/TechnicalOther.jsp'},{id:'6',text:'申请表预览',href:'ShowInfo.action?no=2'}]}]},{id:'7',homePage : '9',menu:[{text:'业务管理',items:[{id:'9',text:'查询业务',href:'/Node/index.html'}]}]}];
 		}
     	if (!postlog2.length == 0) {
-         	var config = [{id:'1',menu:[{text:'评审资料',items:[{id:'12',text:'审核表检索',href:'Scope.action?no=3'},{id:'3',text:'管理renyua',href:'ImgScope?no=3'},{id:'4',text:'还不知道做什么用',href:'/User/index.html'},{id:'6',text:'申请表预览',href:'/Menu/index.html'}]}]},{id:'7',homePage : '9',menu:[{text:'业务管理',items:[{id:'9',text:'查询业务',href:'/Node/index.html'}]}]}];
+         	var config = [{id:'1',menu:[{text:'评审资料',items:[{id:'12',text:'审核表检索',href:'Scope.action?no=3'},{id:'3',text:'管理',href:'ImgScope?no=3'},{id:'4',text:'还不知道做什么用',href:'/User/index.html'},{id:'6',text:'申请表预览',href:'/Menu/index.html'}]}]},{id:'7',homePage : '9',menu:[{text:'业务管理',items:[{id:'9',text:'查询业务',href:'/Node/index.html'}]}]}];
 		}
     	if (postlog == 0 && postlog1 == 0 && postlog2 == 0) {
     		window.top.location.href = "<%=basePath%>Page/AALogin.jsp";

@@ -124,6 +124,7 @@ public class AALoginAction extends ActionSupport {
 				flag = "error";
 			}
 		} else if (UA.Login(UserName, password)) {
+			session.put("Admin", UserName);
 			flag = "adminLog";
 		} else {
 			addFieldError("LoginError", "你没有选择登陆角色！");
