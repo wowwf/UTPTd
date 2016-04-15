@@ -8,9 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import org.apache.commons.io.filefilter.FileFileFilter;
-
+import java.util.ArrayList;
 
 public class UpLoadDao {
 	
@@ -82,6 +80,76 @@ public class UpLoadDao {
 		default:
 			System.out.println("系统故障！");
 			break;
+		}
+	}
+	//检索文件中的所有文件列表，根据传过来的数组，把多余的文件删除 
+	public void deleteNoUseFile(String personFile, ArrayList<String> fileList, String serverPath) {
+		if ("teacher".equals(personFile)) {
+			String personPath = "D:/java/workspace/UTPTd/WebContent/upload/teacher/";
+			File file = new File(personPath);
+			String[] fileName = file.list();
+			for (int i = 0; i < fileList.size(); i++) {
+				for (int j = 0; j < fileName.length; j++) {
+					if (fileList.get(i).equals(fileName[j])) {
+						fileName[j] = null;
+					}
+				}
+			}
+			for (int i = 0; i < fileName.length; i++) {
+				if (fileName[i] != null) {
+					File deleteListFile = new File(personPath + fileName[i]);
+					deleteListFile.delete();
+				}
+			}
+			File serverFile = new File(serverPath + "/teacher/");
+			String[] serverFileName = serverFile.list();
+			for (int i = 0; i < fileList.size(); i++) {
+				for (int j = 0; j < serverFileName.length; j++) {
+					if (fileList.get(i).equals(serverFileName[j])) {
+						serverFileName[j] = null;
+					}
+				}
+			}
+			for (int i = 0; i < serverFileName.length; i++) {
+				if (serverFileName[i] != null) {
+					File deleteListFile = new File(serverPath + "/teacher/" + serverFileName[i]);
+					deleteListFile.delete();
+				}
+			}
+		} else if("technical".equals(personFile)) {
+			String personPath = "D:/java/workspace/UTPTd/WebContent/upload/technical/";
+			File file = new File(personPath);
+			String[] fileName = file.list();
+			for (int i = 0; i < fileList.size(); i++) {
+				for (int j = 0; j < fileName.length; j++) {
+					if (fileList.get(i).equals(fileName[j])) {
+						fileName[j] = null;
+					}
+				}
+			}
+			for (int i = 0; i < fileName.length; i++) {
+				if (fileName[i] != null) {
+					File deleteListFile = new File(personPath + fileName[i]);
+					deleteListFile.delete();
+				}
+			}
+			File serverFile = new File(serverPath + "/technical/");
+			String[] serverFileName = serverFile.list();
+			for (int i = 0; i < fileList.size(); i++) {
+				for (int j = 0; j < serverFileName.length; j++) {
+					if (fileList.get(i).equals(serverFileName[j])) {
+						serverFileName[j] = null;
+					}
+				}
+			}
+			for (int i = 0; i < serverFileName.length; i++) {
+				if (serverFileName[i] != null) {
+					File deleteListFile = new File(serverPath + "/technical/" + serverFileName[i]);
+					deleteListFile.delete();
+				}
+			}
+		} else {
+			System.out.println("第一个参数传入错误！");
 		}
 	}
 }
