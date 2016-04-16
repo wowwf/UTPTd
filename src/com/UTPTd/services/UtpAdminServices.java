@@ -1,5 +1,8 @@
 package com.UTPTd.services;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public interface UtpAdminServices {
 	//判断是否存在用户
 	boolean FindByName(String UtpName);

@@ -1,7 +1,10 @@
 package com.UTPTd.dao;
 
+import org.springframework.stereotype.Component;
+
 import com.UTPTd.bean.UtpAuditor;
 
+@Component
 public interface UtpAuditorDao {
 	//根据身份证号查询是否有这个用户
 	UtpAuditor FindById(Integer IdCard);

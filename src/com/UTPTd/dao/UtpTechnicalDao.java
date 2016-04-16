@@ -2,8 +2,11 @@ package com.UTPTd.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.UTPTd.bean.UtpTechnical;
 
+@Component
 public interface UtpTechnicalDao {
 	//添加教师登陆申报人信息
 	void InsertTechnical(Integer IdCard, String TechnicalName);

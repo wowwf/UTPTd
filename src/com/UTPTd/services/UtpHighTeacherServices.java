@@ -1,5 +1,8 @@
 package com.UTPTd.services;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public interface UtpHighTeacherServices {
 	//判断该登录用户是否已经在本系统注册或者已经有审核记录
 	boolean IsRegister(Integer IdCard);

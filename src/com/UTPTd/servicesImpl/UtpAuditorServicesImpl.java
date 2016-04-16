@@ -1,9 +1,12 @@
 package com.UTPTd.servicesImpl;
 
+import org.springframework.stereotype.Component;
+
 import com.UTPTd.dao.UtpAuditorDao;
 import com.UTPTd.daoImpl.UtpAuditorDaoImpl;
 import com.UTPTd.services.UTPAuditorServices;
 
+@Component
 public class UtpAuditorServicesImpl implements UTPAuditorServices {
 
 	private static UtpAuditorDao UAD = new UtpAuditorDaoImpl();

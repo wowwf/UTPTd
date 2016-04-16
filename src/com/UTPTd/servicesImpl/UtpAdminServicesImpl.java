@@ -2,11 +2,14 @@ package com.UTPTd.servicesImpl;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Component;
+
 import com.UTPTd.dao.UtpAdminDao;
 import com.UTPTd.daoImpl.UtpAdminDaoImpl;
 import com.UTPTd.services.UtpAdminServices;
 import com.UTPTd.util.UpLoadDao;
 
+@Component
 public class UtpAdminServicesImpl implements UtpAdminServices {
 	//声明UtpAdminDaoImpl对象
 	private static UtpAdminDao UAD = new UtpAdminDaoImpl();

@@ -1,9 +1,12 @@
 package com.UTPTd.servicesImpl;
 
+import org.springframework.stereotype.Component;
+
 import com.UTPTd.dao.UtpTechnicalDao;
 import com.UTPTd.daoImpl.UtpTechnicalDaoImpl;
 import com.UTPTd.services.UtpTechnicalServices;
 
+@Component
 public class UtpTechnicalServicesImpl implements UtpTechnicalServices {
 	
 	private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();

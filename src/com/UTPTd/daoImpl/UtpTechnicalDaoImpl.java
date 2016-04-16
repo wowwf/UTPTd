@@ -9,10 +9,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.springframework.stereotype.Component;
 
 import com.UTPTd.bean.UtpTechnical;
 import com.UTPTd.dao.UtpTechnicalDao;
 
+@Component
 public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	
 	private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();

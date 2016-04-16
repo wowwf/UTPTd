@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.Date;
 
 
+
+
+
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,6 +17,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.UTPTd.action.UpLoadAction;
 import com.UTPTd.bean.UtpHighTeacher;
@@ -34,6 +39,7 @@ import com.UTPTd.servicesImpl.UtpAdminServicesImpl;
 import com.UTPTd.servicesImpl.UtpAuditorServicesImpl;
 import com.UTPTd.servicesImpl.UtpHighTeacherServicesImpl;
 import com.UTPTd.servicesImpl.UtpTechnicalServicesImpl;
+import com.opensymphony.xwork2.ActionContext;
 
 public class Factory {
 	private static Configuration configuration = new Configuration().configure();
@@ -156,24 +162,34 @@ public class Factory {
 //			}
 //		}
 //		System.out.println(UD.FindUseOtherFileTechnical());
-		String[] arr = {"1", "2", "3", "4"};
-		String[] ar = {"2", "3"};
-		ArrayList<String> list = new ArrayList<String>();
-		for (int i = 0; i < ar.length; i++) {
-			for (int j = 0; j < arr.length; j++) {
-				if (ar[i].equals(arr[j])) {
-					arr[j] = null;
-				}
-			}
-		}
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] != null) {
-				list.add(arr[i]);
-			}
-		}
-		for (String string : list) {
-			System.out.println(string);
-		}
+//		String[] arr = {"1", "2", "3", "4"};
+//		String[] ar = {"2", "3"};
+//		ArrayList<String> list = new ArrayList<String>();
+//		for (int i = 0; i < ar.length; i++) {
+//			for (int j = 0; j < arr.length; j++) {
+//				if (ar[i].equals(arr[j])) {
+//					arr[j] = null;
+//				}
+//			}
+//		}
+//		for (int i = 0; i < arr.length; i++) {
+//			if (arr[i] != null) {
+//				list.add(arr[i]);
+//			}
+//		}
+//		for (String string : list) {
+//			System.out.println(string);
+//		}
+		ApplicationContext actionContext = new ClassPathXmlApplicationContext("beans.xml");
+		/*	UtpHighTeacher uTeacher = actionContext.getBean(UtpHighTeacher.class);
+		uTeacher.setUtpHighTeacherAcademic("222");
+		System.out.println(uTeacher.getUtpHighTeacherAcademic());
+		Tea ttTea = actionContext.getBean(Tea.class);
+		ttTea.teaShow();*/
+		UtpAdminDao uAdminDao = actionContext.getBean(UtpAdminDaoImpl.class);
+		System.out.println((uAdminDao.FindByUtpName("admin")).getPassword());
+		
+		
 	}
 	
 }

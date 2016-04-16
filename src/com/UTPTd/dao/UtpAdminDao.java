@@ -1,7 +1,10 @@
 package com.UTPTd.dao;
 
+import org.springframework.stereotype.Component;
+
 import com.UTPTd.bean.UtpAdmin;
 
+@Component
 public interface UtpAdminDao {
 	UtpAdmin FindByUtpName(String UtpName);
 	

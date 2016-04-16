@@ -10,6 +10,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class UpLoadDao {
 	
 	//上传文件到服务器,拷贝到项目文件夹

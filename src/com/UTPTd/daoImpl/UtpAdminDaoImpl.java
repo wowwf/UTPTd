@@ -8,10 +8,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.springframework.stereotype.Component;
 
 import com.UTPTd.bean.UtpAdmin;
 import com.UTPTd.dao.UtpAdminDao;
 
+@Component
 public class UtpAdminDaoImpl implements UtpAdminDao {
 	private static Configuration configuration = new Configuration().configure();
 	private static ServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();

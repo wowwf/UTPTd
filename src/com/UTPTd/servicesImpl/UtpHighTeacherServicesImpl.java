@@ -1,9 +1,12 @@
 package com.UTPTd.servicesImpl;
 
+import org.springframework.stereotype.Component;
+
 import com.UTPTd.dao.UtpHighTeacherDao;
 import com.UTPTd.daoImpl.UtpHighTeacherDaoImpl;
 import com.UTPTd.services.UtpHighTeacherServices;
 
+@Component
 public class UtpHighTeacherServicesImpl implements UtpHighTeacherServices {
 
 	private static UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();

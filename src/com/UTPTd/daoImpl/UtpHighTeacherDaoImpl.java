@@ -9,10 +9,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.springframework.stereotype.Component;
 
 import com.UTPTd.bean.UtpHighTeacher;
 import com.UTPTd.dao.UtpHighTeacherDao;
 
+@Component
 public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	
 	private static UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();

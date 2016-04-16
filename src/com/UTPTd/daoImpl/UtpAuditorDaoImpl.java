@@ -5,10 +5,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.springframework.stereotype.Component;
 
 import com.UTPTd.bean.UtpAuditor;
 import com.UTPTd.dao.UtpAuditorDao;
 
+@Component
 public class UtpAuditorDaoImpl implements UtpAuditorDao {
 
 	private static Configuration configuration = new Configuration().configure();

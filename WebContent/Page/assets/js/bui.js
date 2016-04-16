@@ -669,7 +669,7 @@ seajs._config = {
   //  - https://bugzilla.mozilla.org/show_bug.cgi?id=185236
   //  - https://developer.mozilla.org/en/HTML/Element/link#Stylesheet_load_events
   var isOldFirefox = UA.indexOf('Firefox') > 0 &&
-      !('onload' in document.createElement('link'))
+      !('onload' in document.createElement('link'));
 
 
   /**

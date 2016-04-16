@@ -1,5 +1,8 @@
 package com.UTPTd.services;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public interface UTPAuditorServices {
 	//判断是否存在这个审核人员
 	boolean FindByIdAndRole(Integer IdCard);
