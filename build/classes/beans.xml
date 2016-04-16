@@ -19,10 +19,10 @@
 	<beans>
 		<bean id="jdbcConfigur" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 			<property name="location">
-				<value>src/myPro.properties</value>
+				<value>myPro.properties</value>
 			</property>
 		</bean>
-		
+		<!-- 连接数据库 -->
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName">
 				<value>${jdbcDriverName}</value>
@@ -40,8 +40,12 @@
 		
 		<bean id="dao" class="com.UTPTd.util.DataDao">
 			<property name="dataSource">
-				<ref bean=""/>
+				<ref bean="dataSource"/>
 			</property>
+		</bean>
+		<!-- session工厂 -->
+		<bean id="sessionfactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+			<property name="configLocation" value="hibernate.cfg.xml"></property>
 		</bean>
 	</beans>
 </beans>

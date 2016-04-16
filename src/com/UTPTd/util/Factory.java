@@ -2,9 +2,14 @@ package com.UTPTd.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+
+
+
 
 
 
@@ -21,6 +26,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.UTPTd.action.UpLoadAction;
+import com.UTPTd.bean.UtpAdmin;
 import com.UTPTd.bean.UtpHighTeacher;
 import com.UTPTd.bean.UtpTechnical;
 import com.UTPTd.dao.UtpAdminDao;
@@ -180,16 +186,30 @@ public class Factory {
 //		for (String string : list) {
 //			System.out.println(string);
 //		}
-		ApplicationContext actionContext = new ClassPathXmlApplicationContext("beans.xml");
 		/*	UtpHighTeacher uTeacher = actionContext.getBean(UtpHighTeacher.class);
 		uTeacher.setUtpHighTeacherAcademic("222");
 		System.out.println(uTeacher.getUtpHighTeacherAcademic());
 		Tea ttTea = actionContext.getBean(Tea.class);
 		ttTea.teaShow();*/
-		UtpAdminDao uAdminDao = actionContext.getBean(UtpAdminDaoImpl.class);
-		System.out.println((uAdminDao.FindByUtpName("admin")).getPassword());
-		
-		
+//		UtpAdminDao uAdminDao = actionContext.getBean(UtpAdminDaoImpl.class);
+//		System.out.println((uAdminDao.FindByUtpName("admin")).getPassword());
+		/*DataDao dd = (DataDao) actionContext.getBean("dao");
+		try {
+			Connection conn = dd.getDataSource().getConnection();
+			System.out.println(conn.isClosed());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
+		SessionFactory sessionFactory = (SessionFactory) aContext.getBean("sessionfactory");
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		UtpAdmin uAdmin = aContext.getBean(UtpAdmin.class);
+		uAdmin = (UtpAdmin) session.get(UtpAdmin.class, "admin");
+		session.getTransaction().commit();
+		session.close();
+		System.out.println(uAdmin.getPassword());
 	}
 	
 }
