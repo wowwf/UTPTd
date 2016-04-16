@@ -37,6 +37,7 @@
 				<value>${jdbcPsw}</value>
 			</property>
 		</bean>
+		<!-- 设置存储路径 -->
 		
 		<bean id="dao" class="com.UTPTd.util.DataDao">
 			<property name="dataSource">

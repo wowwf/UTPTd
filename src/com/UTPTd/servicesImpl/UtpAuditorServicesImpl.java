@@ -1,5 +1,7 @@
 package com.UTPTd.servicesImpl;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.UTPTd.dao.UtpAuditorDao;
@@ -8,8 +10,10 @@ import com.UTPTd.services.UTPAuditorServices;
 
 @Component
 public class UtpAuditorServicesImpl implements UTPAuditorServices {
-
-	private static UtpAuditorDao UAD = new UtpAuditorDaoImpl();
+	
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
+	
+	private static UtpAuditorDao UAD = aContext.getBean(UtpAuditorDaoImpl.class);
 	
 	@Override
 	public boolean FindByIdAndRole(Integer IdCard) {

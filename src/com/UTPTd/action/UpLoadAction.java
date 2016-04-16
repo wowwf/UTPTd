@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.UTPTd.bean.UtpHighTeacher;
 import com.UTPTd.bean.UtpTechnical;
@@ -26,11 +28,13 @@ public class UpLoadAction extends ActionSupport {
 
 	private final static String UP = "/upload";
 	
-	private static UpLoadDao ULD = new UpLoadDao();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();
+	private static UpLoadDao ULD = aContext.getBean(UpLoadDao.class);
 	
-	private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();
+	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
+	
+	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 
 	private List<File> upFile;
 	
@@ -90,8 +94,10 @@ public class UpLoadAction extends ActionSupport {
 					ULD.deleteFileByName(0, localPath[2].toString(), serverPath);
 				}
 				imageFile = new File(serverPath + "/teacher/" + imageFileName);
-				//againPath = "D:/dx/workspeace/UTPTd/WebContent/upload/teacher/" + imageFileName;
-				againPath = "D:/java/workspace/UTPTd/WebContent/upload/teacher/" + imageFileName;
+				//公司
+				//againPath = ULD.getProp("teacherPath") + imageFileName;
+				//个人
+				againPath = ULD.getProp("teaPath") + imageFileName;
 				ULD.upLoadFile(imageFile, upFile.get(0), againPath);
 				imageNewPath = "upload/teacher/" + imageFileName;
 				UHTD.PersonImgUpload(teacher.getUtpHighTeacherIdCard(), imageNewPath);
@@ -104,8 +110,10 @@ public class UpLoadAction extends ActionSupport {
 					ULD.deleteFileByName(1, localPath[2].toString(), serverPath);
 				}
 				imageFile = new File(serverPath + "/technical/" + imageFileName);
-				//againPath = "D:/dx/workspeace/UTPTd/WebContent/upload/technical/" + imageFileName;
-				againPath = "D:/java/workspace/UTPTd/WebContent/upload/technical/" + imageFileName;
+				//公司
+				//againPath = ULD.getProp("technicalPath") + imageFileName;
+				//个人
+				againPath = ULD.getProp("teacalPath") + imageFileName;
 				ULD.upLoadFile(imageFile, upFile.get(0), againPath);
 				imageNewPath = "upload/technical/" + imageFileName;
 				UTD.PersonImgUpload(technical.getUtpTechnicalIdCard(), imageNewPath);

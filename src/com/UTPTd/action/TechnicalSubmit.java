@@ -1,5 +1,8 @@
 package com.UTPTd.action;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.UTPTd.bean.UtpTechnical;
 import com.UTPTd.dao.UtpTechnicalDao;
 import com.UTPTd.daoImpl.UtpTechnicalDaoImpl;
@@ -12,9 +15,11 @@ public class TechnicalSubmit extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static UtpTechnicalDao utpTechnicalDao = new UtpTechnicalDaoImpl();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private UtpTechnical utpTechnical = new UtpTechnical();
+	private static UtpTechnicalDao utpTechnicalDao = aContext.getBean(UtpTechnicalDaoImpl.class);
+	
+	private UtpTechnical utpTechnical = aContext.getBean(UtpTechnical.class);
 	
 	public UtpTechnical getUtpTechnical() {
 		return utpTechnical;

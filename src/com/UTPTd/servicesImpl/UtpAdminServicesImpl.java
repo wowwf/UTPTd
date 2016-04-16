@@ -2,6 +2,8 @@ package com.UTPTd.servicesImpl;
 
 import java.util.ArrayList;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.UTPTd.dao.UtpAdminDao;
@@ -11,10 +13,12 @@ import com.UTPTd.util.UpLoadDao;
 
 @Component
 public class UtpAdminServicesImpl implements UtpAdminServices {
-	//声明UtpAdminDaoImpl对象
-	private static UtpAdminDao UAD = new UtpAdminDaoImpl();
 	
-	private static UpLoadDao UD = new UpLoadDao();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
+	//声明UtpAdminDaoImpl对象
+	private static UtpAdminDao UAD = aContext.getBean(UtpAdminDaoImpl.class);
+	
+	private static UpLoadDao UD = aContext.getBean(UpLoadDao.class);
 
 	@Override
 	public boolean FindByName(String UtpName) {

@@ -3,6 +3,9 @@ package com.UTPTd.MidAction;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.UTPTd.bean.UtpHighTeacher;
 import com.UTPTd.bean.UtpTechnical;
 import com.UTPTd.dao.UtpHighTeacherDao;
@@ -19,9 +22,11 @@ public class ShowInfoAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();
+	private UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
+	
+	private UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 	
 	private Integer no;
 
@@ -72,7 +77,6 @@ public class ShowInfoAction extends ActionSupport {
 				ArrayList<NamePath> urlList = new ArrayList<NamePath>();
 				//NamePath namePath = new NamePath();
 				for (int i = 0; i < nameList.length; i++) {
-					System.out.println(nameList[i]);
 					NamePath namePath = new NamePath();
 					String[] stringList = nameList[i].split("@");
 					namePath.setName(stringList[0]);

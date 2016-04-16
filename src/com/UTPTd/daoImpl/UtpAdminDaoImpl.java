@@ -5,9 +5,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.UTPTd.bean.UtpAdmin;
@@ -15,15 +14,19 @@ import com.UTPTd.dao.UtpAdminDao;
 
 @Component
 public class UtpAdminDaoImpl implements UtpAdminDao {
-	private static Configuration configuration = new Configuration().configure();
+	/*private static Configuration configuration = new Configuration().configure();
 	private static ServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 	private static SessionFactory sf = (SessionFactory) configuration.buildSessionFactory(serviceRegistry);
+	*/
+	private static ApplicationContext Context = new ClassPathXmlApplicationContext("beans.xml");
+	private static SessionFactory sf = (SessionFactory) Context.getBean("sessionfactory");
 	
 	@Override
 	public UtpAdmin FindByUtpName(String UtpName) {
+		UtpAdmin Uadmin = Context.getBean(UtpAdmin.class);
 		Session session = sf.openSession();
 		session.beginTransaction();
-		UtpAdmin Uadmin = (UtpAdmin) session.get(UtpAdmin.class, UtpName);
+		Uadmin = (UtpAdmin) session.get(UtpAdmin.class, UtpName);
 		session.getTransaction().commit();
 		session.close();
 		return Uadmin;
@@ -31,7 +34,7 @@ public class UtpAdminDaoImpl implements UtpAdminDao {
 
 	@Override
 	public String FindPsdByName(String UtpName) {
-		UtpAdmin utpAdmin = new UtpAdmin();
+		UtpAdmin utpAdmin = Context.getBean(UtpAdmin.class);
 		UtpAdminDao utpAdminDao = new UtpAdminDaoImpl();
 		utpAdmin = utpAdminDao.FindByUtpName(UtpName);
 		return utpAdmin.getPassword();
@@ -83,6 +86,7 @@ public class UtpAdminDaoImpl implements UtpAdminDao {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String FindUseOtherFileTeacher() {
 		Session session = sf.openSession();
@@ -105,6 +109,7 @@ public class UtpAdminDaoImpl implements UtpAdminDao {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String FindUseOtherFileTechnical() {
 		Session session = sf.openSession();

@@ -9,12 +9,38 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class UpLoadDao {
 	
+	private static String getProperties(String name) {
+		Properties properties = new Properties();
+		try {
+			InputStream inputStream = UpLoadDao.class.getClassLoader().getResourceAsStream("myPro.properties");
+			properties.load(inputStream);
+			inputStream.close();
+		} catch (IOException e) {
+			System.out.println("加载properties文件失败！");
+			e.printStackTrace();
+		}
+		return properties.getProperty(name);
+	}
+	
+	public String getProp(String name) {
+		Properties properties = new Properties();
+		try {
+			InputStream inputStream = UpLoadDao.class.getClassLoader().getResourceAsStream("myPro.properties");
+			properties.load(inputStream);
+			inputStream.close();
+		} catch (IOException e) {
+			System.out.println("加载properties文件失败！");
+			e.printStackTrace();
+		}
+		return properties.getProperty(name);
+	}
 	//上传文件到服务器,拷贝到项目文件夹
 	public void upLoadFile(File fileLocal, File file, String beifenPath) throws IOException{
 		InputStream inputStream = null;
@@ -45,8 +71,12 @@ public class UpLoadDao {
 	//删除文件，0教师，1技术人员
 	public void deleteFileByName(int number, String path, String serverPath) {
 		String[] nameList = path.split(",");
-		String teacherPath = "D:/java/workspace/UTPTd/WebContent/upload/teacher/";
-		String technicalPath = "D:/java/workspace/UTPTd/WebContent/upload/technical/";
+		//公司
+		/*String teacherPath = getProperties("teacherPath");
+		String technicalPath = getProperties("technicalPath");*/
+		//个人
+		String teacherPath = getProperties("teaPath");
+		String technicalPath = getProperties("teacalPath");
 		switch (number) {
 		case 0:
 			for (int i = 0; i < nameList.length; i++) {
@@ -88,7 +118,8 @@ public class UpLoadDao {
 	//检索文件中的所有文件列表，根据传过来的数组，把多余的文件删除 
 	public void deleteNoUseFile(String personFile, ArrayList<String> fileList, String serverPath) {
 		if ("teacher".equals(personFile)) {
-			String personPath = "D:/java/workspace/UTPTd/WebContent/upload/teacher/";
+			/*String personPath = getProperties("teacherPath");*/
+			String personPath = getProperties("teaPath");
 			File file = new File(personPath);
 			String[] fileName = file.list();
 			for (int i = 0; i < fileList.size(); i++) {
@@ -120,7 +151,10 @@ public class UpLoadDao {
 				}
 			}
 		} else if("technical".equals(personFile)) {
-			String personPath = "D:/java/workspace/UTPTd/WebContent/upload/technical/";
+			//公司
+			/*String personPath = getProperties("technicalPath");*/
+			//个人
+			String personPath = getProperties("teacalPath");
 			File file = new File(personPath);
 			String[] fileName = file.list();
 			for (int i = 0; i < fileList.size(); i++) {

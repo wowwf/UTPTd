@@ -1,5 +1,9 @@
 package com.UTPTd.action;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.UTPTd.services.UtpAdminServices;
 import com.UTPTd.servicesImpl.UtpAdminServicesImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -12,8 +16,11 @@ public class UtpAdminLoginAction extends ActionSupport {
 	
 	private String utpNameString;
 	private String utpPassword;
-	//声明Utpadminservicesimpl对象
-	private static UtpAdminServicesImpl UASI = new UtpAdminServicesImpl();
+	
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
+	
+	//声明Utpadminservices对象
+	private static UtpAdminServices UASI = aContext.getBean(UtpAdminServicesImpl.class);
 	
 	public String getUtpNameString() {
 		return utpNameString;

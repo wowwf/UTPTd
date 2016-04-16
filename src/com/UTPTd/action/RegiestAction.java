@@ -1,5 +1,8 @@
 package com.UTPTd.action;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.UTPTd.dao.UtpHighTeacherDao;
 import com.UTPTd.dao.UtpTechnicalDao;
 import com.UTPTd.daoImpl.UtpHighTeacherDaoImpl;
@@ -14,13 +17,15 @@ public class RegiestAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	
-	private static UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();
+	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
 	
-	private static UtpHighTeacherServices UHTS = new UtpHighTeacherServicesImpl();
+	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 	
-	private static UtpTechnicalServices UTS = new UtpTechnicalServicesImpl();
+	private static UtpHighTeacherServices UHTS = aContext.getBean(UtpHighTeacherServicesImpl.class);
+	
+	private static UtpTechnicalServices UTS = aContext.getBean(UtpTechnicalServicesImpl.class);
 	
 	private String userName;
 	private Integer idCard;

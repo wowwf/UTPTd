@@ -6,9 +6,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.UTPTd.bean.UtpHighTeacher;
@@ -17,11 +16,13 @@ import com.UTPTd.dao.UtpHighTeacherDao;
 @Component
 public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	
-	private static UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();
-	private static Configuration configuration = new Configuration().configure();
+	/*private static Configuration configuration = new Configuration().configure();
 	private static ServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-	private static SessionFactory sf = (SessionFactory) configuration.buildSessionFactory(serviceRegistry);
+	private static SessionFactory sf = (SessionFactory) configuration.buildSessionFactory(serviceRegistry);*/
 
+	private static ApplicationContext Context = new ClassPathXmlApplicationContext("beans.xml");
+	private static SessionFactory sf = (SessionFactory) Context.getBean("sessionfactory");
+	
 	@Override
 	public void InsertHighTeacher(Integer IdCard, String TearcherName) {
 		UtpHighTeacher highTeacher = new UtpHighTeacher();
@@ -179,6 +180,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	@Override
 	public List<UtpHighTeacher> FindByHighTeacherWhichSubmit(Integer WhichSubmit) {
 		List<UtpHighTeacher> utpHighTeacher = new ArrayList<UtpHighTeacher>();
+		UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();
 		switch (WhichSubmit) {
 		case 0:
 			utpHighTeacher = UHTD.FindHighTeacherByWhichSubmit(WhichSubmit);
@@ -215,6 +217,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	@Override
 	public List<UtpHighTeacher> FindHighTeacherByIsPass(Integer isPassInteger) {
 		List<UtpHighTeacher> utpHighTeacher = new ArrayList<UtpHighTeacher>();
+		UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();
 		switch (isPassInteger) {
 		case 0:
 			utpHighTeacher = UHTD.FindHighTeacherByIsPass(isPassInteger);

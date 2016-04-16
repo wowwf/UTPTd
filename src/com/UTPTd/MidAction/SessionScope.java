@@ -2,6 +2,9 @@ package com.UTPTd.MidAction;
 
 import java.util.Map;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.UTPTd.bean.UtpHighTeacher;
 import com.UTPTd.bean.UtpTechnical;
 import com.UTPTd.dao.UtpHighTeacherDao;
@@ -18,9 +21,11 @@ public class SessionScope extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();
+	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
+	
+	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 	
 	private Integer no;
 	

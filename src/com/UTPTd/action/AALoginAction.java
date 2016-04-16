@@ -2,6 +2,9 @@ package com.UTPTd.action;
 
 import java.util.Map;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.UTPTd.bean.UtpAuditor;
 import com.UTPTd.bean.UtpHighTeacher;
 import com.UTPTd.bean.UtpTechnical;
@@ -29,19 +32,21 @@ public class AALoginAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static UTPAuditorServices UAS = new UtpAuditorServicesImpl();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UtpAuditorDao UAD = new UtpAuditorDaoImpl();
+	private static UTPAuditorServices UAS = aContext.getBean(UtpAuditorServicesImpl.class);
 	
-	private static UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();
+	private static UtpAuditorDao UAD = aContext.getBean(UtpAuditorDaoImpl.class);
 	
-	private static UtpHighTeacherServices UHTS = new UtpHighTeacherServicesImpl();
+	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
 	
-	private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();
+	private static UtpHighTeacherServices UHTS = aContext.getBean(UtpHighTeacherServicesImpl.class);
 	
-	private static UtpTechnicalServices UTS = new UtpTechnicalServicesImpl();
+	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 	
-	private static UtpAdminServices UA = new UtpAdminServicesImpl();
+	private static UtpTechnicalServices UTS = aContext.getBean(UtpTechnicalServicesImpl.class);
+	
+	private static UtpAdminServices UA = aContext.getBean(UtpAdminServicesImpl.class);
 	
 	private String UserName;
 	private String password;

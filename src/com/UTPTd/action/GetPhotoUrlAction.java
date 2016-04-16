@@ -1,5 +1,8 @@
 package com.UTPTd.action;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.UTPTd.dao.UtpHighTeacherDao;
 import com.UTPTd.dao.UtpTechnicalDao;
 import com.UTPTd.daoImpl.UtpHighTeacherDaoImpl;
@@ -14,9 +17,11 @@ public class GetPhotoUrlAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();
+	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
+	
+	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 	
 	private Integer IdCard;
 	

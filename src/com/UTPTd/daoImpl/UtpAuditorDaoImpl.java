@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.UTPTd.bean.UtpAuditor;
@@ -13,9 +15,12 @@ import com.UTPTd.dao.UtpAuditorDao;
 @Component
 public class UtpAuditorDaoImpl implements UtpAuditorDao {
 
-	private static Configuration configuration = new Configuration().configure();
+	/*private static Configuration configuration = new Configuration().configure();
 	private static ServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-	private static SessionFactory sf = (SessionFactory) configuration.buildSessionFactory(serviceRegistry);
+	private static SessionFactory sf = (SessionFactory) configuration.buildSessionFactory(serviceRegistry);*/
+	
+	private static ApplicationContext Context = new ClassPathXmlApplicationContext("beans.xml");
+	private static SessionFactory sf = (SessionFactory) Context.getBean("sessionfactory");
 	
 	@Override
 	public UtpAuditor FindById(Integer IdCard) {

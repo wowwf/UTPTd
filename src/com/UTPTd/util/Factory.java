@@ -202,14 +202,16 @@ public class Factory {
 			e.printStackTrace();
 		}*/
 		ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
-		SessionFactory sessionFactory = (SessionFactory) aContext.getBean("sessionfactory");
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		UtpAdmin uAdmin = aContext.getBean(UtpAdmin.class);
-		uAdmin = (UtpAdmin) session.get(UtpAdmin.class, "admin");
-		session.getTransaction().commit();
-		session.close();
-		System.out.println(uAdmin.getPassword());
+//		SessionFactory sessionFactory = (SessionFactory) aContext.getBean("sessionfactory");
+//		Session session = sessionFactory.openSession();
+//		session.beginTransaction();
+//		UtpAdmin uAdmin = aContext.getBean(UtpAdmin.class);
+//		uAdmin = (UtpAdmin) session.get(UtpAdmin.class, "admin");
+//		session.getTransaction().commit();
+//		session.close();
+//		System.out.println(uAdmin.getPassword());
+		UpLoadDao uDao = aContext.getBean(UpLoadDao.class);
+		System.out.println(uDao.getProp("teacherPath"));
 	}
 	
 }

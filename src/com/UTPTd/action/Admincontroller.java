@@ -1,6 +1,8 @@
 package com.UTPTd.action;
 
 import org.apache.struts2.ServletActionContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.UTPTd.services.UtpAdminServices;
 import com.UTPTd.servicesImpl.UtpAdminServicesImpl;
@@ -14,7 +16,9 @@ public class Admincontroller extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static UtpAdminServices UAS = new UtpAdminServicesImpl();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
+	
+	private static UtpAdminServices UAS = aContext.getBean(UtpAdminServicesImpl.class);
 	
 	private final static String path = "/upload";
 	

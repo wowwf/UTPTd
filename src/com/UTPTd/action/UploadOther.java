@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.UTPTd.bean.UtpHighTeacher;
 import com.UTPTd.bean.UtpTechnical;
@@ -26,11 +28,13 @@ public class UploadOther extends ActionSupport {
 	
 	private final static String UP = "/upload";
 	
-	private static UpLoadDao ULD = new UpLoadDao();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();
+	private static UpLoadDao ULD = aContext.getBean(UpLoadDao.class);
 	
-	private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();
+	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
+	
+	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 	
 	private List<File> myFile;
 	
@@ -103,8 +107,10 @@ public class UploadOther extends ActionSupport {
 					stringBuilder.append(path);
 					File newFile = new File(stringBuilder.toString());
 					StringBuilder stringBuilder2 = new StringBuilder();
-					stringBuilder2.append("D:/java/workspace/UTPTd/WebContent/upload/teacher/");
-					//stringBuilder2.append("D:/dx/workspeace/UTPTd/WebContent/upload/teacher/");
+					//公司
+					//stringBuilder2.append(ULD.getProp("teacherPath"));
+					//个人
+					stringBuilder2.append(ULD.getProp("teaPath"));
 					stringBuilder2.append(path);
 					String againPath = stringBuilder2.toString();
 					ULD.upLoadFile(newFile, myFile.get(i), againPath);
@@ -125,7 +131,10 @@ public class UploadOther extends ActionSupport {
 					builder.append(path);
 					File newFile = new File(builder.toString());
 					StringBuilder builder2 = new StringBuilder();
-					builder2.append("D:/java/workspace/UTPTd/WebContent/upload/technical/");
+					//公司
+					//builder2.append(ULD.getProp("technicalPath"));
+					//个人
+					builder2.append(ULD.getProp("teacalPath"));
 					builder2.append(path);
 					String againPath = builder2.toString();
 					ULD.upLoadFile(newFile, myFile.get(i), againPath);

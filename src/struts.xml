@@ -23,7 +23,7 @@
     		<result name="success">/MiddlePage/AdminIndex.jsp</result>
     	</action> -->
         <action name="AALogin" class="com.UTPTd.action.AALoginAction">
-        	<result name="success">/Page/index.jsp</result>
+        	<result name="success">/Page/Auditor/AuditorIndex.jsp</result>
         	<result name="error">/Error.jsp</result>
         	<result name="teacherlog">/Page/index.jsp</result>
         	<result name="technicallog">/Page/index.jsp</result>

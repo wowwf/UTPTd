@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/style.css" />
     <script type="text/javascript" src="<%=path %>/Page/Js/jquery.js"></script>
-    <script type="text/javascript" src="<%=path %>/Page/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="<%=path %>/Page/Js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<%=path %>/Page/Js/ckform.js"></script>
     <script type="text/javascript" src="<%=path %>/Page/Js/common.js"></script>
 
@@ -194,32 +194,3 @@
 </s:form>
 </body>
 </html>
-<script>
-    $(function () {
-        
-		$('#addnew').click(function(){
-
-				window.location.href="add.html";
-		 });
-
-
-    });
-
-	function del(id)
-	{
-		
-		
-		if(confirm("确定要删除吗？"))
-		{
-		
-			var url = "index.html";
-			
-			window.location.href=url;		
-		
-		}
-	
-	
-	
-	
-	}
-</script>

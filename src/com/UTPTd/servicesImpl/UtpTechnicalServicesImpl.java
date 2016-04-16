@@ -1,5 +1,7 @@
 package com.UTPTd.servicesImpl;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.UTPTd.dao.UtpTechnicalDao;
@@ -9,7 +11,9 @@ import com.UTPTd.services.UtpTechnicalServices;
 @Component
 public class UtpTechnicalServicesImpl implements UtpTechnicalServices {
 	
-	private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
+	
+	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 	
 	@Override
 	public boolean IsRegister(Integer IdCard) {

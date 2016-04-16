@@ -144,7 +144,6 @@
 		<td id="msg"  colspan="2"><span>第${highTeacher.utpHighTeacherWhichSubmit }次审核</span></td>
 	</tr>
 </table>
-<s:debug></s:debug>
 <br/><br/><br/><br/><br/>
 </center>
 </body>

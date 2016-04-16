@@ -1,5 +1,7 @@
 package com.UTPTd.servicesImpl;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.UTPTd.dao.UtpHighTeacherDao;
@@ -9,7 +11,9 @@ import com.UTPTd.services.UtpHighTeacherServices;
 @Component
 public class UtpHighTeacherServicesImpl implements UtpHighTeacherServices {
 
-	private static UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
+	
+	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
 	
 	@Override
 	public boolean IsRegister(Integer IdCard) {

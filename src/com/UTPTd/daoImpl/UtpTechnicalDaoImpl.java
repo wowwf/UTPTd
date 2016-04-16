@@ -6,9 +6,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.UTPTd.bean.UtpTechnical;
@@ -17,10 +16,13 @@ import com.UTPTd.dao.UtpTechnicalDao;
 @Component
 public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	
-	private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();
+	/*private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();
 	private static Configuration configuration = new Configuration().configure();
 	private static ServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-	private static SessionFactory sf = (SessionFactory) configuration.buildSessionFactory(serviceRegistry);
+	private static SessionFactory sf = (SessionFactory) configuration.buildSessionFactory(serviceRegistry);*/
+	
+	private static ApplicationContext Context = new ClassPathXmlApplicationContext("beans.xml");
+	private static SessionFactory sf = (SessionFactory) Context.getBean("sessionfactory");
 	
 	@Override
 	public void InsertTechnical(Integer IdCard, String TechnicalName) {
@@ -151,6 +153,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	@Override
 	public List<UtpTechnical> FindAllByUtpTechnicalIsPass(Integer IsPass) {
 		List<UtpTechnical> utpTechnical = new ArrayList<UtpTechnical>();
+		UtpTechnicalDao UTD = Context.getBean(UtpTechnicalDaoImpl.class);
 		utpTechnical = null;
 		switch (IsPass) {
 		case 0:

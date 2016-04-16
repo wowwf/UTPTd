@@ -1,5 +1,8 @@
 package com.UTPTd.action;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.UTPTd.bean.UtpHighTeacher;
 import com.UTPTd.dao.UtpHighTeacherDao;
 import com.UTPTd.daoImpl.UtpHighTeacherDaoImpl;
@@ -12,9 +15,11 @@ public class TeacherSubmit extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static UtpHighTeacherDao UHTD = new UtpHighTeacherDaoImpl();
+	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private UtpHighTeacher utpHighTeacher = new UtpHighTeacher();
+	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
+	
+	private UtpHighTeacher utpHighTeacher = aContext.getBean(UtpHighTeacher.class);
 
 	public UtpHighTeacher getUtpHighTeacher() {
 		return utpHighTeacher;
