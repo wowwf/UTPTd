@@ -28,11 +28,11 @@ public class UtpAuditorServicesImpl implements UTPAuditorServices {
 	public boolean FindPassword(Integer IdCard, Integer Role, String Password) {
 		String psdString = UAD.FindPsdById(IdCard);
 		Integer roleInteger = UAD.FindRoleById(IdCard);
-		if (psdString.equals(Password) && Role == roleInteger) {
+		if (Password.equals(psdString) && Role == roleInteger) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-
+	
 }

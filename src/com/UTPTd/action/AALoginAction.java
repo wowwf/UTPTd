@@ -34,20 +34,6 @@ public class AALoginAction extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UTPAuditorServices UAS = aContext.getBean(UtpAuditorServicesImpl.class);
-	
-	private static UtpAuditorDao UAD = aContext.getBean(UtpAuditorDaoImpl.class);
-	
-	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
-	
-	private static UtpHighTeacherServices UHTS = aContext.getBean(UtpHighTeacherServicesImpl.class);
-	
-	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
-	
-	private static UtpTechnicalServices UTS = aContext.getBean(UtpTechnicalServicesImpl.class);
-	
-	private static UtpAdminServices UA = aContext.getBean(UtpAdminServicesImpl.class);
-	
 	private String UserName;
 	private String password;
 	private Integer Role;
@@ -76,14 +62,17 @@ public class AALoginAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		String flag = " ";
+		UtpAdminServices UA = aContext.getBean(UtpAdminServicesImpl.class);
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		session.remove("Auditor");
 		session.remove("HighTeacher");
 		session.remove("Technical");
 		if (Role == 0 || Role == 1) {
 			Integer IdCard = Integer.valueOf(UserName);
-			UtpAuditor utpAuditor = new UtpAuditor();
+			UtpAuditorDao UAD = aContext.getBean(UtpAuditorDaoImpl.class);
+			UtpAuditor utpAuditor = aContext.getBean(UtpAuditor.class);
 			utpAuditor = UAD.FindById(IdCard);
+			UTPAuditorServices UAS = aContext.getBean(UtpAuditorServicesImpl.class);
 			if (UAS.FindByIdAndRole(IdCard)) {
 				if (UAS.FindPassword(IdCard, Role, password)) {
 					session.put("Auditor", utpAuditor);
@@ -98,8 +87,10 @@ public class AALoginAction extends ActionSupport {
 			}
 		} else if (Role == 2) {
 			Integer IdCard = Integer.valueOf(UserName);
-			UtpHighTeacher utpHighTeacher = new UtpHighTeacher();
+			UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
+			UtpHighTeacher utpHighTeacher = aContext.getBean(UtpHighTeacher.class);
 			utpHighTeacher = UHTD.FindByHighTeacherIdCard(IdCard);
+			UtpHighTeacherServices UHTS = aContext.getBean(UtpHighTeacherServicesImpl.class);
 			if (UHTS.IsRegister(IdCard)) {
 				if (UHTS.IsNameCorrect(IdCard, password)) {
 					session.put("HighTeacher", utpHighTeacher);
@@ -114,8 +105,10 @@ public class AALoginAction extends ActionSupport {
 			}
 		} else if (Role == 3) {
 			Integer IdCard = Integer.valueOf(UserName);
-			UtpTechnical utpTechnical = new UtpTechnical();
+			UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
+			UtpTechnical utpTechnical = aContext.getBean(UtpTechnical.class);
 			utpTechnical = UTD.FindByTechnicalIdCard(IdCard);
+			UtpTechnicalServices UTS = aContext.getBean(UtpTechnicalServicesImpl.class);
 			if (UTS.IsRegister(IdCard)) {
 				if (UTS.IsNameCorrect(IdCard, password)) {
 					session.put("Technical", utpTechnical);
