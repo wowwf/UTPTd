@@ -17,8 +17,6 @@ public class TeacherSubmit extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
-	
 	private UtpHighTeacher utpHighTeacher = aContext.getBean(UtpHighTeacher.class);
 
 	public UtpHighTeacher getUtpHighTeacher() {
@@ -31,6 +29,7 @@ public class TeacherSubmit extends ActionSupport {
 	
 	@Override
 	public String execute() throws Exception {
+		UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
 		UHTD.UpdateHighTeacher(utpHighTeacher);
 		return SUCCESS;
 	}

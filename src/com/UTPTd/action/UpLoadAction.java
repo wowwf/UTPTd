@@ -30,12 +30,6 @@ public class UpLoadAction extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UpLoadDao ULD = aContext.getBean(UpLoadDao.class);
-	
-	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
-	
-	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
-
 	private List<File> upFile;
 	
 	private List<String> upFileFileName;
@@ -79,6 +73,7 @@ public class UpLoadAction extends ActionSupport {
 			flag = "isnull";
 		} else {
 			Map<String, Object> session = ActionContext.getContext().getSession();
+			UpLoadDao ULD = aContext.getBean(UpLoadDao.class);
 			UtpHighTeacher teacher = (UtpHighTeacher) session.get("HighTeacher");
 			UtpTechnical technical = (UtpTechnical) session.get("Technical");
 			ActionContext context = ActionContext.getContext();
@@ -88,6 +83,7 @@ public class UpLoadAction extends ActionSupport {
 			String imageNewPath = "";
 			String againPath = "";
 			if (teacher != null) {
+				UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
 				String localString = UHTD.FindPersonImageUrl(teacher.getUtpHighTeacherIdCard());
 				if (localString != null) {
 					String[] localPath = localString.split("/");
@@ -104,6 +100,7 @@ public class UpLoadAction extends ActionSupport {
 				context.put("Imgpath", imageNewPath);
 				flag = "success";
 			} else if (technical != null) {
+				UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 				String pathString = UTD.FindPersonImgUrl(technical.getUtpTechnicalIdCard());
 				if (pathString != null) {
 					String[] localPath = pathString.split("/");

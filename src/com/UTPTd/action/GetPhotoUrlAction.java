@@ -19,10 +19,6 @@ public class GetPhotoUrlAction extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
-	
-	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
-	
 	private Integer IdCard;
 	
 	private Integer Role;
@@ -49,10 +45,12 @@ public class GetPhotoUrlAction extends ActionSupport {
 		String flag = "";
 		ActionContext context = ActionContext.getContext();
 		if (Role == 2) {
+			UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
 			urlPath = UHTD.FindPersonImageUrl(IdCard);
 			context.put("teacherUrl", urlPath);
 			flag = "success";
 		} else if (Role == 3) {
+			UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 			urlPath = UTD.FindPersonImgUrl(IdCard);
 			context.put("technicalUrl", urlPath);
 			flag = "success";

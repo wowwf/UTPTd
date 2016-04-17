@@ -24,10 +24,6 @@ public class ShowInfoAction extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
-	
-	private UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
-	
 	private Integer no;
 
 	public Integer getNo() {
@@ -58,12 +54,13 @@ public class ShowInfoAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		String flag = "";
-		UtpHighTeacher uTeacher = new UtpHighTeacher();
-		UtpTechnical utpTechnical = new UtpTechnical();
+		UtpHighTeacher uTeacher = aContext.getBean(UtpHighTeacher.class);
+		UtpTechnical utpTechnical = aContext.getBean(UtpTechnical.class);
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		ActionContext context = ActionContext.getContext();
 		if (no == 1) {
 			uTeacher = (UtpHighTeacher) session.get("HighTeacher");
+			UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
 			if (uTeacher != null) {
 				uTeacher = UHTD.FindByHighTeacherIdCard(uTeacher.getUtpHighTeacherIdCard());
 				if ("1".equals(uTeacher.getUtpHighTeacherGender())) {
@@ -91,6 +88,7 @@ public class ShowInfoAction extends ActionSupport {
 		} else if (no == 2) {
 			utpTechnical = (UtpTechnical) session.get("Technical");
 			if (utpTechnical != null) {
+				UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 				utpTechnical = UTD.FindByTechnicalIdCard(utpTechnical.getUtpTechnicalIdCard());
 				if ("1".equals(utpTechnical.getUtpTechnicalGender())) {
 					context.put("Gender", "男");

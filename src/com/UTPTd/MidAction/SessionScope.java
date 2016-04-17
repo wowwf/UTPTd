@@ -23,10 +23,6 @@ public class SessionScope extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
-	
-	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
-	
 	private Integer no;
 	
 	public Integer getNo() {
@@ -45,6 +41,7 @@ public class SessionScope extends ActionSupport {
 		case 1:
 			UtpHighTeacher utpHighTeacher = (UtpHighTeacher) session.get("HighTeacher");
 			if (utpHighTeacher.getUtpHighTeacherIdCard() != 0) {
+				UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
 				UtpHighTeacher uTeacher = UHTD.FindByHighTeacherIdCard(utpHighTeacher.getUtpHighTeacherIdCard());
 				context.put("readTeacher", uTeacher);
 				flagString = "success";
@@ -55,6 +52,7 @@ public class SessionScope extends ActionSupport {
 		case 2:
 			UtpTechnical utpTechnical = (UtpTechnical) session.get("Technical");
 			if (utpTechnical.getUtpTechnicalIdCard() != 0) {
+				UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 				UtpTechnical uTechnical = UTD.FindByTechnicalIdCard(utpTechnical.getUtpTechnicalIdCard());
 				context.put("readTechnical", uTechnical);
 				flagString = "technicalsuccess";

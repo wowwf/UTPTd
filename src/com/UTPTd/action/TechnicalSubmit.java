@@ -17,8 +17,6 @@ public class TechnicalSubmit extends ActionSupport {
 
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UtpTechnicalDao utpTechnicalDao = aContext.getBean(UtpTechnicalDaoImpl.class);
-	
 	private UtpTechnical utpTechnical = aContext.getBean(UtpTechnical.class);
 	
 	public UtpTechnical getUtpTechnical() {
@@ -32,6 +30,7 @@ public class TechnicalSubmit extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
+		UtpTechnicalDao utpTechnicalDao = aContext.getBean(UtpTechnicalDaoImpl.class);
 		utpTechnicalDao.UpdateTechnical(utpTechnical);
 		return SUCCESS;
 	}

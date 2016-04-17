@@ -30,12 +30,6 @@ public class UploadOther extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UpLoadDao ULD = aContext.getBean(UpLoadDao.class);
-	
-	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
-	
-	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
-	
 	private List<File> myFile;
 	
 	private List<String> myFileFileName;
@@ -92,9 +86,11 @@ public class UploadOther extends ActionSupport {
 			StringBuffer fileNameBuffer = new StringBuffer();
 			String pathString = ServletActionContext.getServletContext().getRealPath(UP);
 			Map<String, Object> session = ActionContext.getContext().getSession();
+			UpLoadDao ULD = aContext.getBean(UpLoadDao.class);
 			UtpHighTeacher teacher = (UtpHighTeacher) session.get("HighTeacher");
 			UtpTechnical technical = (UtpTechnical) session.get("Technical");
 			if (teacher != null) {
+				UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
 				if (UHTD.FindOtherFileName(teacher.getUtpHighTeacherIdCard()) != null) {
 					String localPath = UHTD.FindOtherFileName(teacher.getUtpHighTeacherIdCard());
 					ULD.deleteFileByName(0, localPath, pathString);
@@ -119,6 +115,7 @@ public class UploadOther extends ActionSupport {
 				UHTD.OthersUpload(teacher.getUtpHighTeacherIdCard(), fileNameBuffer);
 				flag = "success";
 			} else if (technical != null) {
+				UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 				if (UTD.FindOtherFile(technical.getUtpTechnicalIdCard()) != null) {
 					String localPath = UTD.FindOtherFile(technical.getUtpTechnicalIdCard());
 					ULD.deleteFileByName(1, localPath, pathString);

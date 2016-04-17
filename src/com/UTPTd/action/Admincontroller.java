@@ -18,8 +18,6 @@ public class Admincontroller extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UtpAdminServices UAS = aContext.getBean(UtpAdminServicesImpl.class);
-	
 	private final static String path = "/upload";
 	
 	private String who;
@@ -37,6 +35,7 @@ public class Admincontroller extends ActionSupport {
 	public String execute() throws Exception {
 		String serverPath = ServletActionContext.getServletContext().getRealPath(path);
 		ActionContext context = ActionContext.getContext();
+		UtpAdminServices UAS = aContext.getBean(UtpAdminServicesImpl.class);
 		if (UAS.DeleteOtherFile(who, serverPath)) {
 			context.put("technicalDelete", "相关冗余文件已删除！");
 			return SUCCESS;

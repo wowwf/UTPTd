@@ -19,9 +19,6 @@ public class UtpAdminLoginAction extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	//声明Utpadminservices对象
-	private static UtpAdminServices UASI = aContext.getBean(UtpAdminServicesImpl.class);
-	
 	public String getUtpNameString() {
 		return utpNameString;
 	}
@@ -36,6 +33,7 @@ public class UtpAdminLoginAction extends ActionSupport {
 	}
 	@Override
 	public String execute() throws Exception {
+		UtpAdminServices UASI = aContext.getBean(UtpAdminServicesImpl.class);
 		if (UASI.FindByName(utpNameString) && UASI.Login(utpNameString, utpPassword)) {
 			return SUCCESS;
 		} else {

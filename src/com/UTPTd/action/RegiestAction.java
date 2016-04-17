@@ -19,14 +19,6 @@ public class RegiestAction extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
-	
-	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
-	
-	private static UtpHighTeacherServices UHTS = aContext.getBean(UtpHighTeacherServicesImpl.class);
-	
-	private static UtpTechnicalServices UTS = aContext.getBean(UtpTechnicalServicesImpl.class);
-	
 	private String userName;
 	private Integer idCard;
 	private Integer Post;
@@ -61,9 +53,12 @@ public class RegiestAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		String flag = "";
+		
 		switch (Post) {
 		case 0:
+			UtpHighTeacherServices UHTS = aContext.getBean(UtpHighTeacherServicesImpl.class);
 			if (!UHTS.IsRegister(idCard)) {
+				UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
 				UHTD.InsertHighTeacher(idCard, userName);
 				flag = "success";
 			} else {
@@ -72,7 +67,9 @@ public class RegiestAction extends ActionSupport {
 			}
 			break;
 		case 1:
+			UtpTechnicalServices UTS = aContext.getBean(UtpTechnicalServicesImpl.class);
 			if (!UTS.IsRegister(idCard)) {
+				UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 				UTD.InsertTechnical(idCard, userName);
 				flag = "success";
 			} else {
