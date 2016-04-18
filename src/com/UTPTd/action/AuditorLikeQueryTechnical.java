@@ -1,13 +1,13 @@
 package com.UTPTd.action;
 
 import java.util.List;
-import java.util.Map;
+
+import oracle.net.aso.p;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.UTPTd.bean.UtpAuditor;
-import com.UTPTd.bean.UtpHighTeacher;
+import com.UTPTd.bean.UtpTechnical;
 import com.UTPTd.services.UTPAuditorServices;
 import com.UTPTd.servicesImpl.UtpAuditorServicesImpl;
 import com.UTPTd.util.Page;
@@ -15,17 +15,21 @@ import com.UTPTd.util.PageResult;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AuditorQueryTeacher extends ActionSupport {
+public class AuditorLikeQueryTechnical extends ActionSupport {
 
 	/**
-	 * 审核人员查询所有符合条件的审核表
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
 	private int currentPage;
-
+	
+	private Integer findIdCard;
+	
+	private String findName;
+	
 	public int getCurrentPage() {
 		return currentPage;
 	}
@@ -33,40 +37,52 @@ public class AuditorQueryTeacher extends ActionSupport {
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
+	
+	public Integer getFindIdCard() {
+		return findIdCard;
+	}
 
-	@SuppressWarnings("unchecked")
+	public void setFindIdCard(Integer findIdCard) {
+		this.findIdCard = findIdCard;
+	}
+
+	public String getFindName() {
+		return findName;
+	}
+
+	public void setFindName(String findName) {
+		this.findName = findName;
+	}
+	
 	@Override
 	public String execute() throws Exception {
-		Map<String, Object> session = ActionContext.getContext().getSession();
-		UtpAuditor utpAuditor = (UtpAuditor) session.get("Auditor");
-		if (0 == utpAuditor.getUtpAuditorRole()) {
+		if (findIdCard != null) {
 			Page page = aContext.getBean(Page.class);
 			UTPAuditorServices uServices = aContext.getBean(UtpAuditorServicesImpl.class);
 			page.setEveryPage(20);
 			page.setCurrentPage(currentPage);
-			PageResult result = uServices.QueryTeacher(page);
-			List<UtpHighTeacher> utpHighTeachers = result.getList();
+			PageResult result = uServices.LikeQueryTechnicalById(findIdCard, page);
 			page = result.getPage();
+			List<UtpTechnical> utpTechnicals = result.getList();
 			ActionContext context = ActionContext.getContext();
-			context.put("highTeacherInfo", utpHighTeachers);
+			context.put("TechnicalInfo", utpTechnicals);
 			context.put("page", page);
-	 		return SUCCESS;
-		} else if (1 == utpAuditor.getUtpAuditorRole()) {
+			return SUCCESS;
+		} else if (findName != null) {
 			Page page = aContext.getBean(Page.class);
 			UTPAuditorServices uServices = aContext.getBean(UtpAuditorServicesImpl.class);
-			page.setEveryPage(20);
 			page.setCurrentPage(currentPage);
-			PageResult result = uServices.QueryTeachers(page);
-			List<UtpHighTeacher> utpHighTeachers = result.getList();
+			page.setEveryPage(20);
+			PageResult result = uServices.LikeQueryTechnical(findName, page);
+			List<UtpTechnical> utpTechnicals = result.getList();
 			page = result.getPage();
 			ActionContext context = ActionContext.getContext();
-			context.put("highTeacherInfo", utpHighTeachers);
 			context.put("page", page);
-	 		return SUCCESS;
+			context.put("TechnicalInfo", utpTechnicals);
+			return SUCCESS;
 		} else {
-			addActionMessage("请先登录！");
+			addActionMessage("请输入查询条件！");
 			return ERROR;
 		}
-		
 	}
 }

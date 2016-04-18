@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.UTPTd.bean.UtpAuditor;
-import com.UTPTd.bean.UtpHighTeacher;
+import com.UTPTd.bean.UtpTechnical;
 import com.UTPTd.services.UTPAuditorServices;
 import com.UTPTd.servicesImpl.UtpAuditorServicesImpl;
 import com.UTPTd.util.Page;
@@ -15,15 +15,15 @@ import com.UTPTd.util.PageResult;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AuditorQueryTeacher extends ActionSupport {
+public class AuditorQueryTechnical extends ActionSupport {
 
 	/**
-	 * 审核人员查询所有符合条件的审核表
+	 * 查询所有符合条件的技术人员信息
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
-	
+		
 	private int currentPage;
 
 	public int getCurrentPage() {
@@ -33,40 +33,26 @@ public class AuditorQueryTeacher extends ActionSupport {
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
-
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public String execute() throws Exception {
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		UtpAuditor utpAuditor = (UtpAuditor) session.get("Auditor");
-		if (0 == utpAuditor.getUtpAuditorRole()) {
+		if (1 == utpAuditor.getUtpAuditorRole()) {
 			Page page = aContext.getBean(Page.class);
 			UTPAuditorServices uServices = aContext.getBean(UtpAuditorServicesImpl.class);
-			page.setEveryPage(20);
 			page.setCurrentPage(currentPage);
-			PageResult result = uServices.QueryTeacher(page);
-			List<UtpHighTeacher> utpHighTeachers = result.getList();
+			page.setEveryPage(20);
+			PageResult result = uServices.QueryTechnical(page);
+			List<UtpTechnical> utpTechnicals = result.getList();
 			page = result.getPage();
 			ActionContext context = ActionContext.getContext();
-			context.put("highTeacherInfo", utpHighTeachers);
 			context.put("page", page);
-	 		return SUCCESS;
-		} else if (1 == utpAuditor.getUtpAuditorRole()) {
-			Page page = aContext.getBean(Page.class);
-			UTPAuditorServices uServices = aContext.getBean(UtpAuditorServicesImpl.class);
-			page.setEveryPage(20);
-			page.setCurrentPage(currentPage);
-			PageResult result = uServices.QueryTeachers(page);
-			List<UtpHighTeacher> utpHighTeachers = result.getList();
-			page = result.getPage();
-			ActionContext context = ActionContext.getContext();
-			context.put("highTeacherInfo", utpHighTeachers);
-			context.put("page", page);
-	 		return SUCCESS;
+			context.put("TechnicalInfo", utpTechnicals);
+			return SUCCESS;
 		} else {
-			addActionMessage("请先登录！");
+			addActionMessage("你没有人事部门人员的权限！");
 			return ERROR;
 		}
-		
 	}
 }
