@@ -64,14 +64,6 @@
 </script>
 </head>
 <body>
-<s:if test="#session.Auditor.utpAuditorRole==0">
-	<a>院系审核人员</a>	
-</s:if>
-<s:elseif test="#session.Auditor.utpAuditorRole==1">
-	<a>人事审核人员</a>
-</s:elseif>
-<s:else>
-	<a>怎么可能</a>
-</s:else>
+
 </body>
 </html>

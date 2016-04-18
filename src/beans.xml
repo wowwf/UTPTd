@@ -22,8 +22,8 @@
 				<value>myPro.properties</value>
 			</property>
 		</bean>
-		<!-- 连接数据库 -->
-		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- 个人连接数据库 -->
+		<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName">
 				<value>${jdbcDriverName}</value>
 			</property>
@@ -36,9 +36,24 @@
 			<property name="password">
 				<value>${jdbcPsw}</value>
 			</property>
-		</bean>
-		<!-- 设置存储路径 -->
+		</bean> -->
 		
+		<!-- 公司数据库 -->
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName">
+				<value>${jdbcDriverName}</value>
+			</property>
+			<property name="url">
+				<value>${jdbcUrlOne}</value>
+			</property>
+			<property name="username">
+				<value>${jdbcUserName}</value>
+			</property>
+			<property name="password">
+				<value>${jdbcPassword}</value>
+			</property>
+		</bean>
+				
 		<bean id="dao" class="com.UTPTd.util.DataDao">
 			<property name="dataSource">
 				<ref bean="dataSource"/>
@@ -46,7 +61,10 @@
 		</bean>
 		<!-- session工厂 -->
 		<bean id="sessionfactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-			<property name="configLocation" value="hibernate.cfg.xml"></property>
+		<!-- 个人电脑 -->
+			<!-- <property name="configLocation" value="hibernate.cfg.xml"></property> -->
+		<!-- 公司电脑 -->
+			<property name="configLocation" value="comHibernate.cfg.xml"></property>
 		</bean>
 	</beans>
 </beans>

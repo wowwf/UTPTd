@@ -1,7 +1,11 @@
 package com.UTPTd.util;
+
+import org.springframework.stereotype.Component;
+
 /*
  * 分页信息辅助类
  */
+@Component
 public class PageUtil {
 	public static Page createPage(int everyPage,int totalCount,int currentPage) {//创建分页信息对象
 		everyPage = getEveryPage(everyPage);

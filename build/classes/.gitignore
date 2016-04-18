@@ -1,4 +1,4 @@
-/com/
-/hibernate1.cfg.xml
-/hibernate.cfg.xml
+/beans.xml
 /myPro.properties
+/comHibernate.cfg.xml
+/com/
