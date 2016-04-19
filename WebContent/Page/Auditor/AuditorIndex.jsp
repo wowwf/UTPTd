@@ -65,7 +65,9 @@
 </head>
 <body>
 <s:if test="#session.Auditor.utpAuditorRole==0">
-	<a>院系审核人员</a>	
+<table>
+	<tr><td><a href="<%=path %>/Page/Auditor/ShowAll.jsp">检索所有数据</a></td></tr>
+</table>
 </s:if>
 <s:elseif test="#session.Auditor.utpAuditorRole==1">
 	<a>人事审核人员</a>
