@@ -87,13 +87,23 @@
         </action>
         <action name="QueryTeacher" class="com.UTPTd.action.AuditorQueryTeacher">
         	<result name="success">/Page/Auditor/ShowAll.jsp</result>
-        	<result name="error">/Page/Auditor/ShowAll.jsp</result>
+        	<result name="error">/Page/Auditor/AuditorIndex.jsp</result>
         	<interceptor-ref name="defaultStack"></interceptor-ref>
         	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
         </action>
         <action name="QueryTechnical" class="com.UTPTd.action.AuditorQueryTechnical">
         	<result name="success">/Page/Auditor/ShowAll.jsp</result>
-        	<result name="success">/Page/Auditor/ShowAll.jsp</result>
+        	<result name="error">/Page/Auditor/ShowAll.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
+        </action>
+        <action name="QuerySelectTeacher" class="com.UTPTd.action.AuditorQueryOneTeacher">
+        	<result name="success">/Page/Auditor/ShowOne.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
+        </action>
+        <action name="addOpinion" class="com.UTPTd.action.AuditorCheckedTeacher.java">
+        	<result name="success" type="redirect"></result>
         	<interceptor-ref name="defaultStack"></interceptor-ref>
         	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
         </action>

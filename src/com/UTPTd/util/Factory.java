@@ -76,7 +76,7 @@ public class Factory {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws IOException {
-//		new SchemaExport(configuration).create(true, true);//hibernate 4.0的建表方法
+		new SchemaExport(configuration).create(true, true);//hibernate 4.0的建表方法
 		/*UtpHighTeacher utpHighTeacher = new UtpHighTeacher();
 		utpHighTeacher.setUtpHighTeacherIdCard(330226);
 		utpHighTeacher.setUtpHighTeacherName("李宁");
@@ -201,7 +201,7 @@ public class Factory {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
+		//ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 //		SessionFactory sessionFactory = (SessionFactory) aContext.getBean("sessionfactory");
 //		Session session = sessionFactory.openSession();
 //		session.beginTransaction();
@@ -210,8 +210,8 @@ public class Factory {
 //		session.getTransaction().commit();
 //		session.close();
 //		System.out.println(uAdmin.getPassword());
-		UpLoadDao uDao = aContext.getBean(UpLoadDao.class);
-		System.out.println(uDao.getProp("teacherPath"));
+		//UpLoadDao uDao = aContext.getBean(UpLoadDao.class);
+		//System.out.println(uDao.getProp("teacherPath"));
 	}
 	
 }

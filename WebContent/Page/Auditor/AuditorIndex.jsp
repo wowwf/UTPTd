@@ -66,7 +66,7 @@
 <body>
 <s:if test="#session.Auditor.utpAuditorRole==0">
 <table>
-	<tr><td><a href="<%=path %>/Page/Auditor/ShowAll.jsp">检索所有数据</a></td></tr>
+	<tr><td><a href="QueryTeacher.action?currentPage=1&everyPage=2">检索所有</a></td></tr>
 </table>
 </s:if>
 <s:elseif test="#session.Auditor.utpAuditorRole==1">
@@ -75,5 +75,6 @@
 <s:else>
 	<a>怎么可能</a>
 </s:else>
+<s:actionmessage/>
 </body>
 </html>

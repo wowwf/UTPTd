@@ -23,5 +23,6 @@
 		<mapping class="com.UTPTd.bean.UtpAuditor"/>
 		<mapping class="com.UTPTd.bean.UtpTechnical"/>
 		<mapping class="com.UTPTd.bean.UtpHighTeacher"/>
+		<mapping class="com.UTPTd.bean.AuditorOpinion"/>
 	</session-factory>
 </hibernate-configuration>

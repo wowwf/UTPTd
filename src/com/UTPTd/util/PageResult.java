@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class PageResult {
 	private Page page;		//分页信息
 	private List list;		//记录信息

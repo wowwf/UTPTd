@@ -9,21 +9,22 @@
 		<property name="format_sql">true</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
-		<!-- <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:hsorcl</property> -->
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:TestOrcl</property>
-		<property name="connection.useUnicode">true</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:hsorcl</property>
+<!-- 		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:TestOrcl</property>
+ -->		<property name="connection.useUnicode">true</property>
 		<property name="connection.characterEncoding">UTF-8</property>
 		<property name="hibernate.connection.username">system</property>
-		<!-- <property name="hibernate.connection.password">Wwf931114</property> -->
-		<property name="hibernate.connection.password">Xyz7902335</property>
+		<property name="hibernate.connection.password">Wwf931114</property>
+	<!-- 	<property name="hibernate.connection.password">Xyz7902335</property> -->
 		<property name="current_session_context_class">thread</property>
 		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
 		<property name="hbm2ddl.auto">update</property>
 		<property name="cache.use_second_level_cache">true</property>
 		<!-- <property name="hbm2ddl.auto">update</property> --><!-- 更新，只往数据库存储新数据 -->
-		<mapping class="com.UTPTd.bean.UtpAdmin"/>
+		<!-- <mapping class="com.UTPTd.bean.UtpAdmin"/>
 		<mapping class="com.UTPTd.bean.UtpAuditor"/>
 		<mapping class="com.UTPTd.bean.UtpTechnical"/>
-		<mapping class="com.UTPTd.bean.UtpHighTeacher"/>
+		<mapping class="com.UTPTd.bean.UtpHighTeacher"/> -->
+		<mapping class="com.UTPTd.bean.AuditorOpinion"/>
 	</session-factory>
 </hibernate-configuration>

@@ -69,7 +69,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 		Query query = session.createQuery(hql);
 		List list = query.list();
 		Integer num = list.size();
-		session.beginTransaction().commit();
+		session.getTransaction().commit();
 		session.close();
 		return num;
 	}
@@ -97,7 +97,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 		Query query = session.createQuery(hql);
 		List list = query.list();
 		Integer num = list.size();
-		session.beginTransaction().commit();
+		session.getTransaction().commit();
 		session.close();
 		return num;
 	}
@@ -125,7 +125,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 		Query query = session.createQuery(hql);
 		List list = query.list();
 		Integer num = list.size();
-		session.beginTransaction().commit();
+		session.getTransaction().commit();
 		session.close();
 		return num;
 	}
@@ -155,7 +155,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 		query.setString("name", "%" + Name + "%");
 		List list = query.list();
 		Integer num = list.size();
-		session.beginTransaction().commit();
+		session.getTransaction().commit();
 		session.close();
 		return num;
 	}
@@ -185,7 +185,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 		query.setString("name", "%" + Name + "%");
 		List list = query.list();
 		Integer num = list.size();
-		session.beginTransaction().commit();
+		session.getTransaction().commit();
 		session.close();
 		return num;
 	}
@@ -215,7 +215,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 		query.setString("id", "%" + IdCard + "%");
 		List list = query.list();
 		Integer num = list.size();
-		session.beginTransaction().commit();
+		session.getTransaction().commit();
 		session.close();
 		return num;
 	}
@@ -245,7 +245,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 		query.setString("id", "%" + IdCard + "%");
 		List list = query.list();
 		Integer num = list.size();
-		session.beginTransaction().commit();
+		session.getTransaction().commit();
 		session.close();
 		return num;
 	}
