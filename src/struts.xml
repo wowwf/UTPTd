@@ -135,6 +135,12 @@
         	<interceptor-ref name="defaultStack"></interceptor-ref>
         	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
         </action>
+        <action name="QueryLikeTechnical" class="com.UTPTd.action.AuditorLikeQueryTechnical">
+        	<result name="success">/Page/Auditor/ShowAll.jsp</result>
+        	<result name="error">/Page/Auditor/AuditorSelect.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
+        </action>
     </package>
 	
 </struts>

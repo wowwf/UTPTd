@@ -2,8 +2,6 @@ package com.UTPTd.action;
 
 import java.util.List;
 
-import oracle.net.aso.p;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -54,6 +52,7 @@ public class AuditorLikeQueryTechnical extends ActionSupport {
 		this.findName = findName;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public String execute() throws Exception {
 		if (findIdCard != null) {

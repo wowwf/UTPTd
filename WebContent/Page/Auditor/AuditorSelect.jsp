@@ -13,39 +13,77 @@
 </head>
 <body>
 <s:actionmessage/>
-<s:if test="#sel == 0">
-<center>
-<br><br>
-<s:form action="QueryLikeTeacher">
-<table class="table table-bordered table-hover definewidth m10" style="width: 620px;">
-	<tr>
-		<td colspan="2" align="center">根据身份证查询</td>
-	</tr>
-	<tr>
-		<td align="right"><span>身份证号码:</span></td>
-		<td><input type="text" name="findIdCard" style="width: 320px;"></td>
-	</tr>
-		<s:submit label="开始查询" value="开始查询"></s:submit>
-</table>
-</s:form>
-</center>
+<s:if test="#session.Auditor.utpAuditorRole == 0">
+	<s:if test="#sel == 0">
+	<center>
+	<br><br>
+	<s:form action="QueryLikeTeacher">
+	<table class="table table-bordered table-hover definewidth m10" style="width: 620px;">
+		<tr>
+			<td colspan="2" align="center">根据身份证查询</td>
+		</tr>
+		<tr>
+			<td align="right"><span>身份证号码:</span></td>
+			<td><input type="text" name="findIdCard" style="width: 320px;"></td>
+		</tr>
+			<s:submit label="开始查询" value="开始查询"></s:submit>
+	</table>
+	</s:form>
+	</center>
+	</s:if>
+	<s:else>
+	<center>
+	<br><br>
+	<s:form action="QueryLikeTeacher">
+	<table class="table table-bordered table-hover definewidth m10" style="width: 620px;">
+		<tr>
+			<td colspan="2" align="center">根据姓名查询</td>
+		</tr>
+		<tr>
+			<td align="right"><span>姓名:</span></td>
+			<td><input type="text" name="findName" style="width: 320px;"></td>
+		</tr>
+			<s:submit label="开始查询" value="开始查询"></s:submit>
+	</table>
+	</s:form>
+	</center>
+	</s:else>
 </s:if>
 <s:else>
-<center>
-<br><br>
-<s:form action="QueryLikeTeacher">
-<table class="table table-bordered table-hover definewidth m10" style="width: 620px;">
-	<tr>
-		<td colspan="2" align="center">根据姓名查询</td>
-	</tr>
-	<tr>
-		<td align="right"><span>姓名:</span></td>
-		<td><input type="text" name="findName" style="width: 320px;"></td>
-	</tr>
-		<s:submit label="开始查询" value="开始查询"></s:submit>
-</table>
-</s:form>
-</center>
+		<s:if test="#sel == 0">
+	<center>
+	<br><br>
+	<s:form action="QueryLikeTechnical">
+	<table class="table table-bordered table-hover definewidth m10" style="width: 620px;">
+		<tr>
+			<td colspan="2" align="center">根据身份证查询</td>
+		</tr>
+		<tr>
+			<td align="right"><span>身份证号码:</span></td>
+			<td><input type="text" name="findIdCard" style="width: 320px;"></td>
+		</tr>
+			<s:submit label="开始查询" value="开始查询"></s:submit>
+	</table>
+	</s:form>
+	</center>
+	</s:if>
+	<s:else>
+	<center>
+	<br><br>
+	<s:form action="QueryLikeTechnical">
+	<table class="table table-bordered table-hover definewidth m10" style="width: 620px;">
+		<tr>
+			<td colspan="2" align="center">根据姓名查询</td>
+		</tr>
+		<tr>
+			<td align="right"><span>姓名:</span></td>
+			<td><input type="text" name="findName" style="width: 320px;"></td>
+		</tr>
+			<s:submit label="开始查询" value="开始查询"></s:submit>
+	</table>
+	</s:form>
+	</center>
+	</s:else>
 </s:else>
 </body>
 </html>
