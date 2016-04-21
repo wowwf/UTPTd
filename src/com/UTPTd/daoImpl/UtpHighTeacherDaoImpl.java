@@ -138,6 +138,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 		UtpHighTeacher utpHighTeacher = Context.getBean(UtpHighTeacher.class);
 		utpHighTeacher = UHTD.FindByHighTeacherIdCard(IdCard);
 		utpHighTeacher.setUtpHighTeacherIsSubmit(0);
+		UHTD.updateHighTeahcers(utpHighTeacher);
 	}
 
 	@Override
@@ -148,15 +149,15 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 		switch (WhichSubmit) {
 		case 0:
 			utpHighTeacher.setUtpHighTeacherWhichSubmit(0);
-			UHTD.UpdateHighTeacher(utpHighTeacher);
+			UHTD.updateHighTeahcers(utpHighTeacher);
 			break;
 		case 1:
 			utpHighTeacher.setUtpHighTeacherWhichSubmit(1);
-			UHTD.UpdateHighTeacher(utpHighTeacher);
+			UHTD.updateHighTeahcers(utpHighTeacher);
 			break;
 		case 2:
 			utpHighTeacher.setUtpHighTeacherWhichSubmit(2);
-			UHTD.UpdateHighTeacher(utpHighTeacher);
+			UHTD.updateHighTeahcers(utpHighTeacher);
 			break;
 		default:
 			System.out.println("出错了！");
@@ -291,6 +292,15 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 		session.getTransaction().commit();
 		session.close();
 		return highTeacher.getUtpHighTeacherOther();
+	}
+
+	@Override
+	public void updateHighTeahcers(UtpHighTeacher utpHighTeacher) {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.saveOrUpdate(utpHighTeacher);
+		session.getTransaction().commit();
+		session.close();
 	}
 
 }

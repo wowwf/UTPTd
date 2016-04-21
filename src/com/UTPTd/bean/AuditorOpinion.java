@@ -4,10 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
-@Table(name="comment")
+@Table(name="utp_comment")
 public class AuditorOpinion {
 	private Integer num;
 	private Integer auditorId;
@@ -15,7 +19,8 @@ public class AuditorOpinion {
 	private String opinion;
 	private String sumbitTime;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="sep")
+	@SequenceGenerator(name="sep",sequenceName="utp_user_seq") /*allocationSize=1, initialValue=1, */
 	public Integer getNum() {
 		return num;
 	}

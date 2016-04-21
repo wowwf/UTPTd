@@ -24,6 +24,7 @@ public class SessionScope extends ActionSupport {
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
 	private Integer no;
+	private Integer sel;
 	
 	public Integer getNo() {
 		return no;
@@ -32,6 +33,15 @@ public class SessionScope extends ActionSupport {
 	public void setNo(Integer no) {
 		this.no = no;
 	}
+	
+	public Integer getSel() {
+		return sel;
+	}
+
+	public void setSel(Integer sel) {
+		this.sel = sel;
+	}
+
 	@Override
 	public String execute() throws Exception {
 		String flagString = "";
@@ -61,6 +71,11 @@ public class SessionScope extends ActionSupport {
 			}
 			break;
 		case 3:
+			if (sel == 0) {
+				context.put("sel", 0);
+			} else {
+				context.put("sel", 1);
+			}
 			flagString = "auditorsuccess";
 			break;
 		default:

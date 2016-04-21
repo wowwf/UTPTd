@@ -1,8 +1,12 @@
 package com.UTPTd.action;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -24,56 +28,96 @@ public class AuditorCheckedTeacher extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private Integer teacherIdCard;
+	private List<Integer> teacherIdCard;
 	
-	private Integer opinion;
+	private List<Integer> opinion;
 	
-	private String auditorOpinion;
+	private List<String> auditorOpinion;
 
-	public Integer getTeacherIdCard() {
+	public List<Integer> getTeacherIdCard() {
 		return teacherIdCard;
 	}
 
-	public Integer getOpinion() {
+	public List<Integer> getOpinion() {
 		return opinion;
 	}
 
-	public String getAuditorOpinion() {
+	public List<String> getAuditorOpinion() {
 		return auditorOpinion;
 	}
 
-	public void setTeacherIdCard(Integer teacherIdCard) {
+	public void setTeacherIdCard(List<Integer> teacherIdCard) {
 		this.teacherIdCard = teacherIdCard;
 	}
 
-	public void setOpinion(Integer opinion) {
+	public void setOpinion(List<Integer> opinion) {
 		this.opinion = opinion;
 	}
 
-	public void setAuditorOpinion(String auditorOpinion) {
+	public void setAuditorOpinion(List<String> auditorOpinion) {
 		this.auditorOpinion = auditorOpinion;
 	}
-	
+
 	@Override
 	public String execute() throws Exception {
 		Map<String, Object> session = ActionContext.getContext().getSession();
+		ActionContext context = ActionContext.getContext();
 		UtpAuditor uAuditor = (UtpAuditor) session.get("Auditor");
-		Integer auditorId = uAuditor.getUtpAuditorIdCard();
-		AuditorOpinion aOpinion = aContext.getBean(AuditorOpinion.class);
-		aOpinion.setAuditorId(auditorId);
-		aOpinion.setTeacherId(teacherIdCard);
-		aOpinion.setOpinion(auditorOpinion);
-		aOpinion.setSumbitTime(new Date().toString());
-		OpinionDao oDao = aContext.getBean(OpinionDaoImpl.class);
-		oDao.insertMessage(aOpinion);
-		if (opinion == 0) {
-			UtpHighTeacherDao uDao = aContext.getBean(UtpHighTeacherDaoImpl.class);
-			uDao.UpdateWhichSubmit(teacherIdCard, 1);
-		} else if(opinion == 1) {
-			
+		if (0 == uAuditor.getUtpAuditorRole()) {
+			Integer auditorId = uAuditor.getUtpAuditorIdCard();
+			AuditorOpinion aOpinion = aContext.getBean(AuditorOpinion.class);
+			aOpinion.setAuditorId(auditorId);
+			aOpinion.setTeacherId(teacherIdCard.get(0));
+			aOpinion.setOpinion(auditorOpinion.get(0));
+			aOpinion.setSumbitTime(new Date().toString());
+			OpinionDao oDao = aContext.getBean(OpinionDaoImpl.class);
+			oDao.insertMessage(aOpinion);
+			if (opinion.get(0) == 0) {												//不同意
+				UtpHighTeacherDao uDao = aContext.getBean(UtpHighTeacherDaoImpl.class);
+				uDao.UpdateWhichSubmit(teacherIdCard.get(0), 1);
+				uDao.UpdateSubmitIsNotPass(teacherIdCard.get(0));
+				session.put("every", 2);
+				return SUCCESS;
+			} else if(opinion.get(0) == 1) {										//同意
+				UtpHighTeacherDao uDao = aContext.getBean(UtpHighTeacherDaoImpl.class);
+				uDao.UpdateWhichSubmit(teacherIdCard.get(0), 1);
+				context.put("currentPage", 1);
+				context.put("everyPage", 2);
+				return SUCCESS;
+			} else {
+				addActionError("没有审核意见");
+				return ERROR;
+			}
+		} else if (1 == uAuditor.getUtpAuditorRole()) {
+			Integer auditorId = uAuditor.getUtpAuditorIdCard();
+			AuditorOpinion aOpinion = aContext.getBean(AuditorOpinion.class);
+			aOpinion.setAuditorId(auditorId);
+			aOpinion.setTeacherId(teacherIdCard.get(0));
+			aOpinion.setOpinion(auditorOpinion.get(0));
+			aOpinion.setSumbitTime(new Date().toString());
+			OpinionDao oDao = aContext.getBean(OpinionDaoImpl.class);
+			oDao.insertMessage(aOpinion);
+			if (opinion.get(0) == 0) {												//不同意
+				UtpHighTeacherDao uDao = aContext.getBean(UtpHighTeacherDaoImpl.class);
+				uDao.UpdateWhichSubmit(teacherIdCard.get(0), 2);
+				uDao.UpdateSubmitIsNotPass(teacherIdCard.get(0));
+				session.put("every", 2);
+				return SUCCESS;
+			} else if(opinion.get(0) == 1) {										//同意
+				UtpHighTeacherDao uDao = aContext.getBean(UtpHighTeacherDaoImpl.class);
+				uDao.UpdateWhichSubmit(teacherIdCard.get(0), 2);
+				uDao.UpdateSubmitIsPass(teacherIdCard.get(0));
+				context.put("currentPage", 1);
+				context.put("everyPage", 2);
+				return SUCCESS;
+			} else {
+				addActionError("没有审核意见");
+				return ERROR;
+			}
 		} else {
-			
+			addActionMessage("没有登录！");
+			return "unLogin";
 		}
-		return SUCCESS;
+		
 	}
 }

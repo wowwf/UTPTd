@@ -69,11 +69,18 @@
 	<tr><td><a href="QueryTeacher.action?currentPage=1&everyPage=2">检索所有</a></td></tr>
 </table>
 </s:if>
-<s:elseif test="#session.Auditor.utpAuditorRole==1">
-	<a>人事审核人员</a>
+<s:elseif test="#session.Auditor.utpAuditorRole==1 && #sel==0">
+<table>
+	<tr><td><a href="QueryTeacher.action?currentPage=1&everyPage=2">检索所有教师</a></td></tr>
+</table>
+</s:elseif>
+<s:elseif test="#session.Auditor.utpAuditorRole==1 && #sel==1">
+<table>
+	<tr><td><a href="QueryTechnical.action?currentPage=1&everyPage=2">检索所有技术人员</a></td></tr>
+</table>
 </s:elseif>
 <s:else>
-	<a>怎么可能</a>
+	<h1>怎么可能</h1>
 </s:else>
 <s:actionmessage/>
 </body>

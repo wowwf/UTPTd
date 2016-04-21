@@ -13,5 +13,6 @@
 <s:fielderror name="scope"></s:fielderror>
 <s:fielderror name="imgUrlError"></s:fielderror>
 <s:fielderror name="showError"></s:fielderror>
+<s:actionmessage/>
 </body>
 </html>

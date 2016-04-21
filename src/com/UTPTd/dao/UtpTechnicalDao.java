@@ -12,6 +12,8 @@ public interface UtpTechnicalDao {
 	void InsertTechnical(Integer IdCard, String TechnicalName);
 	//更新申报人信息
 	void UpdateTechnical(UtpTechnical utpTechnical);
+	//更新状态
+	void updateTechnicals(UtpTechnical utpTechnical);
 	//查找是否有这个人
 	UtpTechnical FindByTechnicalIdCard(Integer IdCard);
 	//审核是否通过

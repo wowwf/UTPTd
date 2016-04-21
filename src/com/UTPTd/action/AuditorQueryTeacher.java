@@ -44,10 +44,21 @@ public class AuditorQueryTeacher extends ActionSupport {
 		this.everyPage = everyPage;
 	}
 
+	private static Integer getEvery(Integer everyPageInteger) {
+		Map<String, Object> sessionMap = ActionContext.getContext().getSession();
+		Integer every = (Integer) sessionMap.get("every");
+		if (every != null) {
+			everyPageInteger = every;
+			sessionMap.remove("every");
+		}
+		return everyPageInteger;
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public String execute() throws Exception {
-		int everyPageNum = 0;
+		int everyPageNum = 20;
+		everyPage = getEvery(everyPage);
 		switch (everyPage) {
 		case 0:
 			everyPageNum = 1;

@@ -1,4 +1,4 @@
-<%@page import="com.UTPTd.bean.UtpHighTeacher"%>
+<%@page import="com.UTPTd.bean.UtpTechnical"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
@@ -41,78 +41,65 @@
 </head>
 <body>
 <br/>
-<center><h3>高校教师职称审核信息表</h3></center>
+<center><h3>技术人员职称审核信息表</h3></center>
 <center>
 <table border="1" class="table table-bordered table-hover definewidth m10">
 	<tr>
 		<td colspan="5" style="background-color: #CFCFCF;"><center><h4>个人基本信息</h4></center></td>
 	</tr>
 	<tr>
-		<td rowspan="5"><img alt="" src="<%=path %>/${SelectTeacher.utpHighTeacherPhotoUrl}"></td>
+		<td rowspan="5"><img alt="" src="<%=path %>/${SelectTechnical.utpTechnicalPhotoUrl}"></td>
 		<td id="mc"><span>姓名：</span></td>
-		<td id="msg"><span>${SelectTeacher.utpHighTeacherName }</span></td>
+		<td id="msg"><span>${SelectTechnical.utpTechnicalName }</span></td>
 		<td id="mc"><b>申报职务名称：</b></td>
-		<td id="msg"><span>${SelectTeacher.utpHighTeacherDeclarePost }</span></td>
+		<td id="msg"><span>${SelectTechnical.utpTechnicalDeclarePost }</span></td>
 	</tr>
 	<tr>
 		<td id="mc"><span>出生日期：</span></td>
-		<td id="msg"><span>${SelectTeacher.utpHighTeacherBirthday }</span></td>
+		<td id="msg"><span>${SelectTechnical.utpTechnicalBirthday }</span></td>
 		<td id="mc"><span>年龄：</span></td>
-		<td id="msg"><span>${SelectTeacher.utpHighTeacherAge }</span></td>
+		<td id="msg"><span>${SelectTechnical.utpTechnicalAge }</span></td>
 	</tr>
 	<tr>
 		<td id="mc"><span>性别：</span></td>
-		<s:if test="#SelectTeacher.utpHighTeacherGender==0">
-			<td id="msg"><span>女</span></td>
-		</s:if>
-		<s:else>
-			<td id="msg"><span>男</span></td>
-		</s:else>
+		<td id="msg"><span>${Gender }</span></td>
 		<td id="mc"><span>学历：</span></td>
-		<td id="msg"><span>${SelectTeacher.utpHighTeacherEducation }</span></td>
+		<td id="msg"><span>${SelectTechnical.utpTechnicalEducation }</span></td>
 	</tr>
 	<tr>
 		<td id="mc"><span>毕业时间：</span></td>
-		<td id="msg"><span>${SelectTeacher.utpHighTeacherGraduateTime }</span></td>
+		<td id="msg"><span>${SelectTechnical.utpTechnicalGraduateTime }</span></td>
 		<td id="mc"><span>参加工作时间：</span></td>
-		<td id="msg"><span>${SelectTeacher.utpHighTeacherCareerBegin }</span></td>
+		<td id="msg"><span>${SelectTechnical.utpTechnicalCareerBegin }</span></td>
 	</tr>
 	<tr>
 		<td id="mc"><span>毕业学校：</span></td>
-		<td id="msg"><span>${SelectTeacher.utpHighTeacherCollege }</span></td>
+		<td id="msg"><span>${SelectTechnical.utpTechnicalCollege }</span></td>
 		<td id="mc"><span>所学专业：</span></td>
-		<td id="msg"><span>${SelectTeacher.utpHighTeacherMajor }</span></td>
+		<td id="msg"><span>${SelectTechnical.utpTechnicalMajor }</span></td>
 	</tr>
 	<tr>
 		<td id="mc"><span>外语考试情况：</span></td>
-		<td id="msg"><span>${SelectTeacher.utpHighTeacherCET }</span></td>
-		<td id="mc"><span>计算机应用能力考试情况：</span></td>
-		<td id="msg" colspan="2"><span>${SelectTeacher.utpHighTeacherComputer }</span></td>
+		<td id="msg"><span>${SelectTechnical.utpTechnicalCET }</span></td>
+		<td id="mc" colspan="2"><span>计算机应用能力考试情况：</span></td>
+		<td id="msg" colspan="3"><span>${SelectTechnical.utpTechnicalComputer }</span></td>
 	</tr>	
 	<tr>
 		<td id="mc"><span>近五年年度考核：</span></td>
-		<td id="msg"><span>${SelectTeacher.utpHighTeacherAssessment }</span></td>
-		<td id="mc"><span>进修情况：</span></td>
-		<td id="msg" colspan="2"><span>${SelectTeacher.utpHighTeacherRefresher }</span></td>
-	</tr>
-	<tr>
-		<td colspan="5" height="14px" style="background-color: #CFCFCF;">其他情况</td>
-	</tr>
-	<tr>
+		<td id="msg"><span>${SelectTechnical.utpTechnicalAssessment }</span></td>
 		<td id="mc" colspan="2"><span>年资情况:</span></td>
-		<td id="msg" colspan="3">${SelectTeacher.utpHighTeacherSeniority }</td>
+		<td id="msg" colspan="3">${SelectTechnical.utpTechnicalSeniority }</td>
 	</tr>
 	<tr>
-		<td id="mc" colspan="2"><span>教学情况:</span></td>
-		<td id="msg" colspan="3">${SelectTeacher.utpHighTeacherTeaching }</td>
+		<td colspan="5" height="14px" style="background-color: #CFCFCF;"></td>
 	</tr>
 	<tr>
 		<td id="mc" colspan="2"><span>成果名称:</span></td>
-		<td id="msg" colspan="3">${SelectTeacher.utpHighTeacherAcademic }</td>
+		<td id="msg" colspan="3">${SelectTechnical.utpTechnicalAchievement }</td>
 	</tr>
 	<s:if test="#otherUrlList != null">
 	<tr style="background-color: #CFCFCF;">
-		<td id="mc" colspan="2">佐证名称</td>
+		<td id="mc" colspan="2">学术论文</td>
 		<td id="msg" colspan="3">文件下载</td>
 	</tr>
 		<!-- <td id="mc" colspan="2"></td>
@@ -129,21 +116,29 @@
 	</tr>
 	<tr>
 		<td id="mc"><span>是否通过审核：</span></td>
-		<s:if test="#SelectTeacher.utpHighTeacherIsSubmit==0">
+		<s:if test="#SelectTechnical.utpTechnicalIsSubmit==0">
 			<td id="msg"><span>未通过审核</span></td>
 		</s:if>
+		<s:elseif test="#SelectTechnical.utpTechnicalIsSubmit==null">
+			<td id="msg"><span>未提交</span></td>
+		</s:elseif>
 		<s:else>
-			<td id='msg'><span>通过审核</span></td>
+			<td id="msg"><span>通过审核</span></td>
 		</s:else>
 		<td id="mc"><span>第几次审核：</span></td>
-		<td id="msg"  colspan="2"><span>第${SelectTeacher.utpHighTeacherWhichSubmit }次审核</span></td>
+		<s:if test="#SelectTechnical.utpTechnicalCountSubmit==null">
+			<td id="msg" colspan="2"><span>未提交</span></td>
+		</s:if>
+		<s:else>
+		<td id="msg"  colspan="2"><span>第${SelectTechnical.utpTechnicalCountSubmit }次审核</span></td>
+		</s:else>
 	</tr>
 </table>
 <br>
 </center>
-<s:if test="#SelectTeacher.utpHighTeacherWhichSubmit == 0 || #session.Auditor.utpAuditorRole == 1">
+<s:if test="#SelectTechnical.utpTechnicalIsSubmit == 0">
 <div align="left" style="margin-left: 20px;"><h4>审核结果:</h4></div>
-<s:form action="addOpinion" method="post">
+<s:form action="addOpinionTechnical" method="post">
 <table border="1" class="table table-bordered table-hover definewidth m10" style="width: 900px; margin-left: 20px;">
   <tr>
     <th>是否同意通过审核</th>
@@ -162,7 +157,7 @@
   </tr>
 </table>
 <br>
-<input type="hidden" name="teacherIdCard" value="${SelectTeacher.utpHighTeacherIdCard }">
+<input type="hidden" name="technicalIdCard" value="${SelectTechnical.utpTechnicalIdCard }">
 <div align="center"><button type="reset">重置</button>&nbsp;&nbsp;<button type="submit">确认提交审核意见</button></div>
 </s:form>
 <br/><br/>

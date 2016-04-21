@@ -16,11 +16,6 @@ import com.UTPTd.dao.UtpTechnicalDao;
 @Component
 public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	
-	/*private static UtpTechnicalDao UTD = new UtpTechnicalDaoImpl();
-	private static Configuration configuration = new Configuration().configure();
-	private static ServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-	private static SessionFactory sf = (SessionFactory) configuration.buildSessionFactory(serviceRegistry);*/
-	
 	private static ApplicationContext Context = new ClassPathXmlApplicationContext("beans.xml");
 	private static SessionFactory sf = (SessionFactory) Context.getBean("sessionfactory");
 	
@@ -130,6 +125,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 		UtpTechnicalDao UTD = Context.getBean(UtpTechnicalDaoImpl.class);
 		utpTechnical = UTD.FindByTechnicalIdCard(IdCard);
 		utpTechnical.setUtpTechnicalIsSubmit(0);
+		utpTechnical.setUtpTechnicalCountSubmit(utpTechnical.getUtpTechnicalCountSubmit() + 1);
 		Session session = sf.openSession();
 		session.beginTransaction();
 		session.update(utpTechnical);
@@ -143,6 +139,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 		UtpTechnicalDao UTD = Context.getBean(UtpTechnicalDaoImpl.class);
 		utpTechnical = UTD.FindByTechnicalIdCard(IdCard);
 		utpTechnical.setUtpTechnicalIsSubmit(1);
+		utpTechnical.setUtpTechnicalCountSubmit(utpTechnical.getUtpTechnicalCountSubmit() + 1);
 		Session session = sf.openSession();
 		session.beginTransaction();
 		session.update(utpTechnical);
@@ -224,6 +221,15 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 		session.getTransaction().commit();
 		session.close();
 		return utpTechnical.getUtpTechnicalPublication();
+	}
+
+	@Override
+	public void updateTechnicals(UtpTechnical utpTechnical) {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.saveOrUpdate(utpTechnical);
+		session.getTransaction().commit();
+		session.close();
 	}
 
 }

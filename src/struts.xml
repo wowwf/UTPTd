@@ -102,8 +102,36 @@
         	<interceptor-ref name="defaultStack"></interceptor-ref>
         	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
         </action>
-        <action name="addOpinion" class="com.UTPTd.action.AuditorCheckedTeacher.java">
-        	<result name="success" type="redirect"></result>
+        <action name="QuerySelectTechnical" class="com.UTPTd.action.AuditorQueryOneTechnical">
+        	<result name="success">/Page/Auditor/ShowOneTechnical.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
+        </action>
+        <action name="addOpinion" class="com.UTPTd.action.AuditorCheckedTeacher">
+        	<result name="success" type="chain">
+        		<param name="actionName">QueryTeacher</param>
+        		<param name="currentPage">${currentPage}</param>
+        		<param name="everyPage">${everyPage}</param>
+        	</result>
+        	<result name="error">/Error.jsp</result>
+        	<result name="unLogin">/GToLogin.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
+        </action>
+        <action name="addOpinionTechnical" class="com.UTPTd.action.AuditorCheckedTechnical">
+        	<result name="success" type="chain">
+        		<param name="actionName">QueryTechnical</param>
+        		<param name="currentPage">${currentPage}</param>
+        		<param name="everyPage">${everyPage}</param>
+        	</result>
+        	<result name="error">/Error.jsp</result>
+        	<result name="unLogin">/GToLogin.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
+        </action>
+        <action name="QueryLikeTeacher" class="com.UTPTd.action.AuditorLikeQueryTeacher">
+        	<result name="success">/Page/Auditor/ShowAll.jsp</result>
+        	<result name="error">/Page/Auditor/AuditorSelect.jsp</result>
         	<interceptor-ref name="defaultStack"></interceptor-ref>
         	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
         </action>

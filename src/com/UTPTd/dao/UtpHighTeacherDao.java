@@ -12,6 +12,8 @@ public interface UtpHighTeacherDao {
 	void InsertHighTeacher(Integer IdCard, String TearcherName);
 	//更新申报人信息
 	void UpdateHighTeacher(UtpHighTeacher utpHighTeacher);
+	//更新
+	void updateHighTeahcers(UtpHighTeacher utpHighTeacher);
 	//查找是否有这个人
 	UtpHighTeacher FindByHighTeacherIdCard(Integer IdCard);
 	//审核是否通过

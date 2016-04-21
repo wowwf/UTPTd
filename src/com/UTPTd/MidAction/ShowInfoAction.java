@@ -70,17 +70,18 @@ public class ShowInfoAction extends ActionSupport {
 				}
 				context.put("highTeacher", uTeacher);
 				//取出其他佐证的字符串，分解成佐证名称，并构造文件路径
-				String[] nameList = UHTD.FindOtherFileName(uTeacher.getUtpHighTeacherIdCard()).split(",");
-				ArrayList<NamePath> urlList = new ArrayList<NamePath>();
-				//NamePath namePath = new NamePath();
-				for (int i = 0; i < nameList.length; i++) {
-					NamePath namePath = new NamePath();
-					String[] stringList = nameList[i].split("@");
-					namePath.setName(stringList[0]);
-					namePath.setPath(nameList[i]);
-					urlList.add(namePath);
+				if (uTeacher.getUtpHighTeacherOther() != null) {
+					String[] nameList = UHTD.FindOtherFileName(uTeacher.getUtpHighTeacherIdCard()).split(",");
+					ArrayList<NamePath> urlList = new ArrayList<NamePath>();
+					for (int i = 0; i < nameList.length; i++) {
+						NamePath namePath = new NamePath();
+						String[] stringList = nameList[i].split("@");
+						namePath.setName(stringList[0]);
+						namePath.setPath(nameList[i]);
+						urlList.add(namePath);
+					}
+					context.put("otherUrlList", urlList);
 				}
-				context.put("otherUrlList", urlList);
 				flag = "teachersuccess";
 			} else {
 				flag = "unLogin";
@@ -97,16 +98,19 @@ public class ShowInfoAction extends ActionSupport {
 				}
 				context.put("TechnicalInfo", utpTechnical);
 				//查询出的论文情况的字符串，按逗号分别隔开
-				String[] nameList = UTD.FindOtherFile(utpTechnical.getUtpTechnicalIdCard()).split(",");
-				ArrayList<NamePath> urlList = new ArrayList<NamePath>();
-				for (int i = 0; i < nameList.length; i++) {
-					NamePath namePath = new NamePath();
-					String[] stringList = nameList[i].split("@");
-					namePath.setName(stringList[0]);
-					namePath.setPath(nameList[i]);
-					urlList.add(namePath);
+				if (utpTechnical.getUtpTechnicalPublication() != null) {
+					String[] nameList = UTD.FindOtherFile(utpTechnical.getUtpTechnicalIdCard()).split(",");
+					ArrayList<NamePath> urlList = new ArrayList<NamePath>();
+					for (int i = 0; i < nameList.length; i++) {
+						NamePath namePath = new NamePath();
+						String[] stringList = nameList[i].split("@");
+						namePath.setName(stringList[0]);
+						namePath.setPath(nameList[i]);
+						urlList.add(namePath);
+					}
+					context.put("otherUrlList", urlList);
+					
 				}
-				context.put("otherUrlList", urlList);
 				flag = "technicalsuccess";
 			} else {
 				flag = "unLogin";

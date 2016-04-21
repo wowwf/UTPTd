@@ -7,10 +7,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import com.UTPTd.bean.AuditorOpinion;
 import com.UTPTd.dao.OpinionDao;
 
+@Component
 public class OpinionDaoImpl implements OpinionDao {
 
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
