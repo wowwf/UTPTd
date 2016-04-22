@@ -107,5 +107,21 @@ public class UtpAuditorServicesImpl implements UTPAuditorServices {
 		PageResult result = new PageResult(page, utpTechnicals);
 		return result;
 	}
+
+	@Override
+	public boolean isRegiest(Integer iD, String uName) {
+		UtpAuditorDao uDao = aContext.getBean(UtpAuditorDaoImpl.class);
+		if (uDao.SelectByIdName(iD, uName) != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public void doResetPass(Integer iD, String Name, String passWord) {
+		UtpAuditorDao uDao = aContext.getBean(UtpAuditorDaoImpl.class);
+		uDao.updatePassByIdName(iD, Name, passWord);
+	}
 	
 }

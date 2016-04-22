@@ -29,12 +29,11 @@ public class OpinionDaoImpl implements OpinionDao {
 	}
 
 	@Override
-	public List<AuditorOpinion> findOpinion(Integer idCard, Integer AuditorId) {
+	public List<AuditorOpinion> findOpinion(Integer idCard) {
 		Session session = sf.openSession();
 		session.beginTransaction();
-		String hql = "from AuditorOpinion as a where a.auditorId = :auditor and a.teacherId = :teacher";
+		String hql = "from AuditorOpinion as a where a.teacherId = :teacher";
 		Query query = session.createQuery(hql);
-		query.setParameter("auditor", AuditorId);
 		query.setParameter("teacher", idCard);
 		List<AuditorOpinion> aList = query.list();
 		session.getTransaction().commit();

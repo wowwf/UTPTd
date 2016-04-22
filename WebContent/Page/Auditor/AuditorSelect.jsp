@@ -17,7 +17,7 @@
 	<s:if test="#sel == 0">
 	<center>
 	<br><br>
-	<s:form action="QueryLikeTeacher">
+	<s:form action="QueryLikeTeacher?everyPage=2">
 	<table class="table table-bordered table-hover definewidth m10" style="width: 620px;">
 		<tr>
 			<td colspan="2" align="center">根据身份证查询</td>
@@ -34,7 +34,7 @@
 	<s:else>
 	<center>
 	<br><br>
-	<s:form action="QueryLikeTeacher">
+	<s:form action="QueryLikeTeacher?everyPage=2">
 	<table class="table table-bordered table-hover definewidth m10" style="width: 620px;">
 		<tr>
 			<td colspan="2" align="center">根据姓名查询</td>
@@ -53,14 +53,19 @@
 		<s:if test="#sel == 0">
 	<center>
 	<br><br>
-	<s:form action="QueryLikeTechnical">
-	<table class="table table-bordered table-hover definewidth m10" style="width: 620px;">
+	<s:form action="ChooseQuery?everyPage=2">
+	<table class="table table-bordered table-hover definewidth m10" style="width: 720px;">
 		<tr>
 			<td colspan="2" align="center">根据身份证查询</td>
 		</tr>
 		<tr>
 			<td align="right"><span>身份证号码:</span></td>
-			<td><input type="text" name="findIdCard" style="width: 320px;"></td>
+			<td><input type="text" name="findIdCard" style="width: 320px;">
+			<select name="Post" style="width :120px;">
+				<option value="0" selected="selected">教师</option>
+				<option value="1">技术人员</option>
+			</select>
+			</td>
 		</tr>
 			<s:submit label="开始查询" value="开始查询"></s:submit>
 	</table>
@@ -70,14 +75,19 @@
 	<s:else>
 	<center>
 	<br><br>
-	<s:form action="QueryLikeTechnical">
+	<s:form action="ChooseQuery?everyPage=2">
 	<table class="table table-bordered table-hover definewidth m10" style="width: 620px;">
 		<tr>
 			<td colspan="2" align="center">根据姓名查询</td>
 		</tr>
 		<tr>
 			<td align="right"><span>姓名:</span></td>
-			<td><input type="text" name="findName" style="width: 320px;"></td>
+			<td><input type="text" name="findName" style="width: 320px;">
+			<select name="post" style="width :120px;">
+				<option value="0" selected="selected">教师</option>
+				<option value="1">技术人员</option>
+			</select>
+			</td>
 		</tr>
 			<s:submit label="开始查询" value="开始查询"></s:submit>
 	</table>

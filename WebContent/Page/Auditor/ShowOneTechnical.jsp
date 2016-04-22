@@ -162,6 +162,11 @@
 </s:form>
 <br/><br/>
 </s:if>
+<s:elseif test="#SelectTechnical.utpTechnicalIsSubmit != null"> 
+	<center>
+		<a href="ShowOpinion.action?tid=${SelectTechnical.utpTechnicalIdCard }&tname=${SelectTechnical.utpTechnicalName }">查看审核情况</a>
+	</center>
+</s:elseif>
 <br/><br/><br/>
 </body>
 </html>

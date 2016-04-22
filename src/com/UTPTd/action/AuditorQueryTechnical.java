@@ -25,7 +25,7 @@ public class AuditorQueryTechnical extends ActionSupport {
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 		
 	private int currentPage;
-	private List<Integer> everyPage;
+	private int everyPage;
 	
 	public int getCurrentPage() {
 		return currentPage;
@@ -35,11 +35,11 @@ public class AuditorQueryTechnical extends ActionSupport {
 		this.currentPage = currentPage;
 	}
 
-	public List<Integer> getEveryPage() {
+	public int getEveryPage() {
 		return everyPage;
 	}
 
-	public void setEveryPage(List<Integer> everyPage) {
+	public void setEveryPage(int everyPage) {
 		this.everyPage = everyPage;
 	}
 
@@ -57,26 +57,26 @@ public class AuditorQueryTechnical extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		int everyPageNum = 20;
-		everyPage.set(0, getEvery(everyPage.get(0)));
-		switch (everyPage.get(0)) {
-		case 0:
-			everyPageNum = 1;
-			break;
-		case 1:
-			everyPageNum = 10;
-			break;
-		case 2:
-			everyPageNum = 20;
-			break;
-		case 3:
-			everyPageNum = 50;
-			break;
-		case 4:
-			everyPageNum = 100;
-			break;
-		default:
-			everyPageNum = 20;
-			break;
+		everyPage = getEvery(everyPage);
+		switch (everyPage) {
+			case 0:
+				everyPageNum = 1;
+				break;
+			case 1:
+				everyPageNum = 10;
+				break;
+			case 2:
+				everyPageNum = 20;
+				break;
+			case 3:
+				everyPageNum = 50;
+				break;
+			case 4:
+				everyPageNum = 100;
+				break;
+			default:
+				everyPageNum = 20;
+				break;
 		}
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		UtpAuditor utpAuditor = (UtpAuditor) session.get("Auditor");

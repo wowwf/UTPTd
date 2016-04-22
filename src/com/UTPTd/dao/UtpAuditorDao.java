@@ -45,4 +45,8 @@ public interface UtpAuditorDao {
 	List<UtpTechnical> getTechnicalLikeId(Integer IdCard, Page page);
 	
 	Integer getTechnicalLikeIdCount(Integer IdCard);
+	//查找是否存在
+	UtpAuditor SelectByIdName(Integer Id, String Name);
+	//修改密码
+	void updatePassByIdName(Integer Id, String Name, String pass);
 }

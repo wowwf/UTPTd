@@ -132,6 +132,9 @@
 		<s:if test="#SelectTeacher.utpHighTeacherIsSubmit==0">
 			<td id="msg"><span>未通过审核</span></td>
 		</s:if>
+		<s:elseif test="#SelectTeacher.utpHighTeacherIsSubmit==null">
+			<td id="msg"><span>未提交</span></td>
+		</s:elseif>
 		<s:else>
 			<td id='msg'><span>通过审核</span></td>
 		</s:else>
@@ -141,7 +144,7 @@
 </table>
 <br>
 </center>
-<s:if test="#SelectTeacher.utpHighTeacherWhichSubmit == 0 || #session.Auditor.utpAuditorRole == 1">
+<s:if test="#SelectTeacher.utpHighTeacherWhichSubmit == 0 || #session.Auditor.utpAuditorRole == 1 && #SelectTeacher.utpHighTeacherWhichSubmit == 1">
 <div align="left" style="margin-left: 20px;"><h4>审核结果:</h4></div>
 <s:form action="addOpinion" method="post">
 <table border="1" class="table table-bordered table-hover definewidth m10" style="width: 900px; margin-left: 20px;">
@@ -167,6 +170,11 @@
 </s:form>
 <br/><br/>
 </s:if>
+<s:elseif test="#SelectTeacher.utpHighTeacherIsSubmit != null">
+	<center>
+		<a href="ShowOpinion.action?tid=${SelectTeacher.utpHighTeacherIdCard }&tname=${SelectTeacher.utpHighTeacherName }">查看审核情况</a>
+	</center>
+</s:elseif>
 <br/><br/><br/>
 </body>
 </html>

@@ -2,15 +2,12 @@ package com.UTPTd.interceptor;
 
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
-
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
-@Component
-public class HighTeacherLoginInterceptor extends AbstractInterceptor {
+public class AdminLoginInterceptor extends AbstractInterceptor {
 
 	/**
 	 * 
@@ -24,15 +21,15 @@ public class HighTeacherLoginInterceptor extends AbstractInterceptor {
 		Object highteacher = session.get("HighTeacher");
 		Object technical = session.get("Technical");
 		Object admin = session.get("Admin");
-		if (highteacher != null) {
+		if (admin != null) {
 			if (auditor != null) {
 				session.remove("Auditor");
+			} 
+			if (highteacher != null) {
+				session.remove("HighTeacher");
 			}
 			if (technical != null) {
 				session.remove("Technical");
-			}
-			if (admin != null) {
-				session.remove("Admin");
 			}
 			return arg0.invoke();
 		} else {

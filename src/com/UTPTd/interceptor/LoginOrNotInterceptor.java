@@ -24,11 +24,14 @@ public class LoginOrNotInterceptor extends AbstractInterceptor {
 		Object auditor = session.get("Auditor");
 		Object highteacher = session.get("HighTeacher");
 		Object technical = session.get("Technical");
+		Object admin = session.get("Admin");
 		if (auditor != null) {
 			return arg0.invoke();
 		} else if (highteacher != null) {
 			return arg0.invoke();
 		} else if (technical != null) {
+			return arg0.invoke();
+		} else if (admin != null) {
 			return arg0.invoke();
 		} else {
 			return Action.LOGIN;

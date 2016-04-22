@@ -66,12 +66,17 @@
 		window.top.location.href = "<%=basepath %>Page/AALogin.jsp";
 	}
 	function changNum() {
-		var selectVal = $("#everyNum").find("option:selected").val();
-		window.location.href = "QueryTeacher.action?currentPage=1&everyPage=" + selectVal;
+		var findid = "${findIdCard}";
+		var findName = "${findName}";
+		var selec = document.getElementById("everyNum2").value;
+		window.location.href = "QueryLikeTeacher.action?currentPage=1&everyPage=" + selec + "&findIdCard=" + findid + "&findName=" + findName;
 	}
 	function changTea() {
-		var selectVal = $("#everyNum").find("option:selected").val();
-		window.location.href = "QueryTechnical.action?currentPage=1&everyPage=" + selectVal;
+		var findid = "${findIdCard}";
+		var findName = "${findName}";
+		var sele = document.getElementById("everyNum").value;
+		alert(sele);
+		window.location.href = "QueryLikeTechnical.action?currentPage=1" + "&findIdCard=" + findid + "&findName=" + findName + "&everyPage=" + sele;
 	}
 </script>
 </head>
@@ -106,21 +111,21 @@
 				  	<td colspan="7" align="right" style="text-align: right;">
 				  		共${page.totalCount}条纪录，当前第${page.currentPage}/${page.totalPage}页，每页${page.everyPage}条纪录
 				  	<s:if test="#request.page.hasPrePage">
-                		<a href="QueryTechnical.action?currentPage=1">首页</a> | 
-                		<a href="QueryTechnical.action?currentPage=${page.currentPage - 1}">上一页</a> | 
+                		<a href="QueryTechnical.action?currentPage=1&findId=${findIdCard }&findName=${findName}">首页</a> | 
+                		<a href="QueryTechnical.action?currentPage=${page.currentPage - 1}&findId=${findIdCard }&findName=${findName}">上一页</a> | 
                		</s:if>
                		<s:else>
                		首页 | 上一页 | 
                		</s:else>
                		<s:if test="#request.page.hasNextPage">
-                		<a href="QueryTechnical.action?currentPage=${page.currentPage + 1}">下一页</a> | 
-                		<a href="QueryTechnical.action?currentPage=${page.totalPage}">尾页</a>
+                		<a href="QueryTechnical.action?currentPage=${page.currentPage + 1}&findId=${findIdCard }&findName=${findName}">下一页</a> | 
+                		<a href="QueryTechnical.action?currentPage=${page.totalPage}&findId=${findIdCard }&findName=${findName}">尾页</a>
                		</s:if>
                		<s:else>
                		下一页 | 尾页
                		</s:else>
                		&nbsp;
-               		<select id="everyNum" name="everyNum" style="width:80px; height: 20px; font-size: 12px;" onchange="changTea()">
+               		<select id="everyNum" style="width:80px; height: 20px; font-size: 12px;" onchange="changTea()">
                			<option selected="selected">--页条数--</option>
                			<option value="0">1</option>
                			<option value="1">10</option>
@@ -164,21 +169,21 @@
 				  	<td colspan="7" align="right" style="text-align: right;">
 				  		共${page.totalCount}条纪录，当前第${page.currentPage}/${page.totalPage}页，每页${page.everyPage}条纪录
 				  	<s:if test="#request.page.hasPrePage">
-                		<a href="QueryTeacher.action?currentPage=1">首页</a> | 
-                		<a href="QueryTeacher.action?currentPage=${page.currentPage - 1}">上一页</a> | 
+                		<a href="QueryTeacher.action?currentPage=1&findId=${findIdCard }&findName=${findName}">首页</a> | 
+                		<a href="QueryTeacher.action?currentPage=${page.currentPage - 1}&findId=${findIdCard }&findName=${findName}">上一页</a> | 
                		</s:if>
                		<s:else>
                		首页 | 上一页 | 
                		</s:else>
                		<s:if test="#request.page.hasNextPage">
-                		<a href="QueryTeacher.action?currentPage=${page.currentPage + 1}">下一页</a> | 
-                		<a href="QueryTeacher.action?currentPage=${page.totalPage}">尾页</a>
+                		<a href="QueryTeacher.action?currentPage=${page.currentPage + 1}&findId=${findIdCard }&findName=${findName}">下一页</a> | 
+                		<a href="QueryTeacher.action?currentPage=${page.totalPage}&findId=${findIdCard }&findName=${findName}">尾页</a>
                		</s:if>
                		<s:else>
                		下一页 | 尾页
                		</s:else>
                		&nbsp;
-               		<select id="everyNum" name="everyNum" style="width:80px; height: 20px; font-size: 12px;" onchange="changNum()">
+               		<select  id="everyNum2" style="width:80px; height: 20px; font-size: 12px;" onchange="changNum()">
                			<option selected="selected">--页条数--</option>
                			<option value="0">1</option>
                			<option value="1">10</option>

@@ -15,19 +15,16 @@
     		<interceptor name="HighTeacherLoginInterceptor" class="com.UTPTd.interceptor.HighTeacherLoginInterceptor"></interceptor>
     		<interceptor name="TechnicalLoginInterceptor" class="com.UTPTd.interceptor.TechnicalLoginInterceptor"></interceptor>
     		<interceptor name="LoginOrNotInterceptor" class="com.UTPTd.interceptor.LoginOrNotInterceptor"></interceptor>
+    		<interceptor name="AdminLoginInterceptor" class="com.UTPTd.interceptor.AdminLoginInterceptor"></interceptor>
     	</interceptors>
     	<global-results>
     		<result name="login">/MiddlePage/ToLogin.jsp</result>
     	</global-results>
-    	<!-- <action name="AdminLogin" class="com.UTPTd.action.UtpAdminLoginAction">
-    		<result name="success">/MiddlePage/AdminIndex.jsp</result>
-    	</action> -->
         <action name="AALogin" class="com.UTPTd.action.AALoginAction">
         	<result name="success">/Page/index.jsp</result>
         	<result name="error">/Error.jsp</result>
         	<result name="teacherlog">/Page/index.jsp</result>
         	<result name="technicallog">/Page/index.jsp</result>
-        	<!-- <result name="adminLog" type="chain">AdminLogin</result> -->
         	<result name="adminLog">/MiddlePage/AdminIndex.jsp</result>
         </action>
         <action name="Scope" class="com.UTPTd.MidAction.SessionScope">
@@ -84,6 +81,8 @@
         <action name="AdminClear" class="com.UTPTd.action.Admincontroller">
         	<result name="success">/MiddlePage/NoFile.jsp</result>
         	<result name="error">/MiddlePage/NoFile.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="AdminLoginInterceptor"></interceptor-ref>
         </action>
         <action name="QueryTeacher" class="com.UTPTd.action.AuditorQueryTeacher">
         	<result name="success">/Page/Auditor/ShowAll.jsp</result>
@@ -130,16 +129,37 @@
         	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
         </action>
         <action name="QueryLikeTeacher" class="com.UTPTd.action.AuditorLikeQueryTeacher">
-        	<result name="success">/Page/Auditor/ShowAll.jsp</result>
+        	<result name="success">/Page/Auditor/likeShow.jsp</result>
         	<result name="error">/Page/Auditor/AuditorSelect.jsp</result>
         	<interceptor-ref name="defaultStack"></interceptor-ref>
         	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
         </action>
         <action name="QueryLikeTechnical" class="com.UTPTd.action.AuditorLikeQueryTechnical">
-        	<result name="success">/Page/Auditor/ShowAll.jsp</result>
+        	<result name="success">/Page/Auditor/likeShow.jsp</result>
         	<result name="error">/Page/Auditor/AuditorSelect.jsp</result>
         	<interceptor-ref name="defaultStack"></interceptor-ref>
         	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
+        </action>
+        <action name="ChooseQuery" class="com.UTPTd.MidAction.ChooseQuery">
+        	<result name="queryT" type="chain">QueryLikeTeacher</result>
+        	<result name="queryL" type="chain">QueryLikeTechnical</result>
+        	<result name="error">/Page/Auditor/AuditorSelect.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
+        </action>
+        <action name="ShowOpinion" class="com.UTPTd.action.ShowAuditorOpinion">
+        	<result name="success">/Page/Auditor/ShowOpinion.jsp</result>
+        	<result name="error">/Error.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="AuditorLoginInterceptor"></interceptor-ref>
+        </action>
+        <action name="isRegiest" class="com.UTPTd.MidAction.BooleanIsRegiestAction">
+        	<result name="success">/Page/User/resetPass.jsp</result>
+        	<result name="error">/Error.jsp</result>
+        </action>
+        <action name="resetPass" class="com.UTPTd.action.ResetPassAction">
+        	<result name="success">/GToLogin.jsp</result>
+        	<result name="error">/Error.jsp</result>
         </action>
     </package>
 	

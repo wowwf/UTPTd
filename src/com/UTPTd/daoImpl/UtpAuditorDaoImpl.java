@@ -2,6 +2,8 @@ package com.UTPTd.daoImpl;
 
 import java.util.List;
 
+import oracle.net.aso.l;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -248,6 +250,32 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 		session.getTransaction().commit();
 		session.close();
 		return num;
+	}
+
+	@Override
+	public UtpAuditor SelectByIdName(Integer Id, String Name) {
+		String hql = "from UtpAuditor as a where a.utpAuditorIdCard = :iD and a.utpAuditorName = :nAme";
+		Session session = sf.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery(hql);
+		query.setParameter("iD", Id);
+		query.setParameter("nAme", Name);
+		List<UtpAuditor> uList = query.list();
+		session.getTransaction().commit();
+		session.close();
+		return uList.get(0);
+	}
+
+	@Override
+	public void updatePassByIdName(Integer Id, String Name, String pass) {
+		UtpAuditorDao uDao = Context.getBean(UtpAuditorDaoImpl.class);
+		UtpAuditor uAuditor = uDao.SelectByIdName(Id, Name);
+		uAuditor.setUtpAuditorPassword(pass);
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.update(uAuditor);
+		session.getTransaction().commit();
+		session.close();
 	}
 
 }

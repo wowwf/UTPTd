@@ -25,4 +25,8 @@ public interface UTPAuditorServices {
 	PageResult LikeQueryTechnical(String Name, Page page);
 	
 	PageResult LikeQueryTechnicalById(Integer IdCard, Page page);
+	//判断是否存在
+	boolean isRegiest(Integer iD, String uName);
+	//修改密码
+	void doResetPass(Integer iD, String Name, String passWord);
 }
