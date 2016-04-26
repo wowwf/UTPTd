@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "utp_HighTeacher")
 public class UtpHighTeacher {
-	private Integer UtpHighTeacherIdCard;
+	private String UtpHighTeacherIdCard;
 	private String UtpHighTeacherName;
 	private String UtpHighTeacherGender;
 	private Integer UtpHighTeacherAge;
@@ -37,7 +37,7 @@ public class UtpHighTeacher {
 	private Integer UtpHighTeacherWhichSubmit;//0.默认值|1。院系审核|2。人事审核
 	@Id
 	@Column(unique = true)
-	public Integer getUtpHighTeacherIdCard() {
+	public String getUtpHighTeacherIdCard() {
 		return UtpHighTeacherIdCard;
 	}
 	public String getUtpHighTeacherName() {
@@ -112,7 +112,7 @@ public class UtpHighTeacher {
 	public Integer getUtpHighTeacherWhichSubmit() {
 		return UtpHighTeacherWhichSubmit;
 	}
-	public void setUtpHighTeacherIdCard(Integer utpHighTeacherIdCard) {
+	public void setUtpHighTeacherIdCard(String utpHighTeacherIdCard) {
 		UtpHighTeacherIdCard = utpHighTeacherIdCard;
 	}
 	public void setUtpHighTeacherName(String utpHighTeacherName) {

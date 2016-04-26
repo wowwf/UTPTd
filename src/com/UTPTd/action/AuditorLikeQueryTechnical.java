@@ -25,7 +25,7 @@ public class AuditorLikeQueryTechnical extends ActionSupport {
 	
 	private int currentPage;
 	
-	private Integer findIdCard;
+	private String findIdCard;
 	
 	private String findName;
 	
@@ -39,11 +39,11 @@ public class AuditorLikeQueryTechnical extends ActionSupport {
 		this.currentPage = currentPage;
 	}
 	
-	public Integer getFindIdCard() {
+	public String getFindIdCard() {
 		return findIdCard;
 	}
 
-	public void setFindIdCard(Integer findIdCard) {
+	public void setFindIdCard(String findIdCard) {
 		this.findIdCard = findIdCard;
 	}
 

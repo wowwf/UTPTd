@@ -24,7 +24,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	private static SessionFactory sf = (SessionFactory) Context.getBean("sessionfactory");
 	
 	@Override
-	public void InsertHighTeacher(Integer IdCard, String TearcherName) {
+	public void InsertHighTeacher(String IdCard, String TearcherName) {
 		UtpHighTeacher highTeacher = Context.getBean(UtpHighTeacher.class);
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -99,7 +99,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	}
 
 	@Override
-	public UtpHighTeacher FindByHighTeacherIdCard(Integer IdCard) {
+	public UtpHighTeacher FindByHighTeacherIdCard(String IdCard) {
 		Session session = sf.openSession();
 		session.beginTransaction();
 		UtpHighTeacher utpHighTeacher = (UtpHighTeacher) session.get(UtpHighTeacher.class, IdCard);
@@ -109,7 +109,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	}
 
 	@Override
-	public Integer FindIsPassByHighTeacherIdCard(Integer IdCard) {
+	public Integer FindIsPassByHighTeacherIdCard(String IdCard) {
 		UtpHighTeacherDao UHTD = Context.getBean(UtpHighTeacherDaoImpl.class);
 		UtpHighTeacher utpHighTeacher = Context.getBean(UtpHighTeacher.class);
 		utpHighTeacher = UHTD.FindByHighTeacherIdCard(IdCard);
@@ -117,7 +117,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	}
 
 	@Override
-	public Integer FindSubmitByHighTeacherIdCard(Integer IdCard) {
+	public Integer FindSubmitByHighTeacherIdCard(String IdCard) {
 		UtpHighTeacherDao UHTD = Context.getBean(UtpHighTeacherDaoImpl.class);
 		UtpHighTeacher utpHighTeacher = Context.getBean(UtpHighTeacher.class);
 		utpHighTeacher = UHTD.FindByHighTeacherIdCard(IdCard);
@@ -125,7 +125,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	}
 
 	@Override
-	public Integer FindWitchSubmitByHighTeacherIdCard(Integer IdCard) {
+	public Integer FindWitchSubmitByHighTeacherIdCard(String IdCard) {
 		UtpHighTeacherDao UHTD = Context.getBean(UtpHighTeacherDaoImpl.class);
 		UtpHighTeacher utpHighTeacher = Context.getBean(UtpHighTeacher.class);
 		utpHighTeacher = UHTD.FindByHighTeacherIdCard(IdCard);
@@ -133,7 +133,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	}
 
 	@Override
-	public void UpdateSubmitIsNotPass(Integer IdCard) {
+	public void UpdateSubmitIsNotPass(String IdCard) {
 		UtpHighTeacherDao UHTD = Context.getBean(UtpHighTeacherDaoImpl.class);
 		UtpHighTeacher utpHighTeacher = Context.getBean(UtpHighTeacher.class);
 		utpHighTeacher = UHTD.FindByHighTeacherIdCard(IdCard);
@@ -142,7 +142,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	}
 
 	@Override
-	public void UpdateWhichSubmit(Integer IdCard, Integer WhichSubmit) {
+	public void UpdateWhichSubmit(String IdCard, Integer WhichSubmit) {
 		UtpHighTeacherDao UHTD = Context.getBean(UtpHighTeacherDaoImpl.class);
 		UtpHighTeacher utpHighTeacher = Context.getBean(UtpHighTeacher.class);
 		utpHighTeacher = UHTD.FindByHighTeacherIdCard(IdCard);
@@ -166,7 +166,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	}
 
 	@Override
-	public void UpdateSubmitIsPass(Integer IdCard) {
+	public void UpdateSubmitIsPass(String IdCard) {
 		UtpHighTeacherDao UHTD = Context.getBean(UtpHighTeacherDaoImpl.class);
 		UtpHighTeacher utpHighTeacher = Context.getBean(UtpHighTeacher.class);
 		utpHighTeacher = UHTD.FindByHighTeacherIdCard(IdCard);
@@ -250,7 +250,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	}
 
 	@Override
-	public void PersonImgUpload(Integer IdCard, String savePath) {
+	public void PersonImgUpload(String IdCard, String savePath) {
 		UtpHighTeacher highTeacher = Context.getBean(UtpHighTeacher.class);
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -262,7 +262,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	}
 
 	@Override
-	public String FindPersonImageUrl(Integer IdCard) {
+	public String FindPersonImageUrl(String IdCard) {
 		UtpHighTeacher highTeacher = Context.getBean(UtpHighTeacher.class);
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -273,7 +273,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	}
 
 	@Override
-	public void OthersUpload(Integer IdCard, StringBuffer fileName) {
+	public void OthersUpload(String IdCard, StringBuffer fileName) {
 		UtpHighTeacher highTeacher = Context.getBean(UtpHighTeacher.class);
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -284,7 +284,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 	}
 
 	@Override
-	public String FindOtherFileName(Integer IdCard) {
+	public String FindOtherFileName(String IdCard) {
 		UtpHighTeacher highTeacher = Context.getBean(UtpHighTeacher.class);
 		Session session = sf.openSession();
 		session.beginTransaction();

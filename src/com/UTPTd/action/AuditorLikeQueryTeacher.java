@@ -25,7 +25,7 @@ public class AuditorLikeQueryTeacher extends ActionSupport {
 	
 	private int currentPage;
 	
-	private Integer findIdCard;
+	private String findIdCard;
 	
 	private String findName;
 	
@@ -35,7 +35,7 @@ public class AuditorLikeQueryTeacher extends ActionSupport {
 		return currentPage;
 	}
 
-	public Integer getFindIdCard() {
+	public String getFindIdCard() {
 		return findIdCard;
 	}
 
@@ -47,7 +47,7 @@ public class AuditorLikeQueryTeacher extends ActionSupport {
 		this.currentPage = currentPage;
 	}
 
-	public void setFindIdCard(Integer findIdCard) {
+	public void setFindIdCard(String findIdCard) {
 		this.findIdCard = findIdCard;
 	}
 

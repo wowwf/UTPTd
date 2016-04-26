@@ -17,12 +17,12 @@ public class BooleanIsRegiestAction extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private Integer iD;
+	private String iD;
 	private String uName;
-	public Integer getiD() {
+	public String getiD() {
 		return iD;
 	}
-	public void setiD(Integer iD) {
+	public void setiD(String iD) {
 		this.iD = iD;
 	}
 	public String getuName() {

@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "utp_Auditor")
 public class UtpAuditor {
-	private Integer UtpAuditorIdCard;
+	private String UtpAuditorIdCard;
 	private String UtpAuditorName;
 	private String UtpAuditorPassword;
 	private Integer UtpAuditorRole;//0.院系	1.人事
 	@Id
 	@Column(unique = true)
-	public Integer getUtpAuditorIdCard() {
+	public String getUtpAuditorIdCard() {
 		return UtpAuditorIdCard;
 	}
 	public String getUtpAuditorName() {
@@ -29,7 +29,7 @@ public class UtpAuditor {
 	public Integer getUtpAuditorRole() {
 		return UtpAuditorRole;
 	}
-	public void setUtpAuditorIdCard(Integer utpAuditorIdCard) {
+	public void setUtpAuditorIdCard(String utpAuditorIdCard) {
 		UtpAuditorIdCard = utpAuditorIdCard;
 	}
 	public void setUtpAuditorName(String utpAuditorName) {

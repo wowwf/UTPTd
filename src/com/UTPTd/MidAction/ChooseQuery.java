@@ -10,11 +10,11 @@ public class ChooseQuery extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer post;
-	private Integer findIdCard;
+	private String findIdCard;
 	private String findName;
 	private int everyPage;
 	
-	public Integer getFindIdCard() {
+	public String getFindIdCard() {
 		return findIdCard;
 	}
 	
@@ -22,7 +22,7 @@ public class ChooseQuery extends ActionSupport {
 		return findName;
 	}
 	
-	public void setFindIdCard(Integer findIdCard) {
+	public void setFindIdCard(String findIdCard) {
 		this.findIdCard = findIdCard;
 	}
 	

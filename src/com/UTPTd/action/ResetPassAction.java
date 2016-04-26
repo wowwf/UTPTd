@@ -16,11 +16,11 @@ public class ResetPassAction extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private Integer iD;
+	private String iD;
 	private String uName;
 	private String passWord;
 	
-	public Integer getiD() {
+	public String getiD() {
 		return iD;
 	}
 	public String getuName() {
@@ -29,7 +29,7 @@ public class ResetPassAction extends ActionSupport {
 	public String getPassWord() {
 		return passWord;
 	}
-	public void setiD(Integer iD) {
+	public void setiD(String iD) {
 		this.iD = iD;
 	}
 	public void setuName(String uName) {

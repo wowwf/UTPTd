@@ -10,6 +10,6 @@ import com.UTPTd.bean.AuditorOpinion;
 public interface UtpOpinionServices {
 
 	//查询观点
-	List<AuditorOpinion> findByTidAndAid(Integer Tid);
+	List<AuditorOpinion> findByTidAndAid(String Tid);
 	
 }

@@ -12,11 +12,11 @@ import com.UTPTd.util.Page;
 @Component
 public interface UtpAuditorDao {
 	//根据身份证号查询是否有这个用户
-	UtpAuditor FindById(Integer IdCard);
+	UtpAuditor FindById(String IdCard);
 	//根据身份证号查询该用户的密码
-	String FindPsdById(Integer IdCard);
+	String FindPsdById(String IdCard);
 	//根据身份证号查询用户权限
-	Integer FindRoleById(Integer IdCard);
+	Integer FindRoleById(String IdCard);
 	//查询所有教师参与审核人员的未通过院系审核的姓名，身份证号码，申报职称，目前职位
 	List<UtpHighTeacher> getList(Page page);
 	
@@ -38,15 +38,15 @@ public interface UtpAuditorDao {
 	
 	Integer getTechnicalLikeNameCount(String Name);
 	//限定职务进行身份证号码模糊查询
-	List<UtpHighTeacher> getHighTeacherLikeId(Integer IdCard, Page page);
+	List<UtpHighTeacher> getHighTeacherLikeId(String IdCard, Page page);
 	
-	Integer getHighTeacherLikeIdCount(Integer IdCard);
+	Integer getHighTeacherLikeIdCount(String IdCard);
 	
-	List<UtpTechnical> getTechnicalLikeId(Integer IdCard, Page page);
+	List<UtpTechnical> getTechnicalLikeId(String IdCard, Page page);
 	
-	Integer getTechnicalLikeIdCount(Integer IdCard);
+	Integer getTechnicalLikeIdCount(String IdCard);
 	//查找是否存在
-	UtpAuditor SelectByIdName(Integer Id, String Name);
+	UtpAuditor SelectByIdName(String Id, String Name);
 	//修改密码
-	void updatePassByIdName(Integer Id, String Name, String pass);
+	void updatePassByIdName(String Id, String Name, String pass);
 }

@@ -24,13 +24,13 @@ public class AuditorCheckedTechnical extends ActionSupport {
 
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private List<Integer> technicalIdCard;
+	private List<String> technicalIdCard;
 	
 	private List<Integer> opinion;
 	
 	private List<String> auditorOpinion;
 
-	public List<Integer> getTechnicalIdCard() {
+	public List<String> getTechnicalIdCard() {
 		return technicalIdCard;
 	}
 
@@ -42,7 +42,7 @@ public class AuditorCheckedTechnical extends ActionSupport {
 		return auditorOpinion;
 	}
 
-	public void setTechnicalIdCard(List<Integer> technicalIdCard) {
+	public void setTechnicalIdCard(List<String> technicalIdCard) {
 		this.technicalIdCard = technicalIdCard;
 	}
 
@@ -60,7 +60,7 @@ public class AuditorCheckedTechnical extends ActionSupport {
 		UtpAuditor uAuditor = (UtpAuditor) session.get("Auditor");
 		if (uAuditor != null) {
 			if (1 == uAuditor.getUtpAuditorRole()) {
-				Integer auditorId = uAuditor.getUtpAuditorIdCard();
+				String auditorId = uAuditor.getUtpAuditorIdCard();
 				AuditorOpinion aOpinion = aContext.getBean(AuditorOpinion.class);
 				aOpinion.setAuditorId(auditorId);
 				aOpinion.setOpinion(auditorOpinion.get(0));

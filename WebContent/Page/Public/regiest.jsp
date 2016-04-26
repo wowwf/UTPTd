@@ -10,7 +10,7 @@
    <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/style.css" />
-    <script type="text/javascript" src="<%=path %>/Page/Js/jquery.js"></script>
+    <script type="text/javascript" src="<%=path %>/Page/Js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="<%=path %>/Page/Js/jquery.sorted.js"></script>
     <script type="text/javascript" src="<%=path %>/Page/Js/bootstrap.js"></script>
     <script type="text/javascript" src="<%=path %>/Page/Js/ckform.js"></script>
@@ -54,16 +54,20 @@
 </head>
 <body>
 <div class="container">
-
     <form class="form-signin" method="post" action="personRegiest" onsubmit="return regiestSubmit()">
         <h2 class="form-signin-heading">用户注册</h2>
-        <input type="text" id="userName" name="userName" class="input-block-level" placeholder="姓名" onblur="inpntName()">
-        <input type="text" id="idCard" name="idCard" class="input-block-level" placeholder="身份证号码" onblur="inputIdcard()">
+        <input type="text" id="userName" name="userName" class="input-block-level" placeholder="姓名" onblur="inpntName()" onchange="inpntName()">
+        <input type="text" id="idCard" name="idCard" class="input-block-level" placeholder="身份证号码" onblur="inputIdcard()" onchange="inputIdcard()">
         <table>
-			<tr><td><s:select id="Post" list="#{'2':'--请选择--','0':'高校教师','1':'技术人员'}" name="Post" value="2" style="margin-top:-8px; height:30px;" onblur="checkPost()"></s:select></td></tr>
+			<tr><td><s:select id="Post" list="#{'2':'--请选择--','0':'高校教师','1':'技术人员'}" name="Post" value="2" style="margin-top:-8px; height:30px;" onblur="checkPost()" onchange="checkPost()"></s:select></td></tr>
 		</table>
-       		<s:submit class="btn btn-large btn-primary" value="注册" align="left"></s:submit>
+       		<s:submit class="btn btn-large btn-primary" value="注册" align="left" onmouseover="regiestSubmit()"></s:submit>
     </form>
+    <center>
+    	<p id="showIdError" style="display: none">请输入合法的身份证号码!</p>
+    	<p id="showNameError" style="display: none">请输入真实的姓名!</p>
+    	<p id="showPostError" style="display: none">请选择相应职位!</p>
+    </center>
 </div>
 </body>
 </html>

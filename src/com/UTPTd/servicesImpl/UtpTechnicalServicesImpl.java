@@ -16,7 +16,7 @@ public class UtpTechnicalServicesImpl implements UtpTechnicalServices {
 	private static UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 	
 	@Override
-	public boolean IsRegister(Integer IdCard) {
+	public boolean IsRegister(String IdCard) {
 		if (UTD.FindByTechnicalIdCard(IdCard) != null) {
 			return true;
 		} else {
@@ -25,7 +25,7 @@ public class UtpTechnicalServicesImpl implements UtpTechnicalServices {
 	}
 
 	@Override
-	public boolean IsNameCorrect(Integer IdCard, String Name) {
+	public boolean IsNameCorrect(String IdCard, String Name) {
 		if (Name.equals(UTD.FindByTechnicalIdCard(IdCard).getUtpTechnicalName())) {
 			return true;
 		} else {
@@ -34,7 +34,7 @@ public class UtpTechnicalServicesImpl implements UtpTechnicalServices {
 	}
 
 	@Override
-	public boolean IsHaveSubmit(Integer IdCard) {
+	public boolean IsHaveSubmit(String IdCard) {
 		if (UTD.FindSubmitByTechnicalIdCard(IdCard) == 1) {
 			return true;
 		} else {
@@ -43,7 +43,7 @@ public class UtpTechnicalServicesImpl implements UtpTechnicalServices {
 	}
 
 	@Override
-	public boolean IsPass(Integer IdCard) {
+	public boolean IsPass(String IdCard) {
 		if (UTD.FindIsPassByTechnicalIdCard(IdCard) == 1) {
 			return true;
 		} else {

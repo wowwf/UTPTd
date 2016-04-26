@@ -20,7 +20,7 @@ public class RegiestAction extends ActionSupport {
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
 	private String userName;
-	private Integer idCard;
+	private String idCard;
 	private Integer Post;
 	
 	
@@ -42,11 +42,11 @@ public class RegiestAction extends ActionSupport {
 	}
 
 
-	public Integer getIdCard() {
+	public String getIdCard() {
 		return idCard;
 	}
 
-	public void setIdCard(Integer idCard) {
+	public void setIdCard(String idCard) {
 		this.idCard = idCard;
 	}
 

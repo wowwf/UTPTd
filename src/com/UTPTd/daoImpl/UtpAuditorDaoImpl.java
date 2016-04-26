@@ -24,7 +24,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 	private static SessionFactory sf = (SessionFactory) Context.getBean("sessionfactory");
 	
 	@Override
-	public UtpAuditor FindById(Integer IdCard) {
+	public UtpAuditor FindById(String IdCard) {
 		UtpAuditor utpAuditor = Context.getBean(UtpAuditor.class);
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -33,7 +33,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 	}
 
 	@Override
-	public String FindPsdById(Integer IdCard) {
+	public String FindPsdById(String IdCard) {
 		UtpAuditorDao UAD = Context.getBean(UtpAuditorDaoImpl.class);
 		UtpAuditor utpAuditor = Context.getBean(UtpAuditor.class);
 		utpAuditor = UAD.FindById(IdCard);
@@ -41,7 +41,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 	}
 
 	@Override
-	public Integer FindRoleById(Integer IdCard) {
+	public Integer FindRoleById(String IdCard) {
 		UtpAuditorDao UAD = Context.getBean(UtpAuditorDaoImpl.class);
 		UtpAuditor utpAuditor = Context.getBean(UtpAuditor.class);
 		utpAuditor = UAD.FindById(IdCard);
@@ -193,7 +193,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 	}
 	
 	@Override
-	public List<UtpHighTeacher> getHighTeacherLikeId(Integer IdCard, Page page) {
+	public List<UtpHighTeacher> getHighTeacherLikeId(String IdCard, Page page) {
 		String hql = "from UtpHighTeacher as tea where tea.utpHighTeacherIdCard like :id";
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -209,7 +209,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 	}
 
 	@Override
-	public Integer getHighTeacherLikeIdCount(Integer IdCard) {
+	public Integer getHighTeacherLikeIdCount(String IdCard) {
 		String hql = "from UtpHighTeacher as tea where tea.utpHighTeacherIdCard like :id";
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -223,7 +223,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 	}
 	
 	@Override
-	public List<UtpTechnical> getTechnicalLikeId(Integer IdCard, Page page) {
+	public List<UtpTechnical> getTechnicalLikeId(String IdCard, Page page) {
 		String hql = "from UtpTechnical as tea where tea.utpTechnicalIdCard like :id";
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -239,7 +239,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 	}
 
 	@Override
-	public Integer getTechnicalLikeIdCount(Integer IdCard) {
+	public Integer getTechnicalLikeIdCount(String IdCard) {
 		String hql = "from UtpTechnical as tea where tea.utpTechnicalIdCard like :id";
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -253,7 +253,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 	}
 
 	@Override
-	public UtpAuditor SelectByIdName(Integer Id, String Name) {
+	public UtpAuditor SelectByIdName(String Id, String Name) {
 		String hql = "from UtpAuditor as a where a.utpAuditorIdCard = :iD and a.utpAuditorName = :nAme";
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -267,7 +267,7 @@ public class UtpAuditorDaoImpl implements UtpAuditorDao {
 	}
 
 	@Override
-	public void updatePassByIdName(Integer Id, String Name, String pass) {
+	public void updatePassByIdName(String Id, String Name, String pass) {
 		UtpAuditorDao uDao = Context.getBean(UtpAuditorDaoImpl.class);
 		UtpAuditor uAuditor = uDao.SelectByIdName(Id, Name);
 		uAuditor.setUtpAuditorPassword(pass);

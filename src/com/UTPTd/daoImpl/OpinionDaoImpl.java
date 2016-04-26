@@ -29,7 +29,7 @@ public class OpinionDaoImpl implements OpinionDao {
 	}
 
 	@Override
-	public List<AuditorOpinion> findOpinion(Integer idCard) {
+	public List<AuditorOpinion> findOpinion(String idCard) {
 		Session session = sf.openSession();
 		session.beginTransaction();
 		String hql = "from AuditorOpinion as a where a.teacherId = :teacher";

@@ -99,7 +99,7 @@
         </tr>
         <tr>
             <td id="mingcheng">年龄:<span>*</span></td>
-            <td><input type="text" name="utpHighTeacher.utpHighTeacherAge" value="${readTeacher.utpHighTeacherAge }"></td>
+            <td><input type="text" id="teacherAge" name="utpHighTeacher.utpHighTeacherAge" value="${readTeacher.utpHighTeacherAge }"></td>
             <td id="beizhu"></td>
         </tr>
         <tr>

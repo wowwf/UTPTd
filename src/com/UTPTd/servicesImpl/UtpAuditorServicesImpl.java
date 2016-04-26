@@ -23,7 +23,7 @@ public class UtpAuditorServicesImpl implements UTPAuditorServices {
 	private static UtpAuditorDao UAD = aContext.getBean(UtpAuditorDaoImpl.class);
 	
 	@Override
-	public boolean FindByIdAndRole(Integer IdCard) {
+	public boolean FindByIdAndRole(String IdCard) {
 		if (UAD.FindById(IdCard) != null) {
 			return true;
 		} else {
@@ -32,7 +32,7 @@ public class UtpAuditorServicesImpl implements UTPAuditorServices {
 	}
 
 	@Override
-	public boolean FindPassword(Integer IdCard, Integer Role, String Password) {
+	public boolean FindPassword(String IdCard, Integer Role, String Password) {
 		String psdString = UAD.FindPsdById(IdCard);
 		Integer roleInteger = UAD.FindRoleById(IdCard);
 		if (Password.equals(psdString) && Role == roleInteger) {
@@ -82,7 +82,7 @@ public class UtpAuditorServicesImpl implements UTPAuditorServices {
 	}
 
 	@Override
-	public PageResult LikeQueryTeacherById(Integer IdCard, Page page) {
+	public PageResult LikeQueryTeacherById(String IdCard, Page page) {
 		UtpAuditorDao uDao = aContext.getBean(UtpAuditorDaoImpl.class);
 		page = PageUtil.createPage(page.getEveryPage(), uDao.getHighTeacherLikeIdCount(IdCard), page.getCurrentPage());
 		List<UtpHighTeacher> utpHighTeachers = uDao.getHighTeacherLikeId(IdCard, page);
@@ -100,7 +100,7 @@ public class UtpAuditorServicesImpl implements UTPAuditorServices {
 	}
 
 	@Override
-	public PageResult LikeQueryTechnicalById(Integer IdCard, Page page) {
+	public PageResult LikeQueryTechnicalById(String IdCard, Page page) {
 		UtpAuditorDao uDao = aContext.getBean(UtpAuditorDaoImpl.class);
 		page = PageUtil.createPage(page.getEveryPage(), uDao.getTechnicalLikeIdCount(IdCard), page.getCurrentPage());
 		List<UtpTechnical> utpTechnicals = uDao.getTechnicalLikeId(IdCard, page);
@@ -109,7 +109,7 @@ public class UtpAuditorServicesImpl implements UTPAuditorServices {
 	}
 
 	@Override
-	public boolean isRegiest(Integer iD, String uName) {
+	public boolean isRegiest(String iD, String uName) {
 		UtpAuditorDao uDao = aContext.getBean(UtpAuditorDaoImpl.class);
 		if (uDao.SelectByIdName(iD, uName) != null) {
 			return true;
@@ -119,7 +119,7 @@ public class UtpAuditorServicesImpl implements UTPAuditorServices {
 	}
 
 	@Override
-	public void doResetPass(Integer iD, String Name, String passWord) {
+	public void doResetPass(String iD, String Name, String passWord) {
 		UtpAuditorDao uDao = aContext.getBean(UtpAuditorDaoImpl.class);
 		uDao.updatePassByIdName(iD, Name, passWord);
 	}

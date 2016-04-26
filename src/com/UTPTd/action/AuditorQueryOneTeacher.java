@@ -21,13 +21,13 @@ public class AuditorQueryOneTeacher extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private List<Integer> IdCard;
+	private List<String> IdCard;
 	
-	public List<Integer> getIdCard() {
+	public List<String> getIdCard() {
 		return IdCard;
 	}
 
-	public void setIdCard(List<Integer> idCard) {
+	public void setIdCard(List<String> idCard) {
 		IdCard = idCard;
 	}
 

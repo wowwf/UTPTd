@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "utp_Technical")
 public class UtpTechnical {
-	private Integer UtpTechnicalIdCard;
+	private String UtpTechnicalIdCard;
 	private String UtpTechnicalName;
 	private String UtpTechnicalGender;
 	private Integer UtpTechnicalAge;
@@ -36,7 +36,7 @@ public class UtpTechnical {
 	private Integer UtpTechnicalCountSubmit;//default 1
 	@Id
 	@Column(unique = true)
-	public Integer getUtpTechnicalIdCard() {
+	public String getUtpTechnicalIdCard() {
 		return UtpTechnicalIdCard;
 	}
 	public String getUtpTechnicalName() {
@@ -108,7 +108,7 @@ public class UtpTechnical {
 	public Integer getUtpTechnicalCountSubmit() {
 		return UtpTechnicalCountSubmit;
 	}
-	public void setUtpTechnicalIdCard(Integer utpTechnicalIdCard) {
+	public void setUtpTechnicalIdCard(String utpTechnicalIdCard) {
 		UtpTechnicalIdCard = utpTechnicalIdCard;
 	}
 	public void setUtpTechnicalName(String utpTechnicalName) {

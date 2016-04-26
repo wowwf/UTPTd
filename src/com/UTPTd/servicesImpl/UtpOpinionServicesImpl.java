@@ -15,7 +15,7 @@ public class UtpOpinionServicesImpl implements UtpOpinionServices {
 
 	private static ApplicationContext aContent = new ClassPathXmlApplicationContext("beans.xml");
 	@Override
-	public List<AuditorOpinion> findByTidAndAid(Integer Tid) {
+	public List<AuditorOpinion> findByTidAndAid(String Tid) {
 		OpinionDao oDao = aContent.getBean(OpinionDao.class);
 		if (oDao.findOpinion(Tid) != null) {
 			return oDao.findOpinion(Tid);

@@ -4,9 +4,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.ServletActionContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -28,13 +25,13 @@ public class AuditorCheckedTeacher extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private List<Integer> teacherIdCard;
+	private List<String> teacherIdCard;
 	
 	private List<Integer> opinion;
 	
 	private List<String> auditorOpinion;
 
-	public List<Integer> getTeacherIdCard() {
+	public List<String> getTeacherIdCard() {
 		return teacherIdCard;
 	}
 
@@ -46,7 +43,7 @@ public class AuditorCheckedTeacher extends ActionSupport {
 		return auditorOpinion;
 	}
 
-	public void setTeacherIdCard(List<Integer> teacherIdCard) {
+	public void setTeacherIdCard(List<String> teacherIdCard) {
 		this.teacherIdCard = teacherIdCard;
 	}
 
@@ -64,7 +61,7 @@ public class AuditorCheckedTeacher extends ActionSupport {
 		ActionContext context = ActionContext.getContext();
 		UtpAuditor uAuditor = (UtpAuditor) session.get("Auditor");
 		if (0 == uAuditor.getUtpAuditorRole()) {
-			Integer auditorId = uAuditor.getUtpAuditorIdCard();
+			String auditorId = uAuditor.getUtpAuditorIdCard();
 			AuditorOpinion aOpinion = aContext.getBean(AuditorOpinion.class);
 			aOpinion.setAuditorId(auditorId);
 			aOpinion.setTeacherId(teacherIdCard.get(0));
@@ -89,7 +86,7 @@ public class AuditorCheckedTeacher extends ActionSupport {
 				return ERROR;
 			}
 		} else if (1 == uAuditor.getUtpAuditorRole()) {
-			Integer auditorId = uAuditor.getUtpAuditorIdCard();
+			String auditorId = uAuditor.getUtpAuditorIdCard();
 			AuditorOpinion aOpinion = aContext.getBean(AuditorOpinion.class);
 			aOpinion.setAuditorId(auditorId);
 			aOpinion.setTeacherId(teacherIdCard.get(0));

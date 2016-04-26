@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
 @Table(name="utp_comment")
 public class AuditorOpinion {
 	private Integer num;
-	private Integer auditorId;
-	private Integer teacherId;
+	private String auditorId;
+	private String teacherId;
 	private String opinion;
 	private String sumbitTime;
 	@Id
@@ -24,10 +24,10 @@ public class AuditorOpinion {
 	public Integer getNum() {
 		return num;
 	}
-	public Integer getAuditorId() {
+	public String getAuditorId() {
 		return auditorId;
 	}
-	public Integer getTeacherId() {
+	public String getTeacherId() {
 		return teacherId;
 	}
 	public String getSumbitTime() {
@@ -36,10 +36,10 @@ public class AuditorOpinion {
 	public void setNum(Integer num) {
 		this.num = num;
 	}
-	public void setAuditorId(Integer auditorId) {
+	public void setAuditorId(String auditorId) {
 		this.auditorId = auditorId;
 	}
-	public void setTeacherId(Integer teacherId) {
+	public void setTeacherId(String teacherId) {
 		this.teacherId = teacherId;
 	}
 	public void setSumbitTime(String sumbitTime) {

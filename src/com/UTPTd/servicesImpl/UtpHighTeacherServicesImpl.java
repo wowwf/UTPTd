@@ -16,7 +16,7 @@ public class UtpHighTeacherServicesImpl implements UtpHighTeacherServices {
 	private static UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
 	
 	@Override
-	public boolean IsRegister(Integer IdCard) {
+	public boolean IsRegister(String IdCard) {
 		if (UHTD.FindByHighTeacherIdCard(IdCard) != null) {
 			return true;
 		} else {
@@ -25,7 +25,7 @@ public class UtpHighTeacherServicesImpl implements UtpHighTeacherServices {
 	}
 
 	@Override
-	public boolean IsNameCorrect(Integer IdCard, String Name) {
+	public boolean IsNameCorrect(String IdCard, String Name) {
 		if (Name.equals(UHTD.FindByHighTeacherIdCard(IdCard).getUtpHighTeacherName())) {
 			return true;
 		} else {
@@ -34,7 +34,7 @@ public class UtpHighTeacherServicesImpl implements UtpHighTeacherServices {
 	}
 
 	@Override
-	public boolean IsHaveSubmit(Integer IdCard) {
+	public boolean IsHaveSubmit(String IdCard) {
 		if (UHTD.FindSubmitByHighTeacherIdCard(IdCard) == 1) {
 			return true;
 		} else {
@@ -43,7 +43,7 @@ public class UtpHighTeacherServicesImpl implements UtpHighTeacherServices {
 	}
 
 	@Override
-	public boolean IsPass(Integer IdCard) {
+	public boolean IsPass(String IdCard) {
 		if (UHTD.FindIsPassByHighTeacherIdCard(IdCard) == 1) {
 			return true;
 		} else {
@@ -52,7 +52,7 @@ public class UtpHighTeacherServicesImpl implements UtpHighTeacherServices {
 	}
 
 	@Override
-	public boolean WhichAudit(Integer IdCard) {
+	public boolean WhichAudit(String IdCard) {
 		if (UHTD.FindWitchSubmitByHighTeacherIdCard(IdCard) == 1) {
 			return true;
 		} else {
@@ -61,7 +61,7 @@ public class UtpHighTeacherServicesImpl implements UtpHighTeacherServices {
 	}
 
 	@Override
-	public boolean IsLastAudit(Integer IdCard) {
+	public boolean IsLastAudit(String IdCard) {
 		if (UHTD.FindWitchSubmitByHighTeacherIdCard(IdCard) == 2) {
 			return true;
 		} else {

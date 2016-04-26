@@ -24,13 +24,13 @@ public class ShowAuditorOpinion extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private Integer tid;
+	private String tid;
 	private String tname;
-	public Integer getTid() {
+	public String getTid() {
 		return tid;
 	}
 
-	public void setTid(Integer tid) {
+	public void setTid(String tid) {
 		this.tid = tid;
 	}
 	

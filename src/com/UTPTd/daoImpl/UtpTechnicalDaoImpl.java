@@ -20,7 +20,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	private static SessionFactory sf = (SessionFactory) Context.getBean("sessionfactory");
 	
 	@Override
-	public void InsertTechnical(Integer IdCard, String TechnicalName) {
+	public void InsertTechnical(String IdCard, String TechnicalName) {
 		UtpTechnical utpTechnical = Context.getBean(UtpTechnical.class);
 		utpTechnical.setUtpTechnicalIdCard(IdCard);
 		utpTechnical.setUtpTechnicalName(TechnicalName);
@@ -86,7 +86,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	}
 
 	@Override
-	public UtpTechnical FindByTechnicalIdCard(Integer IdCard) {
+	public UtpTechnical FindByTechnicalIdCard(String IdCard) {
 		Session session = sf.openSession();
 		session.beginTransaction();
 		UtpTechnical utpTechnical = (UtpTechnical) session.get(UtpTechnical.class, IdCard);
@@ -96,7 +96,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	}
 
 	@Override
-	public Integer FindIsPassByTechnicalIdCard(Integer IdCard) {
+	public Integer FindIsPassByTechnicalIdCard(String IdCard) {
 		UtpTechnical utpTechnical = Context.getBean(UtpTechnical.class);
 		UtpTechnicalDao UTD = Context.getBean(UtpTechnicalDaoImpl.class);
 		utpTechnical = UTD.FindByTechnicalIdCard(IdCard);
@@ -104,7 +104,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	}
 
 	@Override
-	public Integer FindSubmitByTechnicalIdCard(Integer IdCard) {
+	public Integer FindSubmitByTechnicalIdCard(String IdCard) {
 		UtpTechnical utpTechnical = Context.getBean(UtpTechnical.class);
 		UtpTechnicalDao UTD = Context.getBean(UtpTechnicalDaoImpl.class);
 		utpTechnical = UTD.FindByTechnicalIdCard(IdCard);
@@ -112,7 +112,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	}
 
 	@Override
-	public Integer FindWhichSubmitByTechnicalIdCard(Integer IdCard) {
+	public Integer FindWhichSubmitByTechnicalIdCard(String IdCard) {
 		UtpTechnical utpTechnical = Context.getBean(UtpTechnical.class);
 		UtpTechnicalDao UTD = Context.getBean(UtpTechnicalDaoImpl.class);
 		utpTechnical = UTD.FindByTechnicalIdCard(IdCard);
@@ -120,7 +120,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	}
 
 	@Override
-	public void UpdateTechnicalSubmitIsNotPass(Integer IdCard) {
+	public void UpdateTechnicalSubmitIsNotPass(String IdCard) {
 		UtpTechnical utpTechnical = Context.getBean(UtpTechnical.class);
 		UtpTechnicalDao UTD = Context.getBean(UtpTechnicalDaoImpl.class);
 		utpTechnical = UTD.FindByTechnicalIdCard(IdCard);
@@ -134,7 +134,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	}
 
 	@Override
-	public void UpdateTechnicalSubmitIsPass(Integer IdCard) {
+	public void UpdateTechnicalSubmitIsPass(String IdCard) {
 		UtpTechnical utpTechnical = Context.getBean(UtpTechnical.class);
 		UtpTechnicalDao UTD = Context.getBean(UtpTechnicalDaoImpl.class);
 		utpTechnical = UTD.FindByTechnicalIdCard(IdCard);
@@ -182,7 +182,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	}
 
 	@Override
-	public void PersonImgUpload(Integer IdCard, String savePath) {
+	public void PersonImgUpload(String IdCard, String savePath) {
 		UtpTechnical utpTechnical = Context.getBean(UtpTechnical.class);
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -193,7 +193,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	}
 
 	@Override
-	public String FindPersonImgUrl(Integer IdCard) {
+	public String FindPersonImgUrl(String IdCard) {
 		Session session = sf.openSession();
 		session.beginTransaction();
 		UtpTechnical utpTechnical = (UtpTechnical) session.get(UtpTechnical.class, IdCard);
@@ -203,7 +203,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	}
 
 	@Override
-	public void OtherUpload(Integer IdCard, StringBuffer savePath) {
+	public void OtherUpload(String IdCard, StringBuffer savePath) {
 		UtpTechnical utpTechnical = Context.getBean(UtpTechnical.class);
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -214,7 +214,7 @@ public class UtpTechnicalDaoImpl implements UtpTechnicalDao {
 	}
 
 	@Override
-	public String FindOtherFile(Integer IdCard) {
+	public String FindOtherFile(String IdCard) {
 		Session session = sf.openSession();
 		session.beginTransaction();
 		UtpTechnical utpTechnical = (UtpTechnical) session.get(UtpTechnical.class, IdCard);

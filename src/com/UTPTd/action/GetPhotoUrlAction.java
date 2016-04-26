@@ -19,11 +19,11 @@ public class GetPhotoUrlAction extends ActionSupport {
 	
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
-	private Integer IdCard;
+	private String IdCard;
 	
 	private Integer Role;
 	
-	public Integer getIdCard() {
+	public String getIdCard() {
 		return IdCard;
 	}
 
@@ -31,7 +31,7 @@ public class GetPhotoUrlAction extends ActionSupport {
 		return Role;
 	}
 
-	public void setIdCard(Integer idCard) {
+	public void setIdCard(String idCard) {
 		IdCard = idCard;
 	}
 
