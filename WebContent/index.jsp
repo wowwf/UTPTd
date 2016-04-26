@@ -7,19 +7,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	body {
+		background: url("<%=path %>/Page/images/bgimg.png");
+		background-repeat: no-repeat;
+	}
+	a {
+		text-align: right;
+		margin-right: 10px;
+	}
+</style>
 <script type="text/javascript" src="<%=path %>/Page/JS/jquery-1.10.2.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("p").click(function(){
-		$(this).hide();
-	});
-});
-</script>
-<title>测试。。。</title>
+<title>高校职工职称申报系统</title>
 </head>
 <body>
-	<p>实现隐藏！</p>
-	<p><s:text name="AdminUname"></s:text></p>
-	<a href="<%=path %>/Page/AALogin.jsp">哪里的乱码</a>
+	<a href="<%=path %>/Page/AALogin.jsp">点我点我，去登陆--></a>
 </body>
 </html>

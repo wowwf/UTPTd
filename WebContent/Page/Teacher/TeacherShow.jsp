@@ -15,8 +15,9 @@
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/style.css" />
 <style type="text/css">
-	body {
-		background: url("../images/teacherBackground.jpg");
+	center {
+		background: url("<%=path %>/images/teacherBackground.jpg");
+		background-repeat: no-repeat;
 	}
 	td {
 		width: 120px;

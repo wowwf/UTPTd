@@ -16,7 +16,8 @@
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/style.css" />
 <style type="text/css">
 	body {
-		background: url("../images/teacherBackground.jpg");
+		background: url("<%=path %>/Page/images/showback.jpg");
+        background-repeat: repeat-y;
 	}
 	td {
 		width: 120px;

@@ -10,6 +10,11 @@
 	<link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/style.css" />
+<style type="text/css">
+	body {
+		background: url("<%=path %>/Page/images/back.jpg");
+	}
+</style>
 <script type="text/javascript">
 	function goBack() {
 		window.history.back();

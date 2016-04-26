@@ -55,6 +55,18 @@
 		textarea {
 			width: 380px;
 		}
+		span {
+			color: black;
+			font-size: 16px;
+			text-align: left;
+			line-height: 32px;
+		}
+		div {
+			width: 1000px;
+			height: 600px;
+			background: url("<%=path%>/Page/images/back.jpg");
+			background-repeat: no-repeat;
+		}
     </style>
 <script type="text/javascript">
 	var teacher = "${session.Auditor}";
@@ -65,23 +77,36 @@
 </head>
 <body>
 <s:if test="#session.Auditor.utpAuditorRole==0">
-<table>
-	<tr><td><a href="QueryTeacher.action?currentPage=1&everyPage=2">检索所有</a></td></tr>
-</table>
+<br>
+<center>
+	<div style="width: 1000px; text-align: left;">
+		<span>教师您好！</span><br><br>
+		<p style="text-indent: 2em; font-size: 15px;">您现在使用的是王伟峰设计开发的高校教师在线职称评教系统！<br>您可以使用该系统实现所有教师审核表的检索，并对为通过审核的人员进行审核并发表评论。</p>
+		<br>
+		<a href="QueryTeacher.action?currentPage=1&everyPage=2">检索所有未通过院系审核的教师信息</a>
+	</div>
+</center>
 </s:if>
 <s:elseif test="#session.Auditor.utpAuditorRole==1 && #sel==0">
-<table>
-	<tr><td><a href="QueryTeacher.action?currentPage=1&everyPage=2">检索所有教师</a></td></tr>
-</table>
+<center>
+	<div style="width: 1000px; text-align: left;">
+		<span>教师您好！</span><br><br>
+		<p style="text-indent: 2em; font-size: 15px;">您现在使用的是王伟峰设计开发的高校教师在线职称评教系统！<br>您可以使用该系统实现所有教师审核表的检索，并对为通过审核的人员进行审核并发表评论。</p>
+		<br>
+		<a href="QueryTeacher.action?currentPage=1&everyPage=2">检索所有已通过院系审核的教师信息</a>
+	</div>
+</center>
 </s:elseif>
 <s:elseif test="#session.Auditor.utpAuditorRole==1 && #sel==1">
-<table>
-	<tr><td><a href="QueryTechnical.action?currentPage=1&everyPage=2">检索所有技术人员</a></td></tr>
-</table>
+<center>
+	<div style="width: 1000px; text-align: left;">
+		<span>教师您好！</span><br><br>
+		<p style="text-indent: 2em; font-size: 15px;">您现在使用的是王伟峰设计开发的高校教师在线职称评教系统！<br>您可以使用该系统实现所有教师审核表的检索，并对为通过审核的人员进行审核并发表评论。</p>
+		<br>
+		<a href="QueryTechnical.action?currentPage=1&everyPage=2">检索所有未通过人事审核的技术人员信息</a>
+	</div>
+</center>
 </s:elseif>
-<s:else>
-	<h1>怎么可能</h1>
-</s:else>
 <s:actionmessage/>
 </body>
 </html>

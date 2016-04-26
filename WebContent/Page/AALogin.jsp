@@ -172,7 +172,7 @@ $(function(){
 <DIV style="height: 50px; line-height: 50px; margin-top: 20px; border-top-color: rgb(231, 231, 231); border-top-width: 1px; border-top-style: solid;">
 	<P style="margin: 0px 35px 20px 45px;">
 		<SPAN style="float: left;">
-			<A style="color: rgb(204, 204, 204);" href="<%=path %>/Page/User/resetPass.jsp">忘记密码?</A>
+			<%-- <A style="color: rgb(204, 204, 204);" href="<%=path %>/Page/User/resetPass.jsp">忘记密码?</A> --%>
 		</SPAN> 
         <SPAN style="float: right;">
         	<A style="color: rgb(204, 204, 204); margin-right: 10px;" href="<%=path %>/Page/Public/regiest.jsp">申请人注册</A>   

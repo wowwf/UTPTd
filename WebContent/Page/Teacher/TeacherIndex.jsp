@@ -21,6 +21,8 @@
     <style type="text/css">
         body {
             padding-bottom: 40px;
+            background: url("<%=path %>/Page/images/selectback.jpg");
+            background-repeat: no-repeat;
         }
         .sidebar-nav {
             padding: 9px 0;

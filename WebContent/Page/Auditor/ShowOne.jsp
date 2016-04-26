@@ -15,8 +15,8 @@
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/style.css" />
 <style type="text/css">
-	body {
-		background: url("../images/teacherBackground.jpg");
+	table {
+		background: url("<%=path %>/Page/images/selectback.jpg");
 	}
 	td {
 		width: 120px;
@@ -96,7 +96,7 @@
 		<td id="msg" colspan="2"><span>${SelectTeacher.utpHighTeacherRefresher }</span></td>
 	</tr>
 	<tr>
-		<td colspan="5" height="14px" style="background-color: #CFCFCF;">其他情况</td>
+		<td colspan="5" height="14px" style="background-color: #CFCFCF;"><center><span></span><b>其他情况</b></center></td>
 	</tr>
 	<tr>
 		<td id="mc" colspan="2"><span>年资情况:</span></td>

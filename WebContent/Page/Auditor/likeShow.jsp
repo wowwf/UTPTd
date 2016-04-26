@@ -20,6 +20,8 @@
 
     <style type="text/css">
         body {
+        	background: url("<%=path %>/Page/images/showback.jpg");
+        	background-repeat: repeat-y;
         	color: black;
             padding-bottom: 40px;
         }
