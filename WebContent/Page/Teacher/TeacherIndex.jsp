@@ -17,17 +17,14 @@
     <script type="text/javascript" src="<%=path %>/Page/Js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<%=path %>/Page/Js/ckform.js"></script>
     <script type="text/javascript" src="<%=path %>/Page/Js/common.js"></script>
-
+	<script type="text/javascript" src="<%=path %>/Page/Js/validate.js"></script>
     <style type="text/css">
         body {
             padding-bottom: 40px;
-            background: url("<%=path %>/Page/images/selectback.jpg");
-            background-repeat: no-repeat;
         }
         .sidebar-nav {
             padding: 9px 0;
         }
-
         @media (max-width: 980px) {
             /* Enable use of floated navbar text */
             .navbar-text.pull-right {
@@ -38,7 +35,7 @@
         }
 		span {
 			color: red;
-			font-size: 20px;
+			font-size: 12px;
 			line-height: 20px;
 		}
 		input {
@@ -66,6 +63,7 @@
 </script>
 </head>
 <body>
+<p style="color: red; text-align: right; margin-right: 20px;">*为必填</p>
 <s:form action="teacherSubmit">
 	<table class="table table-bordered table-hover definewidth m10" >
     	<thead>
@@ -97,32 +95,44 @@
             	<input type="radio" name="utpHighTeacher.utpHighTeacherGender" value="1" checked="checked">男
             	<input type="radio" name="utpHighTeacher.utpHighTeacherGender" value="0">女
             </td>
-            <td id="beizhu"></td>
+            <td id="beizhu">
+            	<span id="sexError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">年龄:<span>*</span></td>
-            <td><input type="text" id="teacherAge" name="utpHighTeacher.utpHighTeacherAge" value="${readTeacher.utpHighTeacherAge }"></td>
-            <td id="beizhu"></td>
+            <td><input type="text" name="utpHighTeacher.utpHighTeacherAge" value="${readTeacher.utpHighTeacherAge }"></td>
+            <td id="beizhu">
+            	<span id="ageError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">出生日期:<span>*</span></td>
             <td><input type="text" name="utpHighTeacher.utpHighTeacherBirthday" value="${readTeacher.utpHighTeacherBirthday }"></td>
-            <td id="beizhu"></td>
+            <td id="beizhu">
+            	<span id="birthError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">参加工作时间:<span>*</span></td>
             <td><input type="text" name="utpHighTeacher.utpHighTeacherCareerBegin" value="${readTeacher.utpHighTeacherCareerBegin }"></td>
-            <td id="beizhu"></td>
+            <td id="beizhu">
+            	<span id="workError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">毕业时间:<span>*</span></td>
             <td><input type="text" name="utpHighTeacher.utpHighTeacherGraduateTime" value="${readTeacher.utpHighTeacherGraduateTime }"></td>
-            <td id="beizhu"></td>
+            <td id="beizhu">
+            	<span id="graduError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">学历:<span>*</span></td>
             <td><input type="text" name="utpHighTeacher.utpHighTeacherEducation" value="${readTeacher.utpHighTeacherEducation }"></td>
-            <td id="beizhu"></td>
+            <td id="beizhu">
+            	<span id="eduError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">毕业学校:<span>*</span></td>
@@ -137,12 +147,16 @@
         <tr>
             <td id="mingcheng">目前所任职务:<span>*</span></td>
             <td><input type="text" name="utpHighTeacher.utpHighTeacherPostNow" value="${readTeacher.utpHighTeacherPostNow }"></td>
-            <td id="beizhu"></td>
+            <td id="beizhu">
+            	<span id="postError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">申报专业技术职务任职资格:<span>*</span></td>
             <td><input type="text" name="utpHighTeacher.utpHighTeacherDeclarePost" value="${readTeacher.utpHighTeacherDeclarePost }"></td>
-            <td id="beizhu"></td>
+            <td id="beizhu">
+            	<span id="decPostError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">外语考试情况:<span>*</span></td>
