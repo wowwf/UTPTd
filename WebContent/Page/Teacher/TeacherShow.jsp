@@ -112,6 +112,7 @@
 		<td id="mc" colspan="2"><span>成果名称:</span></td>
 		<td id="msg" colspan="3">${highTeacher.utpHighTeacherAcademic }</td>
 	</tr>
+	<s:if test="#otherUrlList!=null">
 	<tr>
 		<td colspan="5" height="20px" style="background-color: #CFCFCF;"><center><span><b>其他佐证</b></span></center></td>
 	</tr>
@@ -123,6 +124,7 @@
 			<td id="msg" colspan="3"><s:property value="#list.path"/></td>
 		</tr>
 		</s:iterator>
+	</s:if>
 	<tr>
 		<td colspan="5" height="20px" style="background-color: #CFCFCF;"><center><span><b>审核情况</b></span></center></td>
 	</tr>
