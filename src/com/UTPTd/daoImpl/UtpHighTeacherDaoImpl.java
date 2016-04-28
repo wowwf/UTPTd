@@ -41,7 +41,7 @@ public class UtpHighTeacherDaoImpl implements UtpHighTeacherDao {
 		Session session = sf.openSession();
 		session.beginTransaction();
 		uTeacher = (UtpHighTeacher) session.get(UtpHighTeacher.class, utpHighTeacher.getUtpHighTeacherIdCard());
-		if (utpHighTeacher.getUtpHighTeacherAge() != 0) {
+		if (utpHighTeacher.getUtpHighTeacherAge() != null) {
 			uTeacher.setUtpHighTeacherAge(utpHighTeacher.getUtpHighTeacherAge());
 		}
 		uTeacher.setUtpHighTeacherGender(utpHighTeacher.getUtpHighTeacherGender());

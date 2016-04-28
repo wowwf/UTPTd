@@ -13,6 +13,8 @@
 <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap-responsive.css" />
 <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/style.css" />
+<script type="text/javascript" src="<%=path %>/Page/Js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="<%=path %>/Page/Js/imgValidate.js"></script>
 <style type="text/css">
 	table {
 		text-align: center;
@@ -24,27 +26,19 @@
 		window.top.location.href = "<%=basepath %>Page/AALogin.jsp";
 	}
 </script>
-<script type="text/javascript">
-	function val() {
-		var file = document.getElementById("upFile").value;
-		if (file == null) {
-			alert("没有选择文件，没法执行上传操作！")
-			return false;
-		} else {
-			return true; 
-		}
-	}
-</script>
 </head>
 <body>
 <br><br>
 <s:actionmessage/>
 <center>
-<s:form action="UpFileLoad" enctype="multipart/form-data" onsubmit="return val()">
+<span id="imgError"></span>
+<s:form action="UpFileLoad" enctype="multipart/form-data" theme="simple">
 	<table class="table table-bordered table-hover definewidth m10">
 		<tr>
 		<td><span>上传一寸照片</span></td>
 		<td><input type="file" id="upFile" name="upFile"></td>
+		<td id="fileType" style="display: none;"></td>
+		<td id="fileSize" style="display: none;"></td>
 		<td><input type="submit" value="上传文件"></td>
 		</tr>
 	</table>

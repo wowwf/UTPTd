@@ -40,12 +40,12 @@
         	<result name="input">/session.jsp</result>
         </action>
         <action name="teacherSubmit" class="com.UTPTd.action.TeacherSubmit">
-        	<result name="success">/session.jsp</result>
+        	<result name="success">/Page/Teacher/submitSuccess.jsp</result>
         	<interceptor-ref name="defaultStack"></interceptor-ref>
         	<interceptor-ref name="HighTeacherLoginInterceptor"></interceptor-ref>
         </action>
         <action name="Technicalsubmit" class="com.UTPTd.action.TechnicalSubmit">
-        	<result name="success">/session.jsp</result>
+        	<result name="success">/Page/Technical/submitSuccess.jsp</result>
         	<interceptor-ref name="defaultStack"></interceptor-ref>
         	<interceptor-ref name="TechnicalLoginInterceptor"></interceptor-ref>
         </action>
@@ -58,13 +58,7 @@
         	<result name="error">/Page/AALogin.jsp</result>
         	<result name="isnull">/Page/Teacher/TeacherImgUpload.jsp</result>
         </action>
-        <action name="DownFile" class="com.UTPTd.action.DownLoagAction">
-        	<result type="stream">
-        		<param name="contentType">${mimeType}</param>
-        		<param name="inputName">inStream</param>
-        		<param name="contentDisposition">attachment;filename="${fileName}"</param>
-        	</result>
-        </action>
+        
         <action name="ImgScope" class="com.UTPTd.MidAction.ImgScope">
         	<result name="teachersuccess">/Page/Teacher/TeacherImgUpload.jsp</result>
         	<result name="technicalsuccess">/Page/Technical/TechnicalImgUpload.jsp</result>

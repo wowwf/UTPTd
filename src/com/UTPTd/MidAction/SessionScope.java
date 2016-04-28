@@ -50,7 +50,7 @@ public class SessionScope extends ActionSupport {
 		switch (no) {
 		case 1:
 			UtpHighTeacher utpHighTeacher = (UtpHighTeacher) session.get("HighTeacher");
-			if (utpHighTeacher.getUtpHighTeacherIdCard() != null) {
+			if (null != utpHighTeacher) {
 				UtpHighTeacherDao UHTD = aContext.getBean(UtpHighTeacherDaoImpl.class);
 				UtpHighTeacher uTeacher = UHTD.FindByHighTeacherIdCard(utpHighTeacher.getUtpHighTeacherIdCard());
 				context.put("readTeacher", uTeacher);
@@ -61,7 +61,7 @@ public class SessionScope extends ActionSupport {
 			break;
 		case 2:
 			UtpTechnical utpTechnical = (UtpTechnical) session.get("Technical");
-			if (utpTechnical.getUtpTechnicalIdCard() != null) {
+			if (null != utpTechnical) {
 				UtpTechnicalDao UTD = aContext.getBean(UtpTechnicalDaoImpl.class);
 				UtpTechnical uTechnical = UTD.FindByTechnicalIdCard(utpTechnical.getUtpTechnicalIdCard());
 				context.put("readTechnical", uTechnical);

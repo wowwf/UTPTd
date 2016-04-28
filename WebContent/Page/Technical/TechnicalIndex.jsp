@@ -6,15 +6,11 @@
 <html>
 <head>
     <title></title>
-    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/style.css" />
     <script type="text/javascript" src="<%=path %>/Page/Js/jquery.js"></script>
-    <script type="text/javascript" src="<%=path %>/Page/Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="<%=path %>/Page/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="<%=path %>/Page/Js/ckform.js"></script>
-    <script type="text/javascript" src="<%=path %>/Page/Js/common.js"></script>
+	<script type="text/javascript" src="<%=path %>/Page/Js/validateTechnical.js"></script>
 
     <style type="text/css">
         body {
@@ -34,7 +30,7 @@
         }
 		span {
 			color: red;
-			font-size: 20px;
+			font-size: 12px;
 			line-height: 20px;
 		}
 		input {
@@ -53,7 +49,8 @@
     </style>
 </head>
 <body>
-<s:form action="Technicalsubmit">
+<p style="color: red; text-align: right; margin-right: 20px;">*为必填</p>
+<s:form action="Technicalsubmit" theme="simple">
 	<table class="table table-bordered table-hover definewidth m10" >
     	<thead>
     		<tr>
@@ -84,32 +81,53 @@
             	<input type="radio" name="utpTechnical.utpTechnicalGender" value="1" checked="checked">男
             	<input type="radio" name="utpTechnical.utpTechnicalGender" value="0">女
             </td>
-            <td id="beizhu"></td>
+            <td id="beizhu">
+            	<span id="sexError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">年龄:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalAge" value="${readTechnical.utpTechnicalAge }"></td>
-            <td id="beizhu"></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalAge" value="${readTechnical.utpTechnicalAge }" maxlength="3" onkeyup="this.value=this.value.replace(/[^\d]/g,'')"></td>
+            <td id="beizhu">
+            	<span id="ageError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">出生日期:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalBirthday" value="${readTechnical.utpTechnicalBirthday }"></td>
-            <td id="beizhu"></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalBirthday" value="${readTechnical.utpTechnicalBirthday }" maxlength="10"></td>
+            <td id="beizhu">
+            	<span id="birthError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">参加工作时间:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalCareerBegin" value="${readTechnical.utpTechnicalCareerBegin }"></td>
-            <td id="beizhu"></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalCareerBegin" value="${readTechnical.utpTechnicalCareerBegin }" maxlength="10"></td>
+            <td id="beizhu">
+            	<span id="workError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">毕业时间:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalGraduateTime" value="${readTechnical.utpTechnicalGraduateTime }"></td>
-            <td id="beizhu"></td>
+            <td><input type="text" name="utpTechnical.utpTechnicalGraduateTime" value="${readTechnical.utpTechnicalGraduateTime }" maxlength="10"></td>
+            <td id="beizhu">
+            	<span id="graduError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">学历:<span>*</span></td>
-            <td><input type="text" name="utpTechnical.utpTechnicalEducation" value="${readTechnical.utpTechnicalEducation }"></td>
-            <td id="beizhu"></td>
+            <td>
+            	<%-- <input type="text" name="utpTechnical.utpTechnicalEducation" value="${readTechnical.utpTechnicalEducation }"> --%>
+            	<s:if test="#readTechnical.utpTechnicalEducation!=null">
+            		<p><s:select list="#{'无':'--请选择--','本科':'本科','专科':'专科','高中':'高中' }" name="utpTechnical.utpTechnicalEducation" value="#readTechnical.utpTechnicalEducation"></s:select></p>
+            	</s:if>
+            	<s:else>
+            		<p><s:select list="#{'无':'--请选择--','本科':'本科','专科':'专科','高中':'高中' }" name="utpTechnical.utpTechnicalEducation" value="无"></s:select></p>
+            	</s:else>
+            </td>
+            <td id="beizhu">
+            	<span id="eduError"></span>
+            	<span id="eduError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">毕业学校:<span>*</span></td>
@@ -124,12 +142,16 @@
         <tr>
             <td id="mingcheng">目前所任职务:<span>*</span></td>
             <td><input type="text" name="utpTechnical.utpTechnicalPostNow" value="${readTechnical.utpTechnicalPostNow }"></td>
-            <td id="beizhu"></td>
+            <td id="beizhu">
+            	<span id="postError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">申报专业技术职务任职资格:<span>*</span></td>
             <td><input type="text" name="utpTechnical.utpTechnicalDeclarePost" value="${readTechnical.utpTechnicalDeclarePost }"></td>
-            <td id="beizhu"></td>
+            <td id="beizhu">
+            	<span id="decPostError"></span>
+            </td>
         </tr>
         <tr>
             <td id="mingcheng">外语考试情况:<span>*</span></td>
@@ -181,36 +203,8 @@
    </table>
    <input type="hidden" name="utpTechnical.utpTechnicalIdCard" value="${session.Technical.utpTechnicalIdCard}">
    <input type="hidden" name="utpTechnical.utpTechnicalName" value="${session.Technical.utpTechnicalName}">
-   <div align="center"><s:submit align="center" value="提交"></s:submit></div>
+   <br>
+   <div align="center"><s:submit class="btn btn-success" align="center" value="提交"></s:submit></div>
 </s:form>
 </body>
 </html>
-<script>
-    $(function () {
-        
-		$('#addnew').click(function(){
-
-				window.location.href="add.html";
-		 });
-
-
-    });
-
-	function del(id)
-	{
-		
-		
-		if(confirm("确定要删除吗？"))
-		{
-		
-			var url = "index.html";
-			
-			window.location.href=url;		
-		
-		}
-	
-	
-	
-	
-	}
-</script>
