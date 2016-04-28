@@ -167,11 +167,11 @@ $(document).ready(function() {
 			$("#graduError").html("请使用YYYY-MM-DD格式输入");
 		}
 	});
-	$("input[name='utpHighTeacher.utpHighTeacherEducation']").blur(function() {
-		var education = $("input[name='utpHighTeacher.utpHighTeacherEducation']").val();
-		if ($.trim(education) == "") {
+	$("select[name='utpHighTeacher.utpHighTeacherEducation']").blur(function() {
+		var education = $("select[name='utpHighTeacher.utpHighTeacherEducation']").val();
+		if ($.trim(education) == "无") {
 			$("#eduError").css({color:"red"});
-			$("#eduError").html("必填");
+			$("#eduError").html("请选择学历");
 		} else {
 			$("#eduError").css({color:"green"});
 			$("#eduError").html("√");
@@ -197,7 +197,58 @@ $(document).ready(function() {
 			$("#decPostError").html("√");
 		}
 	});
-	$("form").sumbit(function() {
+	$("form").submit(function() {
+		if ($.trim($("input[name='utpHighTeacher.utpHighTeacherAge']").val()) == "") {
+			alert("年龄不能为空！");
+			return false;
+		} else if ($.trim($("input[name='utpHighTeacher.utpHighTeacherBirthday']").val()) == "") {
+			alert("出生日期不能为空！");
+			return false;
+		} else if ($.trim($("input[name='utpHighTeacher.utpHighTeacherCareerBegin']").val()) == "") {
+			alert("参加工作时间不能为空！");
+			return false;
+		} else if ($.trim($("input[name='utpHighTeacher.utpHighTeacherGraduateTime']").val()) == "") {
+			alert("毕业时间不能为空！");
+			return false;
+		} else if ($("select[name='utpHighTeacher.utpHighTeacherEducation']").val() == "无") {
+			alert("请选择学历！");
+			return false;
+		} else if ($.trim($("input[name='utpHighTeacher.utpHighTeacherCollege']").val()) == "") {
+			alert("毕业院校不能为空！");
+			return false;
+		} else if ($.trim($("input[name='utpHighTeacher.utpHighTeacherMajor']").val()) == "") {
+			alert("所学专业不能为空！");
+			return false;
+		} else if ($.trim($("input[name='utpHighTeacher.utpHighTeacherPostNow']").val()) == "") {
+			alert("当前职务不能为空！");
+			return false;
+		} else if ($.trim($("input[name='utpHighTeacher.utpHighTeacherDeclarePost']").val()) == "") {
+			alert("需要申报的职称不能为空！");
+			return false;
+		} else if ($.trim($("input[name='utpHighTeacher.utpHighTeacherCET']").val()) == "") {
+			alert("外语考试不能为空！");
+			return false;
+		} else if ($.trim($("input[name='utpHighTeacher.utpHighTeacherComputer']").val()) == "") {
+			alert("计算机应用考试成绩不能为空！");
+			return false;
+		} else if ($.trim($("input[name='utpHighTeacher.utpHighTeacherAssessment']").val()) == "") {
+			alert("年度考核不能为空！");
+			return false;
+		} else if ($.trim($("input[name='utpHighTeacher.utpHighTeacherRefresher']").val()) == "") {
+			alert("进修情况不能为空，没有进修情况请填无！");
+			return false;
+		} else if ($.trim($("textarea[name='utpHighTeacher.utpHighTeacherSeniority']").val()) == "") {
+			alert("年资情况不能为空，没有年资情况请填无！");
+			return false;
+		} else if ($.trim($("textarea[name='utpHighTeacher.utpHighTeacherTeaching']").val()) == "") {
+			alert("教学情况不能为空，没有教学情况请填无！");
+			return false;
+		} else if ($.trim($("textarea[name='utpHighTeacher.utpHighTeacherAcademic']").val()) == "") {
+			alert("学术成果不能为空，没有学术成果请填无！");
+			return false;
+		} else {
+			return true;
+		}
 		
 	});
 	

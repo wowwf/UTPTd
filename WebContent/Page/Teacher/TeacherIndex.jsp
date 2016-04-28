@@ -14,9 +14,6 @@
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/style.css" />
     <script type="text/javascript" src="<%=path %>/Page/Js/jquery.js"></script>
-    <script type="text/javascript" src="<%=path %>/Page/Js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<%=path %>/Page/Js/ckform.js"></script>
-    <script type="text/javascript" src="<%=path %>/Page/Js/common.js"></script>
 	<script type="text/javascript" src="<%=path %>/Page/Js/validate.js"></script>
     <style type="text/css">
         body {
@@ -64,7 +61,7 @@
 </head>
 <body>
 <p style="color: red; text-align: right; margin-right: 20px;">*为必填</p>
-<s:form action="teacherSubmit">
+<s:form action="teacherSubmit" theme="simple">
 	<table class="table table-bordered table-hover definewidth m10" >
     	<thead>
     		<tr>
@@ -101,21 +98,21 @@
         </tr>
         <tr>
             <td id="mingcheng">年龄:<span>*</span></td>
-            <td><input type="text" name="utpHighTeacher.utpHighTeacherAge" value="${readTeacher.utpHighTeacherAge }"></td>
+            <td><input type="text" name="utpHighTeacher.utpHighTeacherAge" value="${readTeacher.utpHighTeacherAge }" maxlength="3" onkeyup="this.value=this.value.replace(/[^\d]/g, '')"></td>
             <td id="beizhu">
             	<span id="ageError"></span>
             </td>
         </tr>
         <tr>
             <td id="mingcheng">出生日期:<span>*</span></td>
-            <td><input type="text" name="utpHighTeacher.utpHighTeacherBirthday" value="${readTeacher.utpHighTeacherBirthday }"></td>
+            <td><input type="text" name="utpHighTeacher.utpHighTeacherBirthday" value="${readTeacher.utpHighTeacherBirthday }" maxlength="10"></td>
             <td id="beizhu">
             	<span id="birthError"></span>
             </td>
         </tr>
         <tr>
             <td id="mingcheng">参加工作时间:<span>*</span></td>
-            <td><input type="text" name="utpHighTeacher.utpHighTeacherCareerBegin" value="${readTeacher.utpHighTeacherCareerBegin }"></td>
+            <td><input type="text" name="utpHighTeacher.utpHighTeacherCareerBegin" value="${readTeacher.utpHighTeacherCareerBegin }" maxlength="10"></td>
             <td id="beizhu">
             	<span id="workError"></span>
             </td>
@@ -129,7 +126,15 @@
         </tr>
         <tr>
             <td id="mingcheng">学历:<span>*</span></td>
-            <td><input type="text" name="utpHighTeacher.utpHighTeacherEducation" value="${readTeacher.utpHighTeacherEducation }"></td>
+            <td>
+            	<%-- <input type="text" name="utpHighTeacher.utpHighTeacherEducation" value="${readTeacher.utpHighTeacherEducation }"> --%>
+            	<s:if test="#readTeacher.utpHighTeacherEducation!=null">
+            		<p><s:select list="#{'无':'--请选择--','本科':'本科','专科':'专科','高中':'高中' }" name="utpHighTeacher.utpHighTeacherEducation" value="#readTeacher.utpHighTeacherEducation"></s:select></p>
+            	</s:if>
+            	<s:else>
+            		<p><s:select list="#{'无':'--请选择--','本科':'本科','专科':'专科','高中':'高中' }" name="utpHighTeacher.utpHighTeacherEducation" value="无"></s:select></p>
+            	</s:else>
+            </td>
             <td id="beizhu">
             	<span id="eduError"></span>
             </td>
@@ -206,7 +211,7 @@
    <input type="hidden" name="utpHighTeacher.utpHighTeacherIdCard" value="${session.HighTeacher.utpHighTeacherIdCard}"> 
    <input type="hidden" name="utpHighTeacher.utpHighTeacherName" value="${session.HighTeacher.utpHighTeacherName}">
    <br/>
-   <div align="center"><s:submit class="btn btn-success" align="center" value="提交"></s:submit></div>
+   <div align="center"><input type="submit" class="btn btn-success" value="提交" style="text-align: center;"></div>
 </s:form>
 </body>
 </html>
