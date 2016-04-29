@@ -2,6 +2,8 @@ package com.UTPTd.daoImpl;
 
 import java.util.List;
 
+import oracle.net.aso.l;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,14 +12,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.UTPTd.bean.UtpAdmin;
+import com.UTPTd.bean.UtpAuditor;
 import com.UTPTd.dao.UtpAdminDao;
 
 @Component
 public class UtpAdminDaoImpl implements UtpAdminDao {
-	/*private static Configuration configuration = new Configuration().configure();
-	private static ServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-	private static SessionFactory sf = (SessionFactory) configuration.buildSessionFactory(serviceRegistry);
-	*/
+	
 	private static ApplicationContext Context = new ClassPathXmlApplicationContext("beans.xml");
 	private static SessionFactory sf = (SessionFactory) Context.getBean("sessionfactory");
 	
@@ -130,6 +130,70 @@ public class UtpAdminDaoImpl implements UtpAdminDao {
 			}
 			return pathString;
 		}
+	}
+
+	@Override
+	public List<UtpAuditor> FindAll() {
+		String hql = "from UtpAuditor";
+		Session session = sf.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery(hql);
+		List<UtpAuditor> list = query.list();
+		session.getTransaction().commit();
+		session.close();
+		return list;
+	}
+
+	@Override
+	public void insertAuditor(UtpAuditor utpAuditor) {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.save(utpAuditor);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	@Override
+	public void updateAuditor(UtpAuditor utpAuditor) {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.saveOrUpdate(utpAuditor);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	@Override
+	public void deleteAuditor(String IdCard) {
+		String hql = "delete from UtpAuditor as a where a.utpAuditorIdCard = :id";
+		Session session = sf.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery(hql);
+		query.setParameter("id", IdCard);
+		query.executeUpdate();
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	@Override
+	public UtpAuditor selectAuditor(String IdCard) {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		UtpAuditor uAuditor = (UtpAuditor) session.get(UtpAuditor.class, IdCard);
+		session.getTransaction().commit();
+		session.close();
+		return uAuditor;
+	}
+
+	@Override
+	public void deleteAuditorOpinion(String IdCard) {
+		String hql = "delete from AuditorOpinion where auditorId = :id";
+		Session session = sf.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery(hql);
+		query.setParameter("id", IdCard);
+		query.executeUpdate();
+		session.getTransaction().commit();
+		session.close();
 	}
 
 }

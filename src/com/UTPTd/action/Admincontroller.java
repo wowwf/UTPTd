@@ -34,13 +34,12 @@ public class Admincontroller extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		String serverPath = ServletActionContext.getServletContext().getRealPath(path);
-		ActionContext context = ActionContext.getContext();
 		UtpAdminServices UAS = aContext.getBean(UtpAdminServicesImpl.class);
 		if (UAS.DeleteOtherFile(who, serverPath)) {
-			context.put("technicalDelete", "相关冗余文件已删除！");
+			addActionMessage("相关冗余文件已删除！");
 			return SUCCESS;
 		} else {
-			context.put("deleteError", "没有文件多余！");
+			addActionMessage("没有文件多余！");
 			return ERROR;
 		}
 	}

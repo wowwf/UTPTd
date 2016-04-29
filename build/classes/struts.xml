@@ -80,8 +80,8 @@
         	<interceptor-ref name="LoginOrNotInterceptor"></interceptor-ref>
         </action>
         <action name="AdminClear" class="com.UTPTd.action.Admincontroller">
-        	<result name="success">/MiddlePage/NoFile.jsp</result>
-        	<result name="error">/MiddlePage/NoFile.jsp</result>
+        	<result name="success">/MiddlePage/AdminIndex.jsp</result>
+        	<result name="error">/MiddlePage/AdminIndex.jsp</result>
         	<interceptor-ref name="defaultStack"></interceptor-ref>
         	<interceptor-ref name="AdminLoginInterceptor"></interceptor-ref>
         </action>
@@ -161,6 +161,16 @@
         <action name="resetPass" class="com.UTPTd.action.ResetPassAction">
         	<result name="success">/GToLogin.jsp</result>
         	<result name="error">/Error.jsp</result>
+        </action>
+        <action name="adminAction" class="com.UTPTd.action.AdminAction">
+        	<result name="addsuccess">/MiddlePage/AdminIndex.jsp</result>
+        	<result name="findsuccess">/MiddlePage/AdminIndex.jsp</result>
+        	<result name="findonesuccess">/MiddlePage/AdminIndex.jsp</result>
+        	<result name="deletesuccess">/MiddlePage/AdminIndex.jsp</result>
+        	<result name="deleteerror">/MiddlePage/AdminIndex.jsp</result>
+        	<result name="error">/MiddlePage/AdminIndex.jsp</result>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<interceptor-ref name="AdminLoginInterceptor"></interceptor-ref>
         </action>
     </package>
 	

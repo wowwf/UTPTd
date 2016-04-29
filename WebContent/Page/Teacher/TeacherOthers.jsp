@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/bootstrap-responsive.css" />
 <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/style.css" />
-<script type="text/javascript" src="<%=path %>/Page/Js/jquery.js"></script>
+<script type="text/javascript" src="<%=path %>/Page/Js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
 	var teacher = "${session.HighTeacher}";
 	if (teacher.length == 0) {
