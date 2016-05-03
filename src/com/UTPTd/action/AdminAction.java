@@ -21,6 +21,7 @@ public class AdminAction extends ActionSupport {
 	private static ApplicationContext aContext = new ClassPathXmlApplicationContext("beans.xml");
 	
 	private int sel;
+	private List<String> idCard;
 	private String card;
 	private String name;
 	private String password;
@@ -65,7 +66,15 @@ public class AdminAction extends ActionSupport {
 	public void setCard(String card) {
 		this.card = card;
 	}
+	
+	public List<String> getIdCard() {
+		return idCard;
+	}
 
+	public void setIdCard(List<String> idCard) {
+		this.idCard = idCard;
+	}
+	
 	@Override
 	public String execute() throws Exception {
 		String flag = "";
@@ -94,9 +103,9 @@ public class AdminAction extends ActionSupport {
 			flag = "findonesuccess";
 			break;
 		case 4:
-			if (uServices.findAuditor(card) != null) {
-				uServices.deleteAuditor(card);
-				uServices.deleteAuditorOpinion(card);
+			if (uServices.findAuditor(idCard.get(0)) != null) {
+				uServices.deleteAuditor(idCard.get(0));
+				uServices.deleteAuditorOpinion(idCard.get(0));
 				addActionMessage("删除成功！");
 				flag = "deletesuccess";
 			} else {

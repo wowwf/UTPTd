@@ -162,7 +162,7 @@
         	<result name="success">/GToLogin.jsp</result>
         	<result name="error">/Error.jsp</result>
         </action>
-        <action name="adminAction" class="com.UTPTd.action.AdminAction">
+        <action name="adminconter" class="com.UTPTd.action.AdminAction">
         	<result name="addsuccess">/MiddlePage/AdminIndex.jsp</result>
         	<result name="findsuccess">/MiddlePage/AdminIndex.jsp</result>
         	<result name="findonesuccess">/MiddlePage/AdminIndex.jsp</result>

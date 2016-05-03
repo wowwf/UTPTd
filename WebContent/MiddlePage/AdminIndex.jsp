@@ -9,7 +9,7 @@
 <title>高校教师职称申报系统</title>
 <style type="text/css">
 	div {
-		width: 1305px;
+		width: 1205px;
 		display: block;
 		position: relative;
 		background: url("<%=path %>/Page/images/adminJPG.jpg");
@@ -32,7 +32,7 @@
 		color: black;
 		text-decoration: none;
 		float: right;
-		width: 1100px;
+		width: 1000px;
 		height: 800px;
 		
 	}
@@ -45,6 +45,9 @@
 	}
 	#mc {
 		text-align: right;
+	}
+	td {
+		background-color: #EEE685;
 	}
 </style>
 <link rel="stylesheet" type="text/css" href="<%=path %>/Page/Css/style.css" />
@@ -72,7 +75,7 @@
 			<li><a href="AdminClear.action?who=<%="technical" %>">清理服务器及项目文件中技术人员相关的文件</a></li>
 			<li><a id="add" style="color: blue; text-decoration: underline; cursor:pointer;">添加审核人员</a></li>
 			<li><a id="select" style="color: blue; text-decoration: underline; cursor:pointer;">查询审核人员</a></li>
-			<li><a href="adminAction.action?sel=2" id="findAll">显示所有审核人员</a>
+			<li><a href="adminconter.action?sel=2" id="findAll">显示所有审核人员</a>
 		</ul>
 		<br>
 		<p id="errors" style="width: 450px; text-align: center; color: green;"></p>
@@ -82,24 +85,58 @@
 		<s:if test="#auditorList != null">
 			<center>
 			<%int num = 1; %>
-				<table width="80%" cellspacing="10" class="table table-bordered table-hover definewidth m10">
+				<table align="left" width="60%" cellspacing="8" class="table table-bordered table-hover definewidth m10">
 				<tr>
 					<th>序号</th>
 					<th>身份证号</th>
 					<th>姓名</th>
 					<th>职务</th>
-					<th>删除</th>
+					<th>操作</th>
 				</tr>	
 				<s:iterator value="#auditorList" var="list">
 				<tr>
 					<td><%=num++ %></td>
 					<td>${list.utpAuditorIdCard }</td>
 					<td>${list.utpAuditorName }</td>
-					<td>${list.utpAuditorRole }</td>
-					<td><a href="adminAction.action?sel=4&IdCard=${list.utpAuditorIdCard }">删除</a></td>					
+					<%-- <td>${list.utpAuditorRole }</td> --%>
+					<s:if test="#list.utpAuditorRole == 0">
+						<td>院系审核人员</td>
+					</s:if>
+					<s:else>
+						<td>人事审核人员</td>
+					</s:else>
+					<td><a href="adminconter.action?sel=4&idCard=${list.utpAuditorIdCard }">删除</a></td>					
 				</tr>
 				</s:iterator>
-					
+				</table>
+			</center>
+		</s:if>
+		<s:if test="#oneauditor != null">
+			<center>
+			<%int num = 1; %>
+				<table align="left" width="60%" cellspacing="8" class="table table-bordered table-hover definewidth m10">
+				<tr>
+					<th>序号</th>
+					<th>身份证号</th>
+					<th>姓名</th>
+					<th>职务</th>
+					<th>操作</th>
+				</tr>	
+				<s:iterator value="#oneauditor" var="list">
+				<tr>
+					<td><%=num++ %></td>
+					<td>${list.utpAuditorIdCard }</td>
+					<td>${list.utpAuditorName }</td>
+					<%-- <td>${list.utpAuditorRole }</td> --%>
+					<s:if test="#list.utpAuditorRole == 0">
+						<td>院系审核人员</td>
+					</s:if>
+					<s:else>
+						<td>人事审核人员</td>
+					</s:else>
+					<td><a href="adminconter.action?sel=4&idCard=${list.utpAuditorIdCard }">删除</a></td>					
+				</tr>
+				</s:iterator>
 				</table>
 			</center>
 		</s:if>

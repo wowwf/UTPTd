@@ -8,7 +8,7 @@ $(document).ready(function() {
 			if ($("#selectinfo").length > 0) {
 				$("#selectinfo").remove();
 			}
-			var str = "<center id='infomation'><form id='addform' action='adminAction.action?sel=1' theme='simple' method='post' onsubmit='return val()'>"+
+			var str = "<center id='infomation'><form id='addform' action='adminconter.action?sel=1' theme='simple' method='post' onsubmit='return val()'>"+
 				"<table style='text-align: right;'>" +
 				"<caption>审核人员信息添加</caption>" +
 				"<tr>" +
@@ -32,7 +32,7 @@ $(document).ready(function() {
 				"<span id='mc'>密码:</span>" +
 				"</td>" +
 				"<td>" +
-				"<input type='text' id='onePass'>" +
+				"<input type='password' id='onePass'>" +
 				"</td>" +
 				"</tr>" +
 				"<tr>" +
@@ -40,7 +40,7 @@ $(document).ready(function() {
 				"<span id='mc'>再次输入密码:</span>" +
 				"</td>" +
 				"<td>" +
-				"<input type='text' name='password'>" +
+				"<input type='password' name='password'>" +
 				"</td>" +
 				"</tr>" +
 				"<tr>" +
@@ -56,12 +56,13 @@ $(document).ready(function() {
 				"</td>" +
 				"</tr>" +
 				"</table>" +
-				"<input type='submit' name='addsubmit' value='提交'>" +
+				"<input type='submit' value='提交'>" +
 				"</form></center>";
 			$("#addTable").append(str);
 		} else {
 			alert("表格已存在！");
 		}
+		
 	});
 	//增加查询人员表单
 	$("#select").click(function() {
@@ -70,7 +71,8 @@ $(document).ready(function() {
 				$("#infomation").remove();
 			}
 			var str = "<center id='selectinfo'>" +
-					"<s:form action='adminAction.action?sel=3' theme='simple'>" +
+					"<form action='adminconter.action' theme='simple'>" +
+					"<input type='hidden' name='sel' value='3'>" +
 					"<table>" +
 					"<tr>" +
 						"<th>身份证号码</th>" +
@@ -81,7 +83,7 @@ $(document).ready(function() {
 						"<td><input type='submit' value='查找'></td>" +
 					"</tr>" +
 					"</table>" +
-					"</s:form>" +
+					"</form>" +
 					"</center>";
 			$("#addTable").append(str);
 		} else {
