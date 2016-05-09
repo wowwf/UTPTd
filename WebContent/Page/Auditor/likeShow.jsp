@@ -77,7 +77,6 @@
 		var findid = "${findIdCard}";
 		var findName = "${findName}";
 		var sele = document.getElementById("everyNum").value;
-		alert(sele);
 		window.location.href = "QueryLikeTechnical.action?currentPage=1" + "&findIdCard=" + findid + "&findName=" + findName + "&everyPage=" + sele;
 	}
 </script>
@@ -113,15 +112,15 @@
 				  	<td colspan="7" align="right" style="text-align: right;">
 				  		共${page.totalCount}条纪录，当前第${page.currentPage}/${page.totalPage}页，每页${page.everyPage}条纪录
 				  	<s:if test="#request.page.hasPrePage">
-                		<a href="QueryTechnical.action?currentPage=1&findId=${findIdCard }&findName=${findName}">首页</a> | 
-                		<a href="QueryTechnical.action?currentPage=${page.currentPage - 1}&findId=${findIdCard }&findName=${findName}">上一页</a> | 
+                		<a href="QueryLikeTechnical.action?currentPage=1&findIdCard=${findIdCard }&findName=${findName}">首页</a> | 
+                		<a href="QueryLikeTechnical.action?currentPage=${page.currentPage - 1}&findIdCard=${findIdCard }&findName=${findName}">上一页</a> | 
                		</s:if>
                		<s:else>
                		首页 | 上一页 | 
                		</s:else>
                		<s:if test="#request.page.hasNextPage">
-                		<a href="QueryTechnical.action?currentPage=${page.currentPage + 1}&findId=${findIdCard }&findName=${findName}">下一页</a> | 
-                		<a href="QueryTechnical.action?currentPage=${page.totalPage}&findId=${findIdCard }&findName=${findName}">尾页</a>
+                		<a href="QueryLikeTechnical.action?currentPage=${page.currentPage + 1}&findIdCard=${findIdCard }&findName=${findName}">下一页</a> | 
+                		<a href="QueryLikeTechnical.action?currentPage=${page.totalPage}&findIdCard=${findIdCard }&findName=${findName}">尾页</a>
                		</s:if>
                		<s:else>
                		下一页 | 尾页
@@ -171,15 +170,15 @@
 				  	<td colspan="7" align="right" style="text-align: right;">
 				  		共${page.totalCount}条纪录，当前第${page.currentPage}/${page.totalPage}页，每页${page.everyPage}条纪录
 				  	<s:if test="#request.page.hasPrePage">
-                		<a href="QueryTeacher.action?currentPage=1&findId=${findIdCard }&findName=${findName}">首页</a> | 
-                		<a href="QueryTeacher.action?currentPage=${page.currentPage - 1}&findId=${findIdCard }&findName=${findName}">上一页</a> | 
+                		<a href="QueryLikeTeacher.action?currentPage=1&findIdCard=${findIdCard }">首页</a> | 
+                		<a href="QueryLikeTeacher.action?currentPage=${page.currentPage - 1}&findIdCard=${findIdCard }">上一页</a> | 
                		</s:if>
                		<s:else>
                		首页 | 上一页 | 
                		</s:else>
                		<s:if test="#request.page.hasNextPage">
-                		<a href="QueryTeacher.action?currentPage=${page.currentPage + 1}&findId=${findIdCard }&findName=${findName}">下一页</a> | 
-                		<a href="QueryTeacher.action?currentPage=${page.totalPage}&findId=${findIdCard }&findName=${findName}">尾页</a>
+                		<a href="QueryLikeTeacher.action?currentPage=${page.currentPage + 1}&findIdCard=${findIdCard }">下一页</a> | 
+                		<a href="QueryLikeTeacher.action?currentPage=${page.totalPage}&findIdCard=${findIdCard }">尾页</a>
                		</s:if>
                		<s:else>
                		下一页 | 尾页
